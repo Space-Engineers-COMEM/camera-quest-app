@@ -23,13 +23,13 @@ We use [ESLint](https://eslint.org/), [Prettier](https://prettier.io/) and [Edit
 
 When you commit, write it so it describes what the commit do. It should begin with a verb. To make this easy, always think as the followint of the sentence "This commit…".
 
-> Examples:<br> > `Add POST User`, `Fix issue #123`, `Update README.md`, …
+> Examples: `Add POST User`, `Fix issue #123`, `Update README.md`, …
 
 **Branches**
 
 If you want to work on something new, follow this workflow. Keep the `main` branch clean, so other developer can use it as a stable base to work on.
 
-> If you want to work on an issue, please check the issue workflow below.
+If you want to work on an issue, please check the **issue workflow** below.
 
 1. **Create a new branch** and follow the naming convention: `<type>/<name>`.<br>
    The "type" can be one of the following: <br>`feat`, `fix`, `test`, `docs`.
