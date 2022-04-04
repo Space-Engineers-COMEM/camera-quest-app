@@ -57,3 +57,17 @@ You can create and assign issues to you or another developer. When you want to f
 2. If it's a bigger issue, you can create a branch with the name of the issue in it, like this: `fix/issue-#123`
 
 In all case, make sure to close the issue when you fix it.
+
+# About
+
+## Contributors
+
+<a href="https://github.com/space-engineers-comem/camera-quest-app/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=space-engineers-comem/camera-quest-app"/>
+</a>
+
+## License
+
+[MIT license](LICENSE).
+
+Copyright (c) 2022-present, Space Engineers COMEM
