@@ -42,6 +42,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-html5-camera-photo": "^1.5.1",
     "@typescript-eslint/eslint-plugin": "^5.18.0",
     "@typescript-eslint/parser": "^5.18.0",
     "eslint": "^8.12.0",

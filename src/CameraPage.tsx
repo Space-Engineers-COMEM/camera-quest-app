@@ -1,27 +1,22 @@
 import React from 'react';
 import Camera from 'react-html5-camera-photo';
 import Feedback from './Feedback';
-import Button from './Button';
-
 import 'react-html5-camera-photo/build/css/index.css';
-import { ListButton } from './ListButton';
 
-type CameraPageProps = {
+interface Props {}
 
-}
-
-export default class CameraPage extends React.Component {
-  constructor(props) {
+export default class CameraPage extends React.Component<Props> {
+  constructor(props: Props) {
     super(props);
     console.log('CameraPage Mounted');
   }
 
-  handleTakePhoto(dataUri) {
+  handleTakePhoto(dataUri: string): void {
     // Do stuff with the photo...
     console.log('takePhoto', dataUri);
   }
 
-  navToList() : void {
+  navToList(): void {
     console.log('nav to list');
   }
 
@@ -33,7 +28,7 @@ export default class CameraPage extends React.Component {
             this.handleTakePhoto(dataUri);
           }}
         />
-        <ListButton onClick={this.navToList} />
+        {/* <ListButton onClick={this.navToList} /> */}
         <Feedback />
       </div>
     );

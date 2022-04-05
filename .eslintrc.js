@@ -21,5 +21,7 @@ module.exports = {
     'react/destructuring-assignment': [0],
     '@typescript-eslint/no-unused-vars': [1],
     'react/jsx-filename-extension': [0],
+    'class-methods-use-this' : [0],
+    'react/no-unused-class-component-methods' : [0],
   },
 };
