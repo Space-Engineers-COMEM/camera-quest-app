@@ -1,4 +1,3 @@
-/* eslint-disable class-methods-use-this */
 import React from 'react';
 import Camera from 'react-html5-camera-photo';
 import Feedback from './Feedback';
@@ -7,7 +6,11 @@ import Button from './Button';
 import 'react-html5-camera-photo/build/css/index.css';
 import { ListButton } from './ListButton';
 
-class CameraPage extends React.Component {
+type CameraPageProps = {
+
+}
+
+export default class CameraPage extends React.Component {
   constructor(props) {
     super(props);
     console.log('CameraPage Mounted');
@@ -18,7 +21,7 @@ class CameraPage extends React.Component {
     console.log('takePhoto', dataUri);
   }
 
-  navToList() {
+  navToList() : void {
     console.log('nav to list');
   }
 
@@ -36,5 +39,3 @@ class CameraPage extends React.Component {
     );
   }
 }
-
-export default CameraPage;

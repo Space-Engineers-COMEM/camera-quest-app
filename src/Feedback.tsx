@@ -20,9 +20,7 @@ class Feedback extends React.Component {
     return (
       <div>
         <CloseButton onClick={this.handleClick} />
-        {this.state.status === 'error'
-          ? <AzureError />
-          : <PoiPreview />}
+        {this.state.status === 'error' ? <AzureError /> : <PoiPreview />}
       </div>
     );
   }

@@ -19,7 +19,6 @@ function PoiPreview() {
       </span>
       <p>Lorem ipsum.</p>
     </div>
-
   );
 }
 
