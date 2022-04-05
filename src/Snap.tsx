@@ -9,7 +9,7 @@ interface States {
   status: 'error' | 'success' | null;
 }
 
-export default class CameraPage extends React.Component<Props, States> {
+export default class Snap extends React.Component<Props, States> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -38,7 +38,7 @@ export default class CameraPage extends React.Component<Props, States> {
     return (
       <div>
         <Camera
-          onTakePhoto={(dataUri) => {
+          onTakePhoto={(dataUri: string) => {
             this.handleTakePhoto(dataUri);
           }}
         />
