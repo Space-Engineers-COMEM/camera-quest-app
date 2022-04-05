@@ -1,23 +1,19 @@
 import React from 'react';
-import CloseButton from './CloseButton';
-import AzureError from './AzureError';
-import PoiPreview from './PoiPreview';
+import CloseButton from '../navigation/CloseButton';
+import AzureError from '../content/AzureError';
+import PoiPreview from '../content/PoiPreview';
 
 interface Props {
   onCloseFeedback: any;
   visible: boolean;
+  status: 'error' | 'success';
 }
 
-interface States {
-  status: string;
-}
-
-class Feedback extends React.Component<Props, States> {
+class Feedback extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
     console.log('Feedback mounted');
     this.onCloseFeedback = this.onCloseFeedback.bind(this);
-    this.state = { status: 'success' };
   }
 
   onCloseFeedback(): void {
@@ -33,7 +29,7 @@ class Feedback extends React.Component<Props, States> {
         <CloseButton onClick={this.onCloseFeedback} />
         <AzureError />
         <PoiPreview />
-        {/* this.state.status === 'error' ? <AzureError /> : <PoiPreview /> */}
+        {/* this.props.status === 'error' ? <AzureError /> : <PoiPreview /> */}
       </div>
     );
   }

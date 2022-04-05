@@ -23,6 +23,7 @@ module.exports = {
     'react/jsx-filename-extension': [0],
     'class-methods-use-this' : [0],
     'react/no-unused-class-component-methods' : [0],
-    'react/no-unused-state': [1]
+    'react/no-unused-state': [1],
+    'react/no-unused-prop-types': [1]
   },
 };
