@@ -2,8 +2,10 @@
 import React from 'react';
 import Camera from 'react-html5-camera-photo';
 import Feedback from './Feedback';
+import Button from './Button';
 
 import 'react-html5-camera-photo/build/css/index.css';
+import { ListButton } from './ListButton';
 
 class CameraPage extends React.Component {
   constructor(props) {
@@ -16,6 +18,10 @@ class CameraPage extends React.Component {
     console.log('takePhoto', dataUri);
   }
 
+  navToList() {
+    console.log('nav to list');
+  }
+
   render() {
     return (
       <div>
@@ -24,6 +30,7 @@ class CameraPage extends React.Component {
             this.handleTakePhoto(dataUri);
           }}
         />
+        <ListButton onClick={this.navToList} />
         <Feedback />
       </div>
     );
