@@ -5,14 +5,12 @@ import PoiPreview from '../content/PoiPreview';
 
 interface Props {
   onCloseFeedback: any;
-  visible: boolean;
-  status: 'error' | 'success';
+  status: 'error' | 'success' | null;
 }
 
 class Feedback extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
-    console.log('Feedback mounted');
     this.onCloseFeedback = this.onCloseFeedback.bind(this);
   }
 
@@ -21,7 +19,7 @@ class Feedback extends React.Component<Props> {
   }
 
   render() {
-    if (!this.props.visible) {
+    if (this.props.status === null) {
       return '';
     }
     return (

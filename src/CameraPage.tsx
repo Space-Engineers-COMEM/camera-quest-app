@@ -6,16 +6,14 @@ import 'react-html5-camera-photo/build/css/index.css';
 interface Props {}
 
 interface States {
-  feedbackShown: boolean;
-  status: 'error' | 'success';
+  status: 'error' | 'success' | null;
 }
 
 export default class CameraPage extends React.Component<Props, States> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      feedbackShown: false,
-      status: 'error',
+      status: null,
     };
     this.handleCloseFeedback = this.handleCloseFeedback.bind(this);
   }
@@ -25,11 +23,11 @@ export default class CameraPage extends React.Component<Props, States> {
   handleTakePhoto(dataUri: string): void {
     // Do stuff with the photo...
     console.log('takePhoto', dataUri);
-    this.setState({ feedbackShown: true });
+    this.setState({ status: 'success' });
   }
 
   handleCloseFeedback(): void {
-    this.setState({ feedbackShown: false });
+    this.setState({ status: null });
   }
 
   navToList(): void {
@@ -45,11 +43,7 @@ export default class CameraPage extends React.Component<Props, States> {
           }}
         />
         {/* <ListButton onClick={this.navToList} /> */}
-        <Feedback
-          visible={this.state.feedbackShown}
-          onCloseFeedback={this.handleCloseFeedback}
-          status={this.state.status}
-        />
+        <Feedback status={this.state.status} onCloseFeedback={this.handleCloseFeedback} />
       </div>
     );
   }
