@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Camera from 'react-html5-camera-photo';
 import Feedback from './layout/Feedback';
 import 'react-html5-camera-photo/build/css/index.css';
@@ -21,7 +22,7 @@ export default class Snap extends React.Component<Props, States> {
   // API communication
 
   handleTakePhoto(dataUri: string): void {
-    // Do stuff with the photo...
+    // Do stuff with the photo... -> https://reactjs.org/docs/faq-ajax.html
     console.log('takePhoto', dataUri);
     this.setState({ status: 'success' });
   }
@@ -43,6 +44,9 @@ export default class Snap extends React.Component<Props, States> {
           }}
         />
         {/* <ListButton onClick={this.navToList} /> */}
+        <Link to="/" className="btn btn-float-bottom-right">
+          Show POI List
+        </Link>
         <Feedback status={this.state.status} onCloseFeedback={this.handleCloseFeedback} />
       </div>
     );
