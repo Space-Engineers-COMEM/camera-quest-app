@@ -1,9 +1,10 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
+import CameraPage from './CameraPage';
 import Error404 from './Error404';
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <Routes>
@@ -18,5 +19,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

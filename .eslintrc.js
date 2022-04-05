@@ -14,8 +14,16 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'prettier'],
+  plugins: ['@typescript-eslint', 'react', 'prettier'],
   rules: {
     'prettier/prettier': ['error'],
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/destructuring-assignment': [0],
+    '@typescript-eslint/no-unused-vars': [1],
+    'react/jsx-filename-extension': [0],
+    'class-methods-use-this' : [0],
+    'react/no-unused-class-component-methods' : [0],
+    'react/no-unused-state': [1],
+    'react/no-unused-prop-types': [1]
   },
 };
