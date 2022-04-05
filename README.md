@@ -6,7 +6,7 @@ Webapp for the Camera Quest project based on ReactJS
 
 ```shell
 npm install
-npm run dev
+npm start
 ```
 
 ## Contributing
