@@ -1,7 +1,11 @@
 import React from 'react';
 
 function AzureError() {
-  return <p>Hello</p>;
+  return (
+    <div className="preview preview-error">
+      <p>Azure Error</p>
+    </div>
+  );
 }
 
 export default AzureError;

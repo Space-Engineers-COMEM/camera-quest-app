@@ -11,7 +11,7 @@ const poi = {
 
 function PoiPreview() {
   return (
-    <div>
+    <div className="preview preview-poi">
       <h2>{poi.title}</h2>
       <span>
         <small>{poi.author}</small>
