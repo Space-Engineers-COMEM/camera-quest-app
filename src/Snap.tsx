@@ -7,35 +7,69 @@ import 'react-html5-camera-photo/build/css/index.css';
 interface Props {}
 
 interface States {
-  status: 'error' | 'success' | null;
+  type: string;
+  isLoaded: boolean;
+  content: string;
 }
 
 export default class Snap extends React.Component<Props, States> {
+  apiUrl = 'api.test.ch';
+
   constructor(props: Props) {
     super(props);
     this.state = {
-      status: null,
+      type: '',
+      isLoaded: false,
+      content: '',
     };
     this.handleCloseFeedback = this.handleCloseFeedback.bind(this);
   }
 
   // API communication
-
   handleTakePhoto(dataUri: string): void {
-    // Do stuff with the photo... -> https://reactjs.org/docs/faq-ajax.html
-    console.log('takePhoto', dataUri);
-    this.setState({ status: 'success' });
+    // Uploading the image
+    // ...
+    // ...
+    // Fetching the POI -> https://reactjs.org/docs/faq-ajax.html
+    // https://stackoverflow.com/questions/40981040/using-a-fetch-inside-another-fetch-in-javascript
+    /*
+    fetch(this.apiUrl)
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            content: result.content,
+          });
+        },
+        (type) => {
+          this.setState({
+            isLoaded: true,
+            type,
+          });
+        }
+      );
+      */
+
+    // Dev
+    this.setState({
+      isLoaded: false,
+      type: 'prediction',
+      content: 'url',
+    });
+
+    setTimeout(() => {
+      this.setState({ isLoaded: true });
+    }, 1000);
   }
 
   handleCloseFeedback(): void {
-    this.setState({ status: null });
-  }
-
-  navToList(): void {
-    console.log('nav to list');
+    this.setState({ type: '' });
   }
 
   render() {
+    const { type, isLoaded, content } = this.state;
+
     return (
       <div>
         <Camera
@@ -43,11 +77,15 @@ export default class Snap extends React.Component<Props, States> {
             this.handleTakePhoto(dataUri);
           }}
         />
-        {/* <ListButton onClick={this.navToList} /> */}
         <Link to="/" className="btn btn-float-bottom-right">
           Show POI List
         </Link>
-        <Feedback status={this.state.status} onCloseFeedback={this.handleCloseFeedback} />
+        <Feedback
+          type={type}
+          isLoaded={isLoaded}
+          content={content}
+          onCloseFeedback={this.handleCloseFeedback}
+        />
       </div>
     );
   }

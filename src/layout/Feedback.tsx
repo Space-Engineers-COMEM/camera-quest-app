@@ -5,7 +5,9 @@ import PoiPreview from '../content/PoiPreview';
 
 interface Props {
   onCloseFeedback: any;
-  status: 'error' | 'success' | null;
+  type: string;
+  isLoaded: boolean;
+  content: string;
 }
 
 class Feedback extends React.Component<Props> {
@@ -19,15 +21,17 @@ class Feedback extends React.Component<Props> {
   }
 
   render() {
-    if (this.props.status === null) {
+    const { type, isLoaded, content } = this.props;
+    if (!type) {
       return '';
     }
+
     return (
       <div>
         <CloseButton onClick={this.onCloseFeedback} />
-        <AzureError />
-        <PoiPreview />
-        {/* this.props.status === 'error' ? <AzureError /> : <PoiPreview /> */}
+        {type === 'unpredictable' ? <AzureError /> : null}
+        {!isLoaded ? <div>Loading...</div> : null}
+        {type === 'prediction' && isLoaded ? <PoiPreview /> : null}
       </div>
     );
   }
