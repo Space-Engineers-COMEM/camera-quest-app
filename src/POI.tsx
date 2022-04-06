@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import PoiType from './types/PoiType';
 import ShareType from './types/ShareType';
+import AudioPlayer from './input/AudioPlayer';
 
 export default function POI() {
   const POIToShow: PoiType = {
@@ -60,6 +61,7 @@ export default function POI() {
         )}
       </h3>
       <p>{POIToShow.description}</p>
+      <AudioPlayer />
       {/* <div>Object {id}</div>
       <p>Hello</p> */}
     </div>
