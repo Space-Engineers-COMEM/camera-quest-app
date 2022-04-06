@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Camera from 'react-html5-camera-photo';
 import Feedback from './layout/Feedback';
 import 'react-html5-camera-photo/build/css/index.css';
+import PoiType from './types/PoiType';
 
 interface Props {}
 
@@ -10,10 +11,23 @@ interface States {
   type: string;
   isLoaded: boolean;
   content: string;
+  preview?: PoiType;
 }
 
 export default class Snap extends React.Component<Props, States> {
-  apiUrl = 'api.test.ch';
+  private apiUrl = 'api.test.ch';
+
+  private staticPoi = {
+    id: 12,
+    azure_tag: 'dgpahdfjadfhasd',
+    exhibition_number: 23,
+    title: 'Mon super Appareil photo',
+    author: 'Michel Bleuciel',
+    periode: '2012-2013',
+    visible: true,
+    description: 'Lorem ipsum hello world',
+    origin: "Allemagne de l'Est",
+  };
 
   constructor(props: Props) {
     super(props);
@@ -56,6 +70,7 @@ export default class Snap extends React.Component<Props, States> {
       isLoaded: false,
       type: 'prediction',
       content: 'url',
+      preview: this.staticPoi,
     });
 
     setTimeout(() => {
@@ -68,7 +83,7 @@ export default class Snap extends React.Component<Props, States> {
   }
 
   render() {
-    const { type, isLoaded, content } = this.state;
+    const { type, isLoaded, content, preview } = this.state;
 
     return (
       <div>
@@ -84,6 +99,7 @@ export default class Snap extends React.Component<Props, States> {
           type={type}
           isLoaded={isLoaded}
           content={content}
+          poi={preview}
           onCloseFeedback={this.handleCloseFeedback}
         />
       </div>

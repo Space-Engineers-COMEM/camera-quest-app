@@ -1,23 +1,21 @@
 import React from 'react';
+import PoiType from '../types/PoiType';
 
-const poi = {
-  azure_tag: 'azureTag1',
-  exhibition_number: 124,
-  title: 'appareil 1',
-  author: 'Nicéphore niépce',
-  periode: '2015',
-  visible: true,
-};
+interface Props {
+  poi: PoiType;
+}
 
-function PoiPreview() {
+function PoiPreview(props: Props) {
+  const { poi } = props;
   return (
     <div className="preview preview-poi">
       <h2>{poi.title}</h2>
       <span>
         <small>{poi.author}</small>
         <small>{poi.periode}</small>
+        <small>{poi.origin}</small>
       </span>
-      <p>Lorem ipsum.</p>
+      <p>Description : {poi.title}</p>
     </div>
   );
 }

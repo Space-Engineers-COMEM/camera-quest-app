@@ -2,12 +2,14 @@ import React from 'react';
 import CloseButton from '../navigation/CloseButton';
 import AzureError from '../content/AzureError';
 import PoiPreview from '../content/PoiPreview';
+import PoiType from '../types/PoiType';
 
 interface Props {
   onCloseFeedback: any;
   type: string;
   isLoaded: boolean;
   content: string;
+  poi: PoiType | undefined;
 }
 
 class Feedback extends React.Component<Props> {
@@ -21,7 +23,7 @@ class Feedback extends React.Component<Props> {
   }
 
   render() {
-    const { type, isLoaded, content } = this.props;
+    const { type, isLoaded, content, poi } = this.props;
     if (!type) {
       return '';
     }
@@ -29,9 +31,9 @@ class Feedback extends React.Component<Props> {
     return (
       <div>
         <CloseButton onClick={this.onCloseFeedback} />
-        {type === 'unpredictable' ? <AzureError /> : null}
+        {type === 'unpredictable' ? <AzureError error={content} /> : null}
         {!isLoaded ? <div>Loading...</div> : null}
-        {type === 'prediction' && isLoaded ? <PoiPreview /> : null}
+        {type === 'prediction' && isLoaded && poi ? <PoiPreview poi={poi} /> : null}
       </div>
     );
   }

@@ -2,10 +2,12 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Snap from './Snap';
 import Error404 from './Error404';
+import Languages from './layout/Languages';
 
 export default function App() {
   return (
     <div className="App">
+      <Languages />
       <Routes>
         {/* <Route path="/welcome" element={<Welcome />} /> */}
         <Route path="/snap" element={<Snap />} />
