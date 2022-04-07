@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import PoiType from './types/PoiType';
 import ShareType from './types/ShareType';
 import AudioPlayer from './input/AudioPlayer';
 
 export default function POI() {
   const POIToShow: PoiType = {
-    id: '_79734957309459748',
+    id: '79734957309459748',
     azure_tag: '303_appareil',
     exhibition_number: 303,
     title: 'Merveilleux appareil',
@@ -21,7 +21,7 @@ export default function POI() {
   const shareData: ShareType = {
     title: `Camera Museum - ${POIToShow.title}`,
     text: 'Redécouvrez la photo !',
-    url: 'https://developer.mozilla.org',
+    url: window.location.href,
   };
 
   const [canBeShared, setCanBeSharedStatus] = useState(false);
@@ -30,13 +30,17 @@ export default function POI() {
     navigator.share(shareData).catch(() => alert('unable to share this content :('));
   };
 
+  const id: string = useParams().id || '';
+
+  const navigate = useNavigate();
   useEffect(() => {
+    if (id !== POIToShow.id) {
+      navigate('/nomatch');
+    }
     if (navigator.canShare(shareData)) {
       setCanBeSharedStatus(true);
     }
   }, []);
-
-  // const id: string = useParams().id || '';
 
   return (
     <div>

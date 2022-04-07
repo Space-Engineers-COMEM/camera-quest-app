@@ -9,12 +9,13 @@ export default function App() {
     <div className="App">
       <Routes>
         {/* <Route path="/welcome" element={<Welcome />} /> */}
+        <Route path="/nomatch" element={<Error404 />} />
         <Route path="/snap" element={<Snap />} />
-        <Route path="/*" element={<Error404 />} />
         {/* <Route path="/" element={<POIList />} /> */}
         <Route path="/:id" element={<POI />} />
         {/* <Route path="/language" element={<Language />} /> */}
         {/* <Route path="/congrat" element={<Congrat />} /> */}
+        <Route path="/*" element={<Error404 />} />
       </Routes>
     </div>
   );
