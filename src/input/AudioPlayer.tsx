@@ -1,7 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
-export default function AudioPlayer() {
+interface AudioPlayerProps {
+  src: string;
+}
+
+export default function AudioPlayer(props: AudioPlayerProps) {
   const [isPlaying, setPlayState] = useState(false);
+  const [audioSpeed, setAudioSpeedValue] = useState(1);
 
   const audioFileRef = useRef<HTMLAudioElement>(null);
   const totalTimeRef = useRef<HTMLSpanElement>(null);
@@ -44,9 +49,34 @@ export default function AudioPlayer() {
     }
   };
 
+  const showCurrentTimeValue = (): void => {
+    if (audioFileRef.current && seekSliderRef.current && currentTimeRef.current) {
+      seekSliderRef.current.value = `${Math.floor(audioFileRef.current.currentTime)}`;
+      currentTimeRef.current.textContent = calculateTime(+seekSliderRef.current.value);
+    }
+  };
+
   const initPlayer = (): void => {
+    if (audioFileRef.current && seekSliderRef.current) {
+      audioFileRef.current.currentTime = 0;
+      showCurrentTimeValue();
+    }
     displayDuration();
     setSliderMax();
+  };
+
+  const updateTimeValue = (): void => {
+    showCurrentTimeValue();
+    if (audioFileRef.current)
+      console.log(audioFileRef.current.currentTime, Math.floor(audioFileRef.current?.duration));
+    if (
+      audioFileRef.current &&
+      Math.floor(audioFileRef.current.currentTime) === Math.floor(audioFileRef.current?.duration)
+    ) {
+      setPlayState(false);
+      audioFileRef.current.pause();
+      initPlayer();
+    }
   };
 
   const setAudioTime = (): void => {
@@ -55,27 +85,49 @@ export default function AudioPlayer() {
     }
   };
 
-  const showCurrentTimeValue = (): void => {
-    if (audioFileRef.current && seekSliderRef.current && currentTimeRef.current) {
-      seekSliderRef.current.value = `${Math.floor(audioFileRef.current.currentTime)}`;
-      currentTimeRef.current.textContent = calculateTime(+seekSliderRef.current.value);
+  const changeAudioSpeed = (): void => {
+    if (audioSpeed === 2) {
+      setAudioSpeedValue(0.5);
+    } else {
+      setAudioSpeedValue(audioSpeed + 0.5);
     }
   };
+
+  const jumpInAudio = (timeToJump: number): void => {
+    if (audioFileRef.current) {
+      audioFileRef.current.currentTime += timeToJump;
+    }
+  };
+
+  useEffect(() => {
+    if (audioFileRef.current) {
+      audioFileRef.current.playbackRate = audioSpeed;
+    }
+  }, [audioSpeed]);
 
   return (
     <div>
       <h1>Audio Player</h1>
       <audio
         onLoadedMetadata={initPlayer}
-        onTimeUpdate={showCurrentTimeValue}
+        onTimeUpdate={updateTimeValue}
         ref={audioFileRef}
-        src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+        src={props.src}
         preload="metadata"
       >
         <track kind="captions" />
       </audio>
       <button type="button" onClick={changePlayState}>
         <i className={`fa-solid fa-${!isPlaying ? 'play' : 'pause'}`} />
+      </button>
+      <button type="button" onClick={changeAudioSpeed}>
+        x{audioSpeed}
+      </button>
+      <button type="button" onClick={() => jumpInAudio(-10)}>
+        -10s
+      </button>
+      <button type="button" onClick={() => jumpInAudio(10)}>
+        +10s
       </button>
       <br />
       <span ref={currentTimeRef}>0:00</span>

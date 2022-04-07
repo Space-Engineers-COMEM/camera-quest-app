@@ -69,7 +69,7 @@ export default function POI() {
         )}
       </h3>
       <p>{POIToShow.description}</p>
-      <AudioPlayer />
+      <AudioPlayer src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" />
       {/* <div>Object {id}</div>
       <p>Hello</p> */}
     </div>
