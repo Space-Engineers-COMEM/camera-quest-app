@@ -26,5 +26,6 @@ module.exports = {
     'react/no-unused-state': [1],
     'react/no-unused-prop-types': [1],
     'react/require-default-props': [1],
+    'react/no-unused-state': [1],
   },
 };

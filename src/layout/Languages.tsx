@@ -16,6 +16,8 @@ export default class Languages extends React.Component<Props, States> {
     this.onOpeningLanguages = this.onOpeningLanguages.bind(this);
     this.onChangingLanguage = this.onChangingLanguage.bind(this);
     this.onSubmitingLanguages = this.onSubmitingLanguages.bind(this);
+    localStorage.setItem('tutorial-done', 'false');
+    // Créer un LocalStorage manager ?
   }
 
   onOpeningLanguages(): void {
@@ -28,6 +30,7 @@ export default class Languages extends React.Component<Props, States> {
 
   onSubmitingLanguages(evt: any): void {
     evt.preventDefault();
+    localStorage.setItem('lang', this.state.activeLanguage);
     this.setState({ visible: false });
     console.log('I chose my new language : ', this.state.activeLanguage);
     // Pushing up the language
