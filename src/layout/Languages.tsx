@@ -4,12 +4,12 @@ import LanguageSelector from '../input/LanguageSelector';
 
 interface Props {}
 
-interface States {
+interface State {
   visible: boolean;
   activeLanguage: string;
 }
 
-export default class Languages extends React.Component<Props, States> {
+export default class Languages extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
