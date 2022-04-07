@@ -67,8 +67,6 @@ export default function AudioPlayer(props: AudioPlayerProps) {
 
   const updateTimeValue = (): void => {
     showCurrentTimeValue();
-    if (audioFileRef.current)
-      console.log(audioFileRef.current.currentTime, Math.floor(audioFileRef.current?.duration));
     if (
       audioFileRef.current &&
       Math.floor(audioFileRef.current.currentTime) === Math.floor(audioFileRef.current?.duration)
