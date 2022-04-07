@@ -37,8 +37,12 @@ export default function POI() {
     if (id !== POIToShow.id) {
       navigate('/nomatch');
     }
-    if (navigator.canShare(shareData)) {
-      setCanBeSharedStatus(true);
+    try {
+      if (navigator.canShare(shareData)) {
+        setCanBeSharedStatus(true);
+      }
+    } catch (error) {
+      setCanBeSharedStatus(false);
     }
   }, []);
 
