@@ -15,18 +15,8 @@ export default class App extends React.Component<Props, States> {
   componentDidMount() {
     const lsLang = localStorage.getItem('lang');
     const lsTuto = localStorage.getItem('tutorialDone');
-    this.setLang(!lsLang ? 'en' : lsLang);
-    this.setTuto(lsTuto === 'true');
-  }
-
-  private setLang(lang: string): void {
-    this.setState({ lang });
-    localStorage.setItem('lang', lang);
-  }
-
-  private setTuto(tuto: boolean): void {
-    this.setState({ tutorialDone: tuto });
-    localStorage.setItem('tutorial-done', tuto.toString());
+    localStorage.setItem('lang', !lsLang ? 'en' : lsLang);
+    localStorage.setItem('tutorial-done', (lsTuto === 'true').toString());
   }
 
   render() {

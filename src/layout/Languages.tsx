@@ -12,7 +12,10 @@ interface States {
 export default class Languages extends React.Component<Props, States> {
   constructor(props: Props) {
     super(props);
-    this.state = { visible: false, activeLanguage: 'en' };
+
+    const lsLang = localStorage.getItem('lang');
+    this.state = { visible: false, activeLanguage: lsLang !== null ? lsLang : 'en' };
+
     this.onOpeningLanguages = this.onOpeningLanguages.bind(this);
     this.onChangingLanguage = this.onChangingLanguage.bind(this);
     this.onSubmitingLanguages = this.onSubmitingLanguages.bind(this);
