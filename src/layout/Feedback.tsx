@@ -23,6 +23,7 @@ class Feedback extends React.Component<Props> {
   }
 
   render() {
+    // console.log(this.props);
     const { type, isLoaded, content, poi } = this.props;
     if (!type) {
       return '';
@@ -31,7 +32,7 @@ class Feedback extends React.Component<Props> {
     return (
       <div>
         <CloseButton onClick={this.onCloseFeedback} />
-        {type === 'unpredictable' ? <AzureError error={content} /> : null}
+        {type === 'error' ? <AzureError error={content} /> : null}
         {!isLoaded ? <div>Loading...</div> : null}
         {type === 'prediction' && isLoaded && poi ? <PoiPreview poi={poi} /> : null}
       </div>
