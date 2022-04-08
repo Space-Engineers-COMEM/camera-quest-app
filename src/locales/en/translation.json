@@ -3,5 +3,8 @@
     "title": "404 Page Not Found",
     "sorry_message": "Sorry, no resource available at this address",
     "link": "Back to the index page"
+  },
+  "Languages": {
+    "button": "Language"
   }
 }

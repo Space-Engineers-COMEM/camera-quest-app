@@ -1,11 +1,8 @@
 import React from 'react';
-import { useTranslation, Trans } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
-  // onChange: React.MouseEventHandler<HTMLButtonElement>;
-  onChange: any;
   onSubmit: any;
-  defaultLang: string;
 }
 
 export default function LanguageSelector(props: Props) {
@@ -16,17 +13,12 @@ export default function LanguageSelector(props: Props) {
 
   const { t, i18n } = useTranslation();
 
-  // Handeled internaly
-  const handleChange = (evt: any) => {
-    props.onChange(evt.currentTarget.value);
-  };
-
   // Handeled by parent
   const handleSubmit = (evt: any) => {
     props.onSubmit(evt);
   };
 
-  const handleIt = (evt: any) => {
+  const handleChange = (evt: any) => {
     evt.preventDefault();
     i18n.changeLanguage(evt.target.value);
     handleSubmit(evt);
@@ -35,7 +27,7 @@ export default function LanguageSelector(props: Props) {
   return (
     <form onSubmit={handleSubmit}>
       <p>Change the language: </p>
-      <select value={i18n.language} onChange={handleIt}>
+      <select value={i18n.language} onChange={handleChange}>
         {Object.keys(lngs).map((lng) => (
           <option
             key={lng}

@@ -1,55 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import Button from '../navigation/Button';
 import LanguageSelector from '../input/LanguageSelector';
 
-interface Props {}
+export default function Languages() {
+  const { t, i18n } = useTranslation();
 
-interface States {
-  visible: boolean;
-  activeLanguage: string;
-}
+  const [visible, setVisible] = useState(false);
 
-export default class Languages extends React.Component<Props, States> {
-  constructor(props: Props) {
-    super(props);
+  const onOpeningLanguages = (): void => {
+    setVisible(true);
+  };
 
-    const lsLang = localStorage.getItem('lang');
-    this.state = { visible: false, activeLanguage: lsLang !== null ? lsLang : 'en' };
+  const onSubmitingLanguages = (evt: any): void => {
+    setVisible(false);
+  };
 
-    this.onOpeningLanguages = this.onOpeningLanguages.bind(this);
-    this.onChangingLanguage = this.onChangingLanguage.bind(this);
-    this.onSubmitingLanguages = this.onSubmitingLanguages.bind(this);
-  }
-
-  onOpeningLanguages(): void {
-    this.setState({ visible: true });
-  }
-
-  onChangingLanguage(lang: any): void {
-    this.setState({ activeLanguage: lang });
-  }
-
-  onSubmitingLanguages(evt: any): void {
-    evt.preventDefault();
-    localStorage.setItem('lang', this.state.activeLanguage);
-    this.setState({ visible: false });
-  }
-
-  render() {
-    if (!this.state.visible)
-      return (
-        <Button class="lang-btn" onClick={this.onOpeningLanguages}>
-          Langues
-        </Button>
-      );
+  if (!visible)
     return (
-      <div className="languages">
-        <LanguageSelector
-          defaultLang={this.state.activeLanguage}
-          onChange={this.onChangingLanguage}
-          onSubmit={this.onSubmitingLanguages}
-        />
-      </div>
+      <Button class="lang-btn" onClick={onOpeningLanguages}>
+        {t('Languages.button')}
+      </Button>
     );
-  }
+  return (
+    <div className="languages">
+      <LanguageSelector onSubmit={onSubmitingLanguages} />
+    </div>
+  );
 }
