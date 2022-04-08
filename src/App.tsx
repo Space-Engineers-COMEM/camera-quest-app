@@ -14,9 +14,7 @@ interface States {
 
 export default class App extends React.Component<Props, States> {
   componentDidMount() {
-    const lsLang = localStorage.getItem('lang');
     const lsTuto = localStorage.getItem('tutorialDone');
-    localStorage.setItem('lang', !lsLang ? 'en' : lsLang);
     localStorage.setItem('tutorial-done', (lsTuto === 'true').toString());
   }
 

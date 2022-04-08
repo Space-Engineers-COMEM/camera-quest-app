@@ -1,42 +1,45 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
-  // onChange: React.MouseEventHandler<HTMLButtonElement>;
-  onChange: any;
   onSubmit: any;
-  defaultLang: string;
 }
 
-export default class LanguageSelector extends React.Component<Props> {
-  constructor(props: Props) {
-    super(props);
+export default function LanguageSelector(props: Props) {
+  const lngs = {
+    fr: { nativeName: 'Français' },
+    en: { nativeName: 'English' },
+  };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  // Handeled internaly
-  handleChange(evt: any) {
-    this.props.onChange(evt.currentTarget.value);
-  }
+  const { t, i18n } = useTranslation();
 
   // Handeled by parent
-  handleSubmit(evt: any) {
-    this.props.onSubmit(evt);
-  }
+  const handleSubmit = (evt: any) => {
+    props.onSubmit(evt);
+  };
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <p>Change the language: </p>
-        <select value={this.props.defaultLang} onChange={this.handleChange}>
-          <option value="fr">Français</option>
-          <option value="de">Deutsch</option>
-          <option value="it">Italiano</option>
-          <option value="en">English</option>
-        </select>
-        <input type="submit" value="X" />
-      </form>
-    );
-  }
+  const handleChange = (evt: any) => {
+    evt.preventDefault();
+    i18n.changeLanguage(evt.target.value);
+    handleSubmit(evt);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <p>Change the language: </p>
+      <select value={i18n.language} onChange={handleChange}>
+        {Object.keys(lngs).map((lng) => (
+          <option
+            key={lng}
+            style={{ fontWeight: i18n.resolvedLanguage === lng ? 'bold' : 'normal' }}
+            onSelect={() => i18n.changeLanguage(lng)}
+            value={lng}
+          >
+            {lngs[lng as keyof typeof lngs].nativeName}
+          </option>
+        ))}
+      </select>
+      <input type="submit" value="X" />
+    </form>
+  );
 }
