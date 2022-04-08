@@ -1,0 +1,7 @@
+{
+  "Error404": {
+    "title": "404 Page introuvable",
+    "sorry_message": "Désolé, aucune ressources est accessible à cette adresse",
+    "link": "Retour à la page d'accueil"
+  }
+}
