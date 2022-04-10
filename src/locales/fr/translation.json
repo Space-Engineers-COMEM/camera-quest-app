@@ -6,5 +6,8 @@
   },
   "Languages": {
     "button": "Langue"
+  },
+  "POIList": {
+    "backToCamera": "Retour à l'appareil photo"
   }
 }

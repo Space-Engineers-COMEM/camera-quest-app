@@ -6,5 +6,8 @@
   },
   "Languages": {
     "button": "Language"
+  },
+  "POIList": {
+    "backToCamera": "Back to the camera"
   }
 }
