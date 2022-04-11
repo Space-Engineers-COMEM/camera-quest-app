@@ -11,7 +11,8 @@
     "title": "Welcome !",
     "description": "Hello, and welcome to the Camera Museum of Vevey. Meet your visiting companion. Let's discover how it works.",
     "start": "Start",
-    "altImg": "Camera Museum"
+    "altImg": "Camera Museum",
+    "button": "Language"
   },
   "POIList": {
     "learnMore": "Learn more...",
