@@ -5,6 +5,15 @@
     "link": "Retour à la page d'accueil"
   },
   "Languages": {
-    "button": "Langue"
+    "button": "Langue",
+    "fr": "Français",
+    "de": "Deutsch",
+    "en": "English"
+  },
+  "Welcome": {
+    "title": "Bienvenue !",
+    "description": "Bonjour, bienvenue au Musée de l'Appareil photographique de Vevey. Voici votre compagnon de visite. Allons découvrir comment ça marche.",
+    "start": "Démarrer",
+    "altImg": "Camera Museum"
   }
 }

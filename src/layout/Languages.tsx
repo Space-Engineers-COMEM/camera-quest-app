@@ -24,6 +24,7 @@ export default function Languages() {
     );
   return (
     <div className="languages">
+      <p>Change the language: </p>
       <LanguageSelector onSubmit={onSubmitingLanguages} />
     </div>
   );
