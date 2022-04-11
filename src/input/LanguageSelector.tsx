@@ -26,7 +26,6 @@ export default function LanguageSelector(props: Props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <p>Change the language: </p>
       <select value={i18n.language} onChange={handleChange}>
         {Object.keys(lngs).map((lng) => (
           <option
