@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { Step, Steps } from 'intro.js-react';
 import PoiType from './types/PoiType';
 import AreaSelection from './navigation/AreaSelection';
 
@@ -65,6 +66,52 @@ export default function POIList() {
     },
   ];
 
+  const [stepsEnabled, setStepsEnabled] = useState(
+    localStorage.getItem('tutorial-done') !== 'true'
+  );
+  const [canExit, setCanExit] = useState(false);
+  const initialStep: number = 0;
+  const steps: Step[] = [
+    {
+      element: '.area-selection',
+      intro: (
+        <div>
+          <h3>Les étages blah blah blah...</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi esse placeat totam
+            dignissimos, fuga natus reiciendis illo quidem quod repellat qui id corrupti
+            consectetur, a nemo reprehenderit dolores doloremque accusamus.
+          </p>
+        </div>
+      ),
+      position: 'right',
+      tooltipClass: 'customClassName',
+    },
+    {
+      element: '.learn-more',
+      intro: 'Afficher les détails ...',
+    },
+    {
+      element: '.selector3',
+      intro: 'L\'indicateur "Vu" ...',
+    },
+    {
+      element: '.selector4',
+      intro: 'Capturez-les tous !',
+    },
+    {
+      element: '.camera-btn',
+      intro: 'Prendre une photo',
+    },
+  ];
+
+  const onComplete = () => {
+    console.log('tutorial over');
+    setCanExit(true);
+    setStepsEnabled(false);
+    localStorage.setItem('tutorial-done', 'true');
+  };
+
   const [POIToShow, setPOIToShow] = useState(POIs);
 
   useEffect(() => {
@@ -73,6 +120,14 @@ export default function POIList() {
 
   return (
     <div>
+      <Steps
+        enabled={stepsEnabled}
+        steps={steps}
+        initialStep={initialStep}
+        onExit={() => console.log('exiting')}
+        // onBeforeExit={() => false}
+        onComplete={onComplete}
+      />
       <h1>POI List</h1>
       <AreaSelection areas={areas} setStage={setStage} />
       {POIToShow.map((poi) => (
@@ -85,10 +140,14 @@ export default function POIList() {
             height="200"
           />
           <h2>{poi.title}</h2>
-          <Link to={`/poi/${poi.id}`}>{t('learnMore')}</Link>
+          <Link className="learn-more" to={`/poi/${poi.id}`}>
+            {t('learnMore')}
+          </Link>
         </div>
       ))}
-      <Link to="/snap">{t('backToCamera')}</Link>
+      <Link className="camera-btn" to="/snap">
+        {t('backToCamera')}
+      </Link>
     </div>
   );
 }

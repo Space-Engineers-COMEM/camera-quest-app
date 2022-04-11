@@ -16,7 +16,7 @@ interface States {
 
 export default class App extends React.Component<Props, States> {
   componentDidMount() {
-    const lsTuto = localStorage.getItem('tutorialDone');
+    const lsTuto = localStorage.getItem('tutorial-done');
     localStorage.setItem('tutorial-done', (lsTuto === 'true').toString());
   }
 
