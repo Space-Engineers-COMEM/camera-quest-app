@@ -60,6 +60,10 @@ In all case, make sure to close the issue when you fix it.
 
 # About
 
+## Side documentation
+
+[Locales and languages](./src/locales/README.md)
+
 ## Contributors
 
 <a href="https://github.com/space-engineers-comem/camera-quest-app/graphs/contributors">
