@@ -14,6 +14,11 @@
     "title": "Bienvenue !",
     "description": "Bonjour, bienvenue au Musée de l'Appareil photographique de Vevey. Voici votre compagnon de visite. Allons découvrir comment ça marche.",
     "start": "Démarrer",
-    "altImg": "Camera Museum"
+    "altImg": "Camera Museum",
+    "button": "Langue"
+  },
+  "POIList": {
+    "learnMore": "En savoir plus...",
+    "backToCamera": "Retour à l'appareil photo"
   }
 }
