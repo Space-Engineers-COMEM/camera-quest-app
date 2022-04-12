@@ -1,10 +1,10 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import PoiType from '../types/PoiType';
+import PoiPreviewType from '../types/PoiPreviewType';
 
 interface Props {
-  poi: PoiType;
+  poi: PoiPreviewType;
 }
 
 const t = useTranslation;
@@ -14,13 +14,8 @@ function PoiPreview(props: Props) {
   const navigate = useNavigate();
   return (
     <div className="preview preview-poi">
-      <h2>{poi.title}</h2>
-      <span>
-        <small>{poi.author}</small>
-        <small>{poi.periode}</small>
-        <small>{poi.origin}</small>
-      </span>
-      <p>{poi.description}</p>
+      <img src={poi.imagePath} alt={poi.title} />
+      <h3>{poi.title}</h3>
       <button type="button" onClick={() => navigate(`/${poi.id}`)}>
         {t('open')}
       </button>

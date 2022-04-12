@@ -4,7 +4,7 @@ interface Props {
   error: string;
 }
 
-function AzureError(props: Props) {
+export default function AzureError(props: Props) {
   return (
     <div className="preview preview-error">
       <p>Azure Error</p>
@@ -12,5 +12,3 @@ function AzureError(props: Props) {
     </div>
   );
 }
-
-export default AzureError;
