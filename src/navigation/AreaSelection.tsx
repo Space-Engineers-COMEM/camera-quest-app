@@ -6,7 +6,7 @@ interface Props {
 }
 export default function AreaSelection(props: Props) {
   return (
-    <div>
+    <div className="area-selection">
       {props.areas.map((area) => (
         <button type="button" onClick={() => props.setStage(area)}>
           {area}
