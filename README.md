@@ -32,7 +32,7 @@ If you want to work on something new, follow this workflow. Keep the `main` bran
 If you want to work on an issue, please check the **issue workflow** below.
 
 1. **Create a new branch** and follow the naming convention: `<type>/<name>`.<br>
-   The "type" can be one of the following: <br>`feat`, `fix`, `test`, `docs`.
+   The "type" can be one of the following: <br>`feat`, `style`, `fix`, `test`, `docs`.
 2. **Add your changes** to the branch.<br>
    If you want, you can also pull your branch to the remote repository or change branches to work on something else if: just make sure your work is committed or stashed.
 3. When you're done, **switch to the `main` branch and pull** the new changes.
