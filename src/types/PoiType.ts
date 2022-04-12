@@ -6,6 +6,7 @@ export default interface PoiType {
   author: string;
   periode: string;
   visible: boolean;
+  area: string;
   description: string;
   origin: string;
 }

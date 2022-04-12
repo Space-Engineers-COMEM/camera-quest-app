@@ -20,6 +20,12 @@
     "loading": "Development in progress...",
     "notFound": "Unknown object",
     "notFoundDesc": "Stand in front of the object and watch out for any reflections.",
-    "open": "Open"
+    "open": "Open",
+    "altImg": "Camera Museum",
+    "button": "Language"
+  },
+  "POIList": {
+    "learnMore": "Learn more...",
+    "backToCamera": "Back to the camera"
   }
 }

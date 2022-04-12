@@ -13,6 +13,7 @@ export default function POI() {
     author: 'John Doe',
     periode: '1900-2012',
     visible: true,
+    area: 'stage 1',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore dolor iusto, fuga iure eaque dolore. Alias quod ipsam mollitia, similique eos earum ratione quia nesciunt ea dignissimos nulla? Dignissimos, ratione!',
     origin: 'Istambul',

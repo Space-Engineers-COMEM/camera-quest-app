@@ -9,7 +9,7 @@ export default function Error404() {
     <div>
       <h1>{t('Error404.title')}</h1>
       <p>{t('Error404.sorryMessage')}</p>
-      <Link to="/welcome">{t('Error404.link')}</Link>
+      <Link to="/">{t('Error404.link')}</Link>
     </div>
   );
 }

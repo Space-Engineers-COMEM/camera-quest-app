@@ -20,6 +20,12 @@
     "loading": "Développement en cours...",
     "notFound": "Object non reconnu",
     "notFoundDesc": "Placez-vous bien en face de l'objet, et faites attention aux éventuels reflets.",
-    "open": "Ouvrir"
+    "open": "Ouvrir",
+    "altImg": "Camera Museum",
+    "button": "Langue"
+  },
+  "POIList": {
+    "learnMore": "En savoir plus...",
+    "backToCamera": "Retour à l'appareil photo"
   }
 }
