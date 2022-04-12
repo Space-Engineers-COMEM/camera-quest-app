@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import CloseButton from '../navigation/CloseButton';
 import AzureError from '../content/AzureError';
 import PoiPreview from '../content/PoiPreview';
@@ -11,6 +12,8 @@ interface Props {
   content: string;
   poi: PoiType | undefined;
 }
+
+const t = useTranslation;
 
 class Feedback extends React.Component<Props> {
   constructor(props: Props) {
@@ -33,7 +36,7 @@ class Feedback extends React.Component<Props> {
       <div>
         <CloseButton onClick={this.onCloseFeedback} />
         {type === 'error' ? <AzureError error={content} /> : null}
-        {!isLoaded ? <div>Loading...</div> : null}
+        {!isLoaded ? <div>{t('loading')}</div> : null}
         {type === 'prediction' && isLoaded && poi ? <PoiPreview poi={poi} /> : null}
       </div>
     );

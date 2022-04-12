@@ -5,12 +5,21 @@
     "link": "Back to the index page"
   },
   "Languages": {
-    "button": "Language"
+    "button": "Languages",
+    "fr": "Français",
+    "de": "Deutsch",
+    "en": "English"
   },
   "Welcome": {
     "title": "Welcome !",
     "description": "Hello, and welcome to the Camera Museum of Vevey. Meet your visiting companion. Let's discover how it works.",
     "start": "Start",
     "altImg": "Camera Museum"
+  },
+  "Snap": {
+    "loading": "Development in progress...",
+    "notFound": "Unknown object",
+    "notFoundDesc": "Stand in front of the object and watch out for any reflections.",
+    "open": "Open"
   }
 }

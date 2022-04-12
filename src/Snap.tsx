@@ -14,14 +14,13 @@ export default function Snap() {
 
   // API communication
   const handleTakePhoto = (dataUri: string): void => {
-    // Uploading the image
-    // ...
-
-    // Recieving the POI -> https://reactjs.org/docs/faq-ajax.html
     const poiId = 1;
     const lang = localStorage.getItem('lang') || 'en';
     const reqUrl = `${apiUrl}/${poiId}/${lang}`;
 
+    // Recieving the POI -> https://reactjs.org/docs/faq-ajax.html
+
+    /*
     fetch(reqUrl, {
       headers: new Headers({
         'Content-Type': 'application/json',
@@ -46,6 +45,7 @@ export default function Snap() {
           setType('prediction');
         }
       });
+      */
   };
 
   const handleCloseFeedback = (): void => {
