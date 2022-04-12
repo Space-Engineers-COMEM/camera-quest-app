@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Step, Steps } from 'intro.js-react';
 import PoiType from './types/PoiType';
 import AreaSelection from './navigation/AreaSelection';
+import Button from './navigation/Button';
 
 export default function POIList() {
   const { t } = useTranslation('', { keyPrefix: 'POIList' });
+  const navigate = useNavigate();
 
   const areas = ['stage1', 'stage2', 'stage3'];
   const [stage, setStage] = useState('stage1');
@@ -66,10 +68,7 @@ export default function POIList() {
     },
   ];
 
-  const [stepsEnabled, setStepsEnabled] = useState(
-    localStorage.getItem('tutorial-done') !== 'true'
-  );
-  const [canExit, setCanExit] = useState(false);
+  const stepsEnabled = localStorage.getItem('tutorial-done') !== 'true';
   const initialStep: number = 0;
   const steps: Step[] = [
     {
@@ -84,7 +83,6 @@ export default function POIList() {
           </p>
         </div>
       ),
-      position: 'right',
       tooltipClass: 'customClassName',
     },
     {
@@ -105,11 +103,14 @@ export default function POIList() {
     },
   ];
 
-  const onComplete = () => {
-    console.log('tutorial over');
-    setCanExit(true);
-    setStepsEnabled(false);
+  const onComplete = (): void | false => {
+    navigate('/snap');
     localStorage.setItem('tutorial-done', 'true');
+  };
+
+  const toSnap = () => {
+    onComplete();
+    navigate('/snap');
   };
 
   const [POIToShow, setPOIToShow] = useState(POIs);
@@ -124,9 +125,8 @@ export default function POIList() {
         enabled={stepsEnabled}
         steps={steps}
         initialStep={initialStep}
-        onExit={() => console.log('exiting')}
-        // onBeforeExit={() => false}
-        onComplete={onComplete}
+        onExit={() => onComplete}
+        onComplete={() => onComplete}
       />
       <h1>POI List</h1>
       <AreaSelection areas={areas} setStage={setStage} />
@@ -145,9 +145,9 @@ export default function POIList() {
           </Link>
         </div>
       ))}
-      <Link className="camera-btn" to="/snap">
+      <Button class="camera-btn" onClick={toSnap}>
         {t('backToCamera')}
-      </Link>
+      </Button>
     </div>
   );
 }
