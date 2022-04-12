@@ -1,21 +1,23 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import CloseButton from '../navigation/CloseButton';
 import AzureError from '../content/AzureError';
 import PoiPreview from '../content/PoiPreview';
-import PoiType from '../types/PoiType';
+import PoiPreviewType from '../types/PoiPreviewType';
 
 interface Props {
   onCloseFeedback: any;
   type: string;
-  isLoaded: boolean;
+  isLoading: boolean;
   content: string;
-  poi: PoiType | undefined;
+  poi: PoiPreviewType | undefined;
 }
 
-class Feedback extends React.Component<Props> {
+export default class Feedback extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
     this.onCloseFeedback = this.onCloseFeedback.bind(this);
+    console.log(props);
   }
 
   onCloseFeedback(): void {
@@ -24,20 +26,15 @@ class Feedback extends React.Component<Props> {
 
   render() {
     // console.log(this.props);
-    const { type, isLoaded, content, poi } = this.props;
-    if (!type) {
-      return '';
-    }
+    const { type, isLoading, content, poi } = this.props;
 
     return (
       <div>
-        <CloseButton onClick={this.onCloseFeedback} />
+        {type ? <CloseButton onClick={this.onCloseFeedback} /> : null}
+        {isLoading ? <div>loading</div> : null}
         {type === 'error' ? <AzureError error={content} /> : null}
-        {!isLoaded ? <div>Loading...</div> : null}
-        {type === 'prediction' && isLoaded && poi ? <PoiPreview poi={poi} /> : null}
+        {type === 'success' && poi ? <PoiPreview poi={poi} /> : null}
       </div>
     );
   }
 }
-
-export default Feedback;
