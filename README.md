@@ -17,6 +17,36 @@ If you contribute to this project, please follow those guidelines.
 
 We use [ESLint](https://eslint.org/), [Prettier](https://prettier.io/) and [EditorConfig](https://editorconfig.org) to enforce a consistent coding style. Have a look at the corresponding extensions for your editor. Check the config files for more information.
 
+### Methodology
+
+**CSS: BEM**
+
+The CSS class naming is inspired by [BEM](https://bem.info/). It stands for "Block Element Modifier":
+
+- Block is the main container, like a card
+- Elements are items in the block; like title, button, …
+- Modifier are variations; like states, alternative colors, …
+
+_Example_
+
+```css
+.poiCard { … }
+.poiCard__title { …}
+.poiCard__button--secondary { … }
+```
+
+**CSS: ITCSS**
+
+The folder structure is inspired by [ITCSS](https://developer.helpscout.com/seed/glossary/itcss/). We organise folders like so:
+
+- Settings: variables, mixins, libraries
+- Elements: generic rules, raw html elements: `h1`, `button`, …
+- Objects: layout, grid, structure
+- Components: UI specific rules, like cards, buttons
+- Trumps: helpers, temporary rules. Avoid as possible
+
+_Note: Settings and Elements are loaded by default from the `index.css`, it's available in all the application. Import what you need in your JSX components._
+
 ### Git workflow
 
 **Commit**

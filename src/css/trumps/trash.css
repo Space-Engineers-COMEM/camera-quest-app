@@ -1,7 +1,7 @@
-/* Dev styles */
-body {
-  margin: 0;
-}
+/********************************
+ * TRASH
+ ********************************/
+// Temporary elements that should be refactored
 
 .preview {
   border: solid black 1px;
