@@ -13,6 +13,7 @@ export default function Snap() {
   const [isLoading, setIsLoading] = useState(false);
   const [feedbackError, setFeedbackError] = useState('');
   const [poiPreview, setPoiPreview] = useState();
+  const [errorCounter, setErrorCounter] = useState(0);
 
   // Function created by Namitha Gowda : https://stackoverflow.com/users/8665961/namitha-gowda
   const b64toBlob = (b64Data: string, contentType = '', sliceSize = 512) => {
@@ -64,10 +65,13 @@ export default function Snap() {
         setIsLoading(false);
         // if not found
         if (result.type === 'unpredictable') {
+          setErrorCounter(errorCounter + 1);
           setFeedbackError(result.content);
         } else {
+          setErrorCounter(0);
           setPoiPreview(result.content);
         }
+        console.log(errorCounter);
       })
       .catch((error) => {
         console.log('FETCH ERROR: ', error);
@@ -100,7 +104,7 @@ export default function Snap() {
       <Feedback
         type={type}
         isLoading={isLoading}
-        error={feedbackError}
+        errorCounter={errorCounter}
         poi={poiPreview}
         onCloseFeedback={handleCloseFeedback}
       />
