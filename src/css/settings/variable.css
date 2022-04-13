@@ -6,6 +6,7 @@
   ********************************/
 :root {
   --background-color: #ffffff;
+  --white: #ffffff;
   --black:#141414;
   --darkGray: #4A4A4A;
   --gray: #808080;
@@ -14,5 +15,6 @@
   --yellow: #FAB617;
   --lightYellow: #FEE9B9;
   --green: #82C46C;
+
 }
 

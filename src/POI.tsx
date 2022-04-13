@@ -56,10 +56,14 @@ export default function POI() {
         src="/4131_MEGALETOSCOPE.jpg"
         alt="Vieil appareil photographique"
       />
-      <h1 className="poi_title">{POIToShow.title}</h1>
+      <h1 className="poi_title">{POIToShow.title} </h1>
+      <div className="checkbox">
+        <input type="checkbox" checked /* checked= {POIToShow.visible ? 'checked' : ''} */ />
+        <span className="checkmark" />
+      </div>
       <h2 className="poi_author">{POIToShow.author}</h2>
       <h3>
-        {POIToShow.periode} | {POIToShow.origin} | {POIToShow.visible ? 'Déjà vu' : 'Non vu'}
+        {POIToShow.periode} | {POIToShow.origin}
         {canBeShared ? (
           <span>
             {' '}

@@ -5,9 +5,11 @@
 
 @import './settings/reset.css';
 @import './settings/variable.css';
-@import './components/poi.css';
+@import './components/poi.scss';
 
 @import './elements/headings.css';
+
+@import './components/checkbox.scss';
 
 // WARNING: this file is temporary and should refactored !!
 @import './trumps/trash.css';
