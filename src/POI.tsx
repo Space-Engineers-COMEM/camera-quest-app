@@ -62,8 +62,8 @@ export default function POI() {
         <span className="checkmark" />
       </div>
       <h2 className="poi_author">{POIToShow.author}</h2>
-      <h3>
-        {POIToShow.periode} | {POIToShow.origin}
+      <h3 className="poi_detail">
+        {POIToShow.periode}
         {canBeShared ? (
           <span>
             {' '}
@@ -76,6 +76,8 @@ export default function POI() {
           ''
         )}
       </h3>
+      <p className="poi_detail"> | </p>
+      <h3 className="poi_detail">{POIToShow.origin}</h3>
       <p className="poi_description">{POIToShow.description}</p>
       <AudioPlayer src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" />
       {/* <div>Object {id}</div>
