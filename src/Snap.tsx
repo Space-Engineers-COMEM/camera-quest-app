@@ -13,6 +13,7 @@ export default function Snap() {
   const [isLoading, setIsLoading] = useState(false);
   const [feedbackError, setFeedbackError] = useState('');
   const [poiPreview, setPoiPreview] = useState();
+  const [errorCounter, setErrorCounter] = useState(0);
 
   // Function created by Namitha Gowda : https://stackoverflow.com/users/8665961/namitha-gowda
   const b64toBlob = (b64Data: string, contentType = '', sliceSize = 512) => {
@@ -39,13 +40,15 @@ export default function Snap() {
   // API communication
   const handleTakePhoto = async (dataUri: string) => {
     setIsLoading(true);
+    const predictionUrl = 'http://127.0.0.1:3333/pois/prediction';
+    const devPredictionUrl = 'http://127.0.0.1:3333/pois/prediction/debug';
 
     const data = new FormData();
     data.append('file', b64toBlob(dataUri.slice(23)));
 
     axios({
       method: 'post',
-      url: 'http://127.0.0.1:3333/pois/prediction',
+      url: predictionUrl,
       data,
       headers: {
         'Accept': 'application/json',
@@ -58,21 +61,20 @@ export default function Snap() {
         return response.data;
       })
       .then((result) => {
-        const { poi, translations } = result;
+        setType(result.type);
+        setIsLoading(false);
         // if not found
-        if (!poi || !translations) {
-          setType('error');
+        if (result.type === 'unpredictable') {
+          setErrorCounter(errorCounter + 1);
           setFeedbackError(result.content);
         } else {
-          setType('success');
+          setErrorCounter(0);
           setPoiPreview(result.content);
         }
-        console.log(result);
-        setIsLoading(false);
+        console.log(errorCounter);
       })
       .catch((error) => {
-        setType('error');
-        setFeedbackError(error);
+        console.log('FETCH ERROR: ', error);
       });
   };
 
@@ -102,7 +104,7 @@ export default function Snap() {
       <Feedback
         type={type}
         isLoading={isLoading}
-        error={feedbackError}
+        errorCounter={errorCounter}
         poi={poiPreview}
         onCloseFeedback={handleCloseFeedback}
       />

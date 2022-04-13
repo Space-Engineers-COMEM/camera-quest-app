@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import LanguageSelector from './input/LanguageSelector';
 
 export default function Welcome() {
-  const { t } = useTranslation();
+  const { t } = useTranslation('', { keyPrefix: 'Welcome' });
 
   const navigate = useNavigate();
 
@@ -14,12 +14,12 @@ export default function Welcome() {
 
   return (
     <div>
-      <img src="#" alt={t('Welcome.altImg')} />
-      <h1>{t('Welcome.title')}</h1>
-      <p>{t('Welcome.description')}</p>
+      <img src="#" alt={t('altImg')} />
+      <h1>{t('title')}</h1>
+      <p>{t('description')}</p>
       <LanguageSelector onSubmit={onSubmitingLanguages} />
       <button type="button" onClick={() => navigate('/')}>
-        {t('Welcome.start')}
+        {t('start')}
       </button>
     </div>
   );

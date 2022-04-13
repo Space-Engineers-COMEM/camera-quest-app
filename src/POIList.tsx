@@ -15,6 +15,7 @@ type PoiStatus = {
 
 export default function POIList() {
   const { t } = useTranslation('', { keyPrefix: 'POIList' });
+  const tTuto = useTranslation('', { keyPrefix: 'Tutorial' }).t;
   const navigate = useNavigate();
 
   // Dev Static content
@@ -72,38 +73,23 @@ export default function POIList() {
       origin: 'Istambul',
     },
   ];
-  const steps: Step[] = [
-    {
-      element: '.area-selection',
+
+  const tutoBoxes = ['.area-selection', '.learn-more', '.check', '.progress', '.camera-btn'];
+  const steps: Step[] = [];
+
+  for (let i = 0; i < tutoBoxes.length; i += 1) {
+    steps.push({
+      element: tutoBoxes[i],
       intro: (
         <div>
-          <h3>Les étages blah blah blah...</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi esse placeat totam
-            dignissimos, fuga natus reiciendis illo quidem quod repellat qui id corrupti
-            consectetur, a nemo reprehenderit dolores doloremque accusamus.
-          </p>
+          <h2>{tTuto(`step${i + 1}.title`)}</h2>
+          <p>{tTuto(`step${i + 1}.desc`)}</p>
         </div>
       ),
-      tooltipClass: 'customClassName',
-    },
-    {
-      element: '.learn-more',
-      intro: 'Afficher les détails ...',
-    },
-    {
-      element: '.selector3',
-      intro: 'L\'indicateur "Vu" ...',
-    },
-    {
-      element: '.selector4',
-      intro: 'Capturez-les tous !',
-    },
-    {
-      element: '.camera-btn',
-      intro: 'Prendre une photo',
-    },
-  ];
+      tooltipClass: 'tutorialBox',
+    });
+  }
+
   const poiStati: PoiStatus[] = [
     { id: 12, checked: false },
     { id: 2, checked: true },

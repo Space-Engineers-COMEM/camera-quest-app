@@ -18,12 +18,21 @@ export default class App extends React.Component<Props, States> {
   componentDidMount() {
     const lsTuto = localStorage.getItem('tutorial-done');
     localStorage.setItem('tutorial-done', (lsTuto === 'true').toString());
+    this.resetTutorial = this.resetTutorial.bind(this);
+  }
+
+  resetTutorial() {
+    localStorage.setItem('tutorial-done', 'false');
   }
 
   render() {
     return (
       <div className="App">
         <Languages />
+        {/* For dev purpose */}
+        <button type="button" onClick={this.resetTutorial}>
+          Reset tutorial
+        </button>
         <Routes>
           <Route path="/welcome" element={<Welcome />} />
           <Route path="/nomatch" element={<Error404 />} />
