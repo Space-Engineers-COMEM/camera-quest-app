@@ -11,8 +11,8 @@ export default function Snap() {
 
   const [type, setType] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [content, setContent] = useState('');
-  const [preview, setPreview] = useState();
+  const [feedbackError, setFeedbackError] = useState('');
+  const [poiPreview, setPoiPreview] = useState();
 
   // Function created by Namitha Gowda : https://stackoverflow.com/users/8665961/namitha-gowda
   const b64toBlob = (b64Data: string, contentType = '', sliceSize = 512) => {
@@ -61,17 +61,18 @@ export default function Snap() {
         const { poi, translations } = result;
         // if not found
         if (!poi || !translations) {
-          setContent(result.content);
           setType('error');
+          setFeedbackError(result.content);
         } else {
-          setPreview(result.content);
           setType('success');
+          setPoiPreview(result.content);
         }
         console.log(result);
         setIsLoading(false);
       })
       .catch((error) => {
-        console.log('error', error);
+        setType('error');
+        setFeedbackError(error);
       });
   };
 
@@ -101,8 +102,8 @@ export default function Snap() {
       <Feedback
         type={type}
         isLoading={isLoading}
-        content={content}
-        preview={preview}
+        error={feedbackError}
+        poi={poiPreview}
         onCloseFeedback={handleCloseFeedback}
       />
     </div>

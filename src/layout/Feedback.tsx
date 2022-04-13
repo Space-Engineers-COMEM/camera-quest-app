@@ -1,6 +1,5 @@
 import React from 'react';
 import CloseButton from '../navigation/CloseButton';
-import AzureError from '../content/AzureError';
 import PoiPreview from '../content/PoiPreview';
 import PoiPreviewType from '../types/PoiPreviewType';
 
@@ -8,32 +7,37 @@ interface Props {
   onCloseFeedback: any;
   type: string;
   isLoading: boolean;
-  content: string;
-  preview: PoiPreviewType;
+  error: string;
+  poi?: PoiPreviewType;
 }
 
-export default class Feedback extends React.Component<Props> {
-  constructor(props: Props) {
-    super(props);
-    this.onCloseFeedback = this.onCloseFeedback.bind(this);
-    console.log(props);
-  }
+export default function Feedback(props: Props) {
+  const onCloseFeedback = (): void => {
+    props.onCloseFeedback();
+  };
 
-  onCloseFeedback(): void {
-    this.props.onCloseFeedback();
-  }
+  // console.log(this.props);
+  const { type, isLoading, error, poi } = props;
 
-  render() {
-    // console.log(this.props);
-    const { type, isLoading, content, preview } = this.props;
-
-    return (
-      <div>
-        {type ? <CloseButton onClick={this.onCloseFeedback} /> : null}
-        {isLoading ? <div>loading</div> : null}
-        {type === 'error' ? <AzureError /> : null}
-        {type === 'success' && content ? <PoiPreview content={preview} /> : null}
+  let feedbackContent;
+  if (isLoading) {
+    feedbackContent = <div className="feedback-loading">loading</div>;
+  } else if (type === 'success' && poi) {
+    feedbackContent = <PoiPreview poi={poi} />;
+  } else if (type === 'error') {
+    feedbackContent = (
+      <div className="feedback-loading">
+        <h3>Error</h3>
+        <p>{error}</p>
       </div>
     );
   }
+  // else : display none.
+
+  return (
+    <div className="camera-feedback">
+      {type ? <CloseButton onClick={onCloseFeedback} /> : null}
+      {feedbackContent}
+    </div>
+  );
 }
