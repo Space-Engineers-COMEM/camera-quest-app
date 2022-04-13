@@ -9,14 +9,14 @@ export default function POI() {
     id: 12,
     azure_tag: '303_appareil',
     exhibition_number: 303,
-    title: 'Merveilleux appareil',
-    author: 'John Doe',
-    periode: '1900-2012',
+    title: 'Le mégaletoscope ',
+    author: 'Carlo Ponti',
+    periode: '1862',
     visible: true,
     area: 'stage 1',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore dolor iusto, fuga iure eaque dolore. Alias quod ipsam mollitia, similique eos earum ratione quia nesciunt ea dignissimos nulla? Dignissimos, ratione!',
-    origin: 'Istambul',
+      'Le mégaletoscope est une version agrandie d’un appareil déjà existant à l’époque: l’aletoscope. C’était une visionneuse pour images photographiques de grand format. Le mégaletoscope disposait d’un filtre à effet jour et un filtre à effet nuit tout en permettant de regarder des images fortement agrandies. Il est accompagné d’une vingtaine de planches d’environ 30x40cm disposant de divers effets.',
+    origin: 'Italie',
   };
 
   const shareData: ShareType = {
@@ -50,13 +50,16 @@ export default function POI() {
   return (
     <div>
       <img
-        src="https://www.publicdomainpictures.net/pictures/30000/nahled/old-camera-1352392502n6P.jpg"
+        className="poi_img"
+        // src="https://www.publicdomainpictures.net/pictures/30000/nahled/old-camera-1352392502n6P.jpg"
+
+        src="/4131_MEGALETOSCOPE.jpg"
         alt="Vieil appareil photographique"
       />
       <h1 className="poi_title">{POIToShow.title}</h1>
       <h2 className="poi_author">{POIToShow.author}</h2>
       <h3>
-        {POIToShow.periode} | {POIToShow.periode ? 'Déjà vu' : 'Non vu'}
+        {POIToShow.periode} | {POIToShow.origin} | {POIToShow.visible ? 'Déjà vu' : 'Non vu'}
         {canBeShared ? (
           <span>
             {' '}
@@ -69,7 +72,7 @@ export default function POI() {
           ''
         )}
       </h3>
-      <p>{POIToShow.description}</p>
+      <p className="poi_description">{POIToShow.description}</p>
       <AudioPlayer src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" />
       {/* <div>Object {id}</div>
       <p>Hello</p> */}

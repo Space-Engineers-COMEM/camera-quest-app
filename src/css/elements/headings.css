@@ -1,9 +1,26 @@
 /********************************
  * Headings
  ********************************/
-h1,
+
+@font-face {
+  font-family: "NEXT Book bold";
+  src: url('../fonts/NEXTBook-Bold.otf');
+}
+@font-face {
+  font-family: "NEXT Book";
+  src: url('../fonts/NEXTBook-Regular.otf');
+}
+@font-face {
+  font-family: "NEXT Book thin";
+  src: url('../fonts/NEXTBook-Thin.otf');
+}
+ h1,
 h2,
 h3,
-h4 {
-  // …
+h4,
+p,
+div {
+
+  font-family: "NEXT Book" ;
+
 }
