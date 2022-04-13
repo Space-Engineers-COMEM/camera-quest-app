@@ -53,8 +53,8 @@ export default function POI() {
         src="https://www.publicdomainpictures.net/pictures/30000/nahled/old-camera-1352392502n6P.jpg"
         alt="Vieil appareil photographique"
       />
-      <h1>{POIToShow.title}</h1>
-      <h2>{POIToShow.author}</h2>
+      <h1 className="poi_title">{POIToShow.title}</h1>
+      <h2 className="poi_author">{POIToShow.author}</h2>
       <h3>
         {POIToShow.periode} | {POIToShow.periode ? 'Déjà vu' : 'Non vu'}
         {canBeShared ? (
