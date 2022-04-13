@@ -39,13 +39,15 @@ export default function Snap() {
   // API communication
   const handleTakePhoto = async (dataUri: string) => {
     setIsLoading(true);
+    const predictionUrl = 'http://127.0.0.1:3333/pois/prediction';
+    const devPredictionUrl = 'http://127.0.0.1:3333/pois/prediction/debug';
 
     const data = new FormData();
     data.append('file', b64toBlob(dataUri.slice(23)));
 
     axios({
       method: 'post',
-      url: 'http://127.0.0.1:3333/pois/prediction',
+      url: predictionUrl,
       data,
       headers: {
         'Accept': 'application/json',
@@ -58,21 +60,17 @@ export default function Snap() {
         return response.data;
       })
       .then((result) => {
-        const { poi, translations } = result;
+        setType(result.type);
+        setIsLoading(false);
         // if not found
-        if (!poi || !translations) {
-          setType('error');
+        if (result.type === 'unpredictable') {
           setFeedbackError(result.content);
         } else {
-          setType('success');
           setPoiPreview(result.content);
         }
-        console.log(result);
-        setIsLoading(false);
       })
       .catch((error) => {
-        setType('error');
-        setFeedbackError(error);
+        console.log('FETCH ERROR: ', error);
       });
   };
 
