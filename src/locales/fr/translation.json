@@ -5,6 +5,7 @@
     "link": "Retour à la page d'accueil"
   },
   "Languages": {
+    "instruction": "Choissisez votre langue: ",
     "button": "Langues",
     "fr": "Français",
     "de": "Deutsch",
