@@ -26,6 +26,8 @@
   },
   "POIList": {
     "learnMore": "En savoir plus...",
-    "backToCamera": "Retour à l'appareil photo"
+    "backToCamera": "Retour à l'appareil photo",
+    "outOf": "sur",
+    "captured": "capturés"
   }
 }

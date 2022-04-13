@@ -5,14 +5,19 @@ import { Step, Steps } from 'intro.js-react';
 import PoiType from './types/PoiType';
 import AreaSelection from './navigation/AreaSelection';
 import Button from './navigation/Button';
+import ProgressBar from './content/ProgressBar';
+import PoiCheck from './content/PoiCheck';
+
+type PoiStatus = {
+  id: number;
+  checked: boolean;
+};
 
 export default function POIList() {
   const { t } = useTranslation('', { keyPrefix: 'POIList' });
   const navigate = useNavigate();
 
-  const areas = ['stage1', 'stage2', 'stage3'];
-  const [stage, setStage] = useState('stage1');
-
+  // Dev Static content
   const POIs: PoiType[] = [
     {
       id: 12,
@@ -67,9 +72,6 @@ export default function POIList() {
       origin: 'Istambul',
     },
   ];
-
-  const stepsEnabled = localStorage.getItem('tutorial-done') !== 'true';
-  const initialStep: number = 0;
   const steps: Step[] = [
     {
       element: '.area-selection',
@@ -102,6 +104,20 @@ export default function POIList() {
       intro: 'Prendre une photo',
     },
   ];
+  const poiStati: PoiStatus[] = [
+    { id: 12, checked: false },
+    { id: 2, checked: true },
+    { id: 3, checked: false },
+  ];
+  // End of Dev Static Content
+
+  const stepsEnabled = localStorage.getItem('tutorial-done') !== 'true';
+  const initialStep: number = 0;
+
+  const areas = ['stage1', 'stage2', 'stage3'];
+  const [stage, setStage] = useState('stage1');
+  const [POIToShow, setPOIToShow] = useState(POIs);
+  const [POIStatus, setPOIStatus] = useState();
 
   const onComplete = (): void | false => {
     navigate('/snap');
@@ -113,10 +129,9 @@ export default function POIList() {
     navigate('/snap');
   };
 
-  const [POIToShow, setPOIToShow] = useState(POIs);
-
   useEffect(() => {
     setPOIToShow(POIs.filter((poi) => poi.area === stage));
+    // gérer ici le changement de la progress bar
   }, [stage]);
 
   return (
@@ -129,6 +144,7 @@ export default function POIList() {
         onComplete={() => onComplete}
       />
       <h1>POI List</h1>
+      <ProgressBar total={10} progress={2} />
       <AreaSelection areas={areas} setStage={setStage} />
       {POIToShow.map((poi) => (
         <div>
@@ -139,6 +155,7 @@ export default function POIList() {
             width="300"
             height="200"
           />
+          <PoiCheck checked={poiStati.find((el) => el.id === poi.id)?.checked} />
           <h2>{poi.title}</h2>
           <Link className="learn-more" to={`/poi/${poi.id}`}>
             {t('learnMore')}

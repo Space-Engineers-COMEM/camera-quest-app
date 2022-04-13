@@ -26,6 +26,8 @@
   },
   "POIList": {
     "learnMore": "Learn more...",
-    "backToCamera": "Back to the camera"
+    "backToCamera": "Back to the camera",
+    "outOf": "out of",
+    "captured": "captured"
   }
 }
