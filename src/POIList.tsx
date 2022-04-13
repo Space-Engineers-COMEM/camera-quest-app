@@ -144,7 +144,7 @@ export default function POIList() {
         onComplete={() => onComplete}
       />
       <h1>POI List</h1>
-      <ProgressBar total={10} progress={2} />
+      <ProgressBar total={POIToShow.length} progress={1} />
       <AreaSelection areas={areas} setStage={setStage} />
       {POIToShow.map((poi) => (
         <div>
