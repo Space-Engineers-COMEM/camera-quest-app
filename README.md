@@ -53,7 +53,7 @@ _Note: Settings and Elements are loaded by default from the `index.css`, it's av
 
 When you commit, write it so it describes what the commit do. It should begin with a verb. To make this easy, always think as the followint of the sentence "This commit…".
 
-> Examples: `Add POST User`, `Fix issue #123`, `Update README.md`, …
+> Examples: `Add POST User`, `Fix issue #123`, `Update README.md`, …
 
 **Branches**
 
