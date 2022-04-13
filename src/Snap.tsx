@@ -12,7 +12,7 @@ export default function Snap() {
   const [type, setType] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [content, setContent] = useState('');
-  const [preview, setPreview] = useState(undefined);
+  const [preview, setPreview] = useState();
 
   // Function created by Namitha Gowda : https://stackoverflow.com/users/8665961/namitha-gowda
   const b64toBlob = (b64Data: string, contentType = '', sliceSize = 512) => {
@@ -64,9 +64,8 @@ export default function Snap() {
           setContent(result.content);
           setType('error');
         } else {
-          const descTranslation = translations.find((e: any) => e.key === 'Description');
-          setPreview({ ...poi, description: descTranslation.value });
-          setType('prediction');
+          setPreview(result.content);
+          setType('success');
         }
         console.log(result);
         setIsLoading(false);
@@ -94,7 +93,6 @@ export default function Snap() {
         isImageMirror={false}
         isSilentMode
         isDisplayStartCameraError
-        isFullscreen
         sizeFactor={1}
       />
       <Link to="/" className="btn btn-float-bottom-right">
@@ -104,7 +102,7 @@ export default function Snap() {
         type={type}
         isLoading={isLoading}
         content={content}
-        poi={preview}
+        preview={preview}
         onCloseFeedback={handleCloseFeedback}
       />
     </div>

@@ -1,14 +1,12 @@
 import React from 'react';
 
-interface Props {
-  error: string;
-}
+interface Props {}
 
 export default function AzureError(props: Props) {
   return (
     <div className="preview preview-error">
       <p>Azure Error</p>
-      <p>{props.error}</p>
+      <p>Erro</p>
     </div>
   );
 }

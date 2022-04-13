@@ -4,19 +4,19 @@ import { useNavigate } from 'react-router-dom';
 import PoiPreviewType from '../types/PoiPreviewType';
 
 interface Props {
-  poi: PoiPreviewType;
+  content: PoiPreviewType;
 }
 
 const t = useTranslation;
 
 function PoiPreview(props: Props) {
-  const { poi } = props;
+  const { content } = props;
   const navigate = useNavigate();
   return (
     <div className="preview preview-poi">
-      <img src={poi.imagePath} alt={poi.title} />
-      <h3>{poi.title}</h3>
-      <button type="button" onClick={() => navigate(`/${poi.id}`)}>
+      <img src={content.imagePath} alt={content.title} />
+      <h3>{content.title}</h3>
+      <button type="button" onClick={() => navigate(`/${content.id}`)}>
         {t('open')}
       </button>
     </div>

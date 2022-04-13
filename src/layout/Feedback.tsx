@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import CloseButton from '../navigation/CloseButton';
 import AzureError from '../content/AzureError';
 import PoiPreview from '../content/PoiPreview';
@@ -10,7 +9,7 @@ interface Props {
   type: string;
   isLoading: boolean;
   content: string;
-  poi: PoiPreviewType | undefined;
+  preview: PoiPreviewType;
 }
 
 export default class Feedback extends React.Component<Props> {
@@ -26,14 +25,14 @@ export default class Feedback extends React.Component<Props> {
 
   render() {
     // console.log(this.props);
-    const { type, isLoading, content, poi } = this.props;
+    const { type, isLoading, content, preview } = this.props;
 
     return (
       <div>
         {type ? <CloseButton onClick={this.onCloseFeedback} /> : null}
         {isLoading ? <div>loading</div> : null}
-        {type === 'error' ? <AzureError error={content} /> : null}
-        {type === 'success' && poi ? <PoiPreview poi={poi} /> : null}
+        {type === 'error' ? <AzureError /> : null}
+        {type === 'success' && content ? <PoiPreview content={preview} /> : null}
       </div>
     );
   }
