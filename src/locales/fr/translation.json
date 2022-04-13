@@ -5,6 +5,7 @@
     "link": "Retour à la page d'accueil"
   },
   "Languages": {
+    "instruction": "Choissisez votre langue: ",
     "button": "Langues",
     "fr": "Français",
     "de": "Deutsch",
@@ -19,7 +20,11 @@
   "Snap": {
     "loading": "Développement en cours...",
     "notFound": "Object non reconnu",
-    "notFoundDesc": "Placez-vous bien en face de l'objet, et faites attention aux éventuels reflets.",
+    "notFoundDesc1": "Placez-vous bien en face de l'objet",
+    "notFoundDesc2": "Faites attention aux éventuels reflets",
+    "notFoundDesc3": "Il semble qu’il y ait un problème.",
+    "notFoundButton": "Passer en mode liste",
+    "retry": "Réessayer",
     "open": "Ouvrir",
     "altImg": "Camera Museum",
     "button": "Langue"
@@ -29,5 +34,27 @@
     "backToCamera": "Retour à l'appareil photo",
     "outOf": "sur",
     "captured": "capturés"
+  },
+  "Tutorial": {
+    "step1": {
+      "title": "Les étages",
+      "desc": "Dans le musée comme dans l’application, les expositions sont organisées par étage. Lorsque vous changez d’étage, cliquez simplement sur celui-ci dans la navigation."
+    },
+    "step2": {
+      "title": "Afficher le contenu",
+      "desc": "En cliquant sur un objet, vous pouvez aller consulter le contenu lié à celui-ci avec notamment un audio!"
+    },
+    "step3": {
+      "title": "L’indicateur \"Vu\"",
+      "desc": "Ici s’affichera, au fil de votre visite, un petit indicateur \"vu\". Celui-ci vous montre les objets que vous avez déjà consulté, soit grâce à l’appareil photo soit via la liste."
+    },
+    "step4": {
+      "title": "Capturez-les tous !",
+      "desc": "Là, un compteur vous permet d’avoir un aperçu sur le nombre d’éléments \"vu\". Essayez de tous les avoir pour recevoir une surprise à la fin de votre visite !"
+    },
+    "step5": {
+      "title": "Prendre une photo",
+      "desc": "Maintenant que vous savez tout du mode \"Liste\", venez découvrir le mode \"Photo\" ! Pour ça, rien de plus simple, cliquez sur le bouton ci-dessous. Et prenez une photo !"
+    }
   }
 }
