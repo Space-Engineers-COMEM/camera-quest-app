@@ -1,14 +1,15 @@
 .btn {
   background-color: var(--yellow);
-  box-shadow: 3.42901e-16px 1px 10px rgba(0, 0, 0, 0.05), inset -9.06783e-17px -1.48089px 2.48px rgba(0, 0, 0, 0.06), inset 9.06783e-17px 1.48089px 1.48089px rgba(255, 255, 255, 0.3);
+  box-shadow: var(--btn-inner-shadow);
   border-radius: 10px;
   padding: 15px;
   color: var(--white);
-  font-size: 19px;
+  font-size: var(--fs-btn);
   border: none;
   text-transform: uppercase;
   text-decoration: none;
-  font-family: 'NEXT Book bold';
+  font-family: 'NEXT Book';
+  font-weight: bold;
 }
 
 .btn--100 {

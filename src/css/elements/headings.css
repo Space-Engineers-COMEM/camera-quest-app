@@ -3,23 +3,42 @@
  ********************************/
 
 @font-face {
-  font-family: "NEXT Book bold";
+  font-family: "NEXT Book";
   src: url('../fonts/NEXTBook-Bold.otf');
+  font-weight: bold;
 }
 @font-face {
   font-family: "NEXT Book";
   src: url('../fonts/NEXTBook-Regular.otf');
+  font-weight: normal;
 }
 @font-face {
-  font-family: "NEXT Book thin";
+  font-family: "NEXT Book";
   src: url('../fonts/NEXTBook-Thin.otf');
+  font-weight: lighter;
 }
 
-h1,
-h2,
-h3,
-h4,
-p,
-div {
-  font-family: "NEXT Book" ;
+* {
+  font-family: "NEXT Book";
+  font-weight: normal;
+}
+
+h1 {
+  font-size: var(--fs-h1-detail);
+  font-weight: bolder;
+}
+
+h2 {
+  font-size: var(--fs-h2-detail);
+  font-weight: lighter;
+}
+
+h3 {
+  font-size: var(--fs-h3-detail);
+  font-weight: normal;
+}
+
+body {
+  font-size: var(--fs-p-regular);
+  font-weight: normal;
 }

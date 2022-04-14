@@ -1,7 +1,7 @@
 /********************************
  * Reset
  ********************************/
-// Reset and normalize base and raw html elements
+/* Reset and normalize base and raw html elements */
 
 * {
   box-sizing: border-box;
