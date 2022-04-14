@@ -67,7 +67,7 @@ export default function POIList() {
     navigate('/snap');
   };
 
-  const apiUrl = 'http://127.0.0.1:3333/pois';
+  const apiUrl = 'https://api.cameramuseum.app/pois';
 
   const getPOIsFromAPI = (): void => {
     axios({
