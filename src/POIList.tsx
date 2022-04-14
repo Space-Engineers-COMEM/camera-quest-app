@@ -40,8 +40,7 @@ export default function POIList() {
   const stepsEnabled = localStorage.getItem('tutorial-done') !== 'true';
   const initialStep: number = 0;
 
-  // Hardcoded for prototype
-  const areas = [1, 2, 3, 4, 5, 6];
+  const areas = [1, 2, 3, 4, 5, 6]; // Hardcoded for prototype
   const [stage, setStage] = useState(1);
   const [dynPOIs, setDynPOIs] = useState<PoiType[]>();
   const [POIToShow, setPOIToShow] = useState(dynPOIs);
