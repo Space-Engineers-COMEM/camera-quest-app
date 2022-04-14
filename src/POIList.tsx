@@ -126,28 +126,33 @@ export default function POIList() {
           onExit={() => onComplete}
           onComplete={() => onComplete}
         />
-        {/* For dev purpose */}
-        <button type="button" onClick={() => addCapturedPOI(1)}>
-          Add random POI
-        </button>
-        <button type="button" onClick={() => clearLS()}>
-          Clear LocalStorage
-        </button>
 
         <ProgressBar total={POIToShow?.length} progress={getFilteredCapturedPOIs()} />
         {POIToShow?.map((poi) => (
-          <article key={poi.id}>
-            <img src={poi.image_url} alt={poi.title} />
-            <PoiCheck checked={isCapturedPOI(poi.id)} />
-            <h2>{poi.title}</h2>
-            <Link className="learn-more" to={`/poi/${poi.id}`}>
-              {t('learnMore')}
+          <article
+            className="poiListItem"
+            key={poi.id}
+            style={{ backgroundImage: `url(${poi.image_url})` }}
+          >
+            <Link className="btn btn--fa-square" to={`/poi/${poi.id}`}>
+              <i className="fa-solid fa-chevron-right" />
             </Link>
+            <div className="poiListItem__title">
+              <h2 className="list">{poi.title}</h2>
+              <PoiCheck checked={isCapturedPOI(poi.id)} />
+            </div>
           </article>
         ))}
         <Button class="btn camera-btn" onClick={toSnap}>
           {t('backToCamera')}
         </Button>
+        {/* For dev purpose */}
+        <button className="btn" type="button" onClick={() => addCapturedPOI(1)}>
+          Add random POI
+        </button>
+        <button className="btn" type="button" onClick={() => clearLS()}>
+          Clear LocalStorage
+        </button>
       </div>
     </div>
   );
