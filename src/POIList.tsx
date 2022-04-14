@@ -126,13 +126,6 @@ export default function POIList() {
           onExit={() => onComplete}
           onComplete={() => onComplete}
         />
-        {/* For dev purpose */}
-        <button type="button" onClick={() => addCapturedPOI(1)}>
-          Add random POI
-        </button>
-        <button type="button" onClick={() => clearLS()}>
-          Clear LocalStorage
-        </button>
 
         <ProgressBar total={POIToShow?.length} progress={getFilteredCapturedPOIs()} />
         {POIToShow?.map((poi) => (
@@ -148,6 +141,13 @@ export default function POIList() {
         <Button class="btn camera-btn" onClick={toSnap}>
           {t('backToCamera')}
         </Button>
+        {/* For dev purpose */}
+        <button className="btn" type="button" onClick={() => addCapturedPOI(1)}>
+          Add random POI
+        </button>
+        <button className="btn" type="button" onClick={() => clearLS()}>
+          Clear LocalStorage
+        </button>
       </div>
     </div>
   );

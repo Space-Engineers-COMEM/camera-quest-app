@@ -5,40 +5,40 @@
 @font-face {
   font-family: "NEXT Book";
   src: url('../fonts/NEXTBook-Bold.otf');
-  font-weight: bold;
+  font-weight: 700;
 }
 @font-face {
   font-family: "NEXT Book";
   src: url('../fonts/NEXTBook-Regular.otf');
-  font-weight: normal;
+  font-weight: 400;
 }
 @font-face {
   font-family: "NEXT Book";
   src: url('../fonts/NEXTBook-Thin.otf');
-  font-weight: lighter;
+  font-weight: 300;
 }
 
 * {
   font-family: "NEXT Book";
-  font-weight: normal;
+  font-weight: 400;
 }
 
 h1 {
   font-size: var(--fs-h1-detail);
-  font-weight: bolder;
+  font-weight: 700;
 }
 
 h2 {
   font-size: var(--fs-h2-detail);
-  font-weight: lighter;
+  font-weight: 300;
 }
 
 h3 {
   font-size: var(--fs-h3-detail);
-  font-weight: normal;
+  font-weight: 400;
 }
 
 body {
   font-size: var(--fs-p-regular);
-  font-weight: normal;
+  font-weight: 400;
 }
