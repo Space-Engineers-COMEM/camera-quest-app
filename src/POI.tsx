@@ -90,11 +90,7 @@ export default function POI() {
         <div className="row">
           <div className="col-md-12">
             <h1 className="poi_title">{poi.title} </h1>
-            <div className="checkbox">
-              <PoiCheck checked={isCapturedPOI(poi.id)} />
-              <input type="checkbox" checked /* checked= {POIToShow.visible ? 'checked' : ''} */ />
-              <span className="checkmark" />
-            </div>
+            <PoiCheck checked={isCapturedPOI(poi.id)} />
           </div>
         </div>
         <div className="row">
