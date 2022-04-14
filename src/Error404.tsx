@@ -8,6 +8,7 @@ export default function Error404() {
   return (
     <div>
       <h1>{t('Error404.title')}</h1>
+      <img width="200" src="/img/snap-error.gif" alt={t('Snap.notFound')} />
       <p>{t('Error404.sorryMessage')}</p>
       <Link to="/">{t('Error404.link')}</Link>
     </div>
