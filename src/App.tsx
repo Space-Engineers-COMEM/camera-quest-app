@@ -29,10 +29,6 @@ export default class App extends React.Component<Props, States> {
     return (
       <div className="App">
         <Languages />
-        {/* For dev purpose */}
-        <button type="button" onClick={this.resetTutorial}>
-          Reset tutorial
-        </button>
         <Routes>
           <Route path="/welcome" element={<Welcome />} />
           <Route path="/nomatch" element={<Error404 />} />

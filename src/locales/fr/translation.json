@@ -33,7 +33,13 @@
     "learnMore": "En savoir plus...",
     "backToCamera": "Retour à l'appareil photo",
     "outOf": "sur",
-    "captured": "capturés"
+    "captured": "capturés",
+    "area1": "Etage jaune",
+    "area2": "Etage bleu",
+    "area3": "Etage rouge",
+    "area4": "Etage gris",
+    "area5": "Exposition temporaire",
+    "area6": "Histoire de la projection"
   },
   "Tutorial": {
     "step1": {

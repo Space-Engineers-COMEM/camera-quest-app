@@ -7,8 +7,6 @@ import Feedback from './layout/Feedback';
 import 'react-html5-camera-photo/build/css/index.css';
 
 export default function Snap() {
-  const apiUrl = 'http://127.0.0.1:3333/pois';
-
   const [type, setType] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [feedbackError, setFeedbackError] = useState('');
@@ -35,6 +33,18 @@ export default function Snap() {
 
     const blob = new Blob(byteArrays, { type: contentType });
     return blob;
+  };
+
+  const getCapturedPOIs = (): number[] => {
+    const stringPOIs = localStorage.getItem('captured-pois');
+    return stringPOIs ? JSON.parse(stringPOIs) : [];
+  };
+
+  const addCapturedPOI = (id: number): void => {
+    const pois = getCapturedPOIs();
+    pois.push(id);
+    const uniquePOIs = pois.filter((poiId, index) => pois.indexOf(poiId) === index);
+    localStorage.setItem('captured-pois', JSON.stringify(uniquePOIs));
   };
 
   // API communication
@@ -70,8 +80,8 @@ export default function Snap() {
         } else {
           setErrorCounter(0);
           setPoiPreview(result.content);
+          addCapturedPOI(result.content.id);
         }
-        console.log(errorCounter);
       })
       .catch((error) => {
         console.log('FETCH ERROR: ', error);

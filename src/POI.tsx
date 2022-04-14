@@ -1,26 +1,41 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import axios from 'axios';
 import PoiType from './types/PoiType';
 import ShareType from './types/ShareType';
 import AudioPlayer from './input/AudioPlayer';
+import PoiCheck from './content/PoiCheck';
 
 export default function POI() {
-  const POIToShow: PoiType = {
-    id: 12,
-    azure_tag: '303_appareil',
-    exhibition_number: 303,
-    title: 'Le mégaletoscope ',
-    author: 'Carlo Ponti',
-    periode: '1862',
-    visible: true,
-    area: 'stage 1',
-    description:
-      'Le mégaletoscope est une version agrandie d’un appareil déjà existant à l’époque: l’aletoscope. C’était une visionneuse pour images photographiques de grand format. Le mégaletoscope disposait d’un filtre à effet jour et un filtre à effet nuit tout en permettant de regarder des images fortement agrandies. Il est accompagné d’une vingtaine de planches d’environ 30x40cm disposant de divers effets.',
-    origin: 'Italie',
+  const { t } = useTranslation('', { keyPrefix: 'Snap' });
+  const navigate = useNavigate();
+
+  const [poi, setPoi] = useState<PoiType>();
+
+  const apiUrl = 'http://127.0.0.1:3333/pois';
+
+  const getPOIFromAPI = (id: number): void => {
+    axios({
+      method: 'get',
+      url: `${apiUrl}/${id}`,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+      // Recieving the POI, or error
+      .then((response) => response.data)
+      .then((data) => {
+        setPoi(data);
+      })
+      .catch((error) => {
+        navigate('/nomatch');
+      });
   };
 
   const shareData: ShareType = {
-    title: `Camera Museum - ${POIToShow.title}`,
+    title: `Camera Museum - ${poi?.title}`,
     text: 'Redécouvrez la photo !',
     url: window.location.href,
   };
@@ -31,13 +46,21 @@ export default function POI() {
     navigator.share(shareData).catch(() => alert('unable to share this content :('));
   };
 
+  const getCapturedPOIs = (): number[] => {
+    const stringPOIs = localStorage.getItem('captured-pois');
+    return stringPOIs ? JSON.parse(stringPOIs) : [];
+  };
+
+  const isCapturedPOI = (id: number): boolean =>
+    typeof getCapturedPOIs().find((el) => el === id) !== 'undefined';
+
   const id: string = useParams().id || '0';
 
-  const navigate = useNavigate();
   useEffect(() => {
-    if (+id !== POIToShow.id) {
-      navigate('/nomatch');
-    }
+    getPOIFromAPI(+id);
+  }, []);
+
+  useEffect(() => {
     try {
       if (navigator.canShare(shareData)) {
         setCanBeSharedStatus(true);
@@ -45,21 +68,30 @@ export default function POI() {
     } catch (error) {
       setCanBeSharedStatus(false);
     }
-  }, []);
+  }, [poi]);
 
+  if (!poi) {
+    return (
+      <div className="feedback-loading">
+        <img src="/img/snap-loading.gif" alt="" />
+        <h2>{t('loading')}</h2>
+      </div>
+    );
+  }
   return (
     <div>
       <img
         className="poi_img"
-        // src="https://www.publicdomainpictures.net/pictures/30000/nahled/old-camera-1352392502n6P.jpg"
+        // src={poi.image_url}
         src="/4131_MEGALETOSCOPE.jpg"
-        alt="Vieil appareil photographique"
+        alt={poi.title}
       />
       <div className="container-sm m-0 p-0">
         <div className="row">
           <div className="col-md-12">
-            <h1 className="poi_title">{POIToShow.title} </h1>
+            <h1 className="poi_title">{poi.title} </h1>
             <div className="checkbox">
+              <PoiCheck checked={isCapturedPOI(poi.id)} />
               <input type="checkbox" checked /* checked= {POIToShow.visible ? 'checked' : ''} */ />
               <span className="checkmark" />
             </div>
@@ -67,17 +99,15 @@ export default function POI() {
         </div>
         <div className="row">
           <div className="col-md-12">
-            <h2 className="poi_author">{POIToShow.author}</h2>
+            <h2 className="poi_author">{poi.author}</h2>
           </div>
         </div>
         <div className="row">
           <div className="col-md-auto">
             <h3 className="poi_detail">
-              {POIToShow.periode}
+              {poi.periode}
               {canBeShared ? (
                 <span>
-                  {' '}
-                  |{' '}
                   <button type="button" onClick={handleShareClick}>
                     <i className="fa-solid fa-share-from-square" />
                   </button>
@@ -91,20 +121,16 @@ export default function POI() {
             <p className="poi_detail"> | </p>
           </div>
           <div className="col-md-auto">
-            <h3 className="poi_detail">{POIToShow.origin}</h3>
+            <h3 className="poi_detail">{poi.origin}</h3>
           </div>
         </div>
         <div className="row">
           <div className="col-md-12">
-            <p className="poi_description">{POIToShow.description}</p>
+            <p className="poi_description">{poi.description}</p>
           </div>
         </div>
       </div>
-      <div>
-        <AudioPlayer src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" />
-        {/* <div>Object {id}</div>
-    <p>Hello</p> */}
-      </div>
+      <AudioPlayer src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" />
     </div>
   );
 }
