@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Step, Steps } from 'intro.js-react';
+import axios from 'axios';
 import PoiType from './types/PoiType';
 import AreaSelection from './navigation/AreaSelection';
 import Button from './navigation/Button';
@@ -21,7 +22,7 @@ export default function POIList() {
   // Dev Static content
   const POIs: PoiType[] = [
     {
-      id: 12,
+      id: 1,
       azure_tag: '303_appareil',
       exhibition_number: 303,
       title: 'Merveilleux appareil (stage 1)',
@@ -89,13 +90,12 @@ export default function POIList() {
       tooltipClass: 'tutorialBox',
     });
   }
-
-  const poiStati: PoiStatus[] = [
-    { id: 12, checked: false },
-    { id: 2, checked: true },
-    { id: 3, checked: false },
-  ];
   // End of Dev Static Content
+
+  const getCapturedPOIs = (): number[] => {
+    const stringPOIs = localStorage.getItem('captured-pois');
+    return stringPOIs ? JSON.parse(stringPOIs) : [];
+  };
 
   const stepsEnabled = localStorage.getItem('tutorial-done') !== 'true';
   const initialStep: number = 0;
@@ -103,10 +103,19 @@ export default function POIList() {
   const areas = ['stage1', 'stage2', 'stage3'];
   const [stage, setStage] = useState('stage1');
   const [POIToShow, setPOIToShow] = useState(POIs);
-  const [POIStatus, setPOIStatus] = useState();
+  const [capturedPois, setCapturedPois] = useState<number[]>(getCapturedPOIs());
+
+  const addCapturedPOI = (id: number): void => {
+    const pois = getCapturedPOIs();
+    if (pois.length === 0 || pois.find((el) => el !== id)) {
+      pois.push(id);
+      localStorage.setItem('captured-pois', JSON.stringify(pois));
+    }
+    setCapturedPois(pois);
+  };
 
   const onComplete = (): void | false => {
-    navigate('/snap');
+    // navigate('/snap');
     localStorage.setItem('tutorial-done', 'true');
   };
 
@@ -115,9 +124,26 @@ export default function POIList() {
     navigate('/snap');
   };
 
+  const apiUrl = 'http://127.0.0.1:3333/pois';
+
+  const getPOIsFromAPI = () => {
+    axios({
+      method: 'get',
+      url: apiUrl,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+      // Recieving the POI, or error
+      .then((response) => response.data)
+      .then((data) => console.log(data));
+  };
+
   useEffect(() => {
+    getCapturedPOIs();
+    getPOIsFromAPI();
     setPOIToShow(POIs.filter((poi) => poi.area === stage));
-    // gérer ici le changement de la progress bar
   }, [stage]);
 
   return (
@@ -130,7 +156,12 @@ export default function POIList() {
         onComplete={() => onComplete}
       />
       <h1>POI List</h1>
-      <ProgressBar total={POIToShow.length} progress={1} />
+      {/* For dev purpose */}
+      <button type="button" onClick={() => addCapturedPOI(12)}>
+        Add random POI
+      </button>
+
+      <ProgressBar total={POIToShow.length} progress={capturedPois.length} />
       <AreaSelection areas={areas} setStage={setStage} />
       {POIToShow.map((poi) => (
         <div>
@@ -141,7 +172,7 @@ export default function POIList() {
             width="300"
             height="200"
           />
-          <PoiCheck checked={poiStati.find((el) => el.id === poi.id)?.checked} />
+          <PoiCheck checked={typeof capturedPois.find((el) => el === poi.id) === undefined} />
           <h2>{poi.title}</h2>
           <Link className="learn-more" to={`/poi/${poi.id}`}>
             {t('learnMore')}
