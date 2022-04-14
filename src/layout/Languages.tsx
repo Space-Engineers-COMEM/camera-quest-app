@@ -20,7 +20,8 @@ export default function Languages() {
     <div>
       <div className="langButtonContainer">
         <Button class="langButton" onClick={onOpeningLanguages}>
-          {/* {t('Languages.button')} */} <i className="fa-solid fa-globe" /> FRA
+          <i className="fa-solid fa-globe" />
+          <span className="langButton__text">{i18n.resolvedLanguage}</span>
         </Button>
       </div>
       {visible && (
