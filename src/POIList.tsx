@@ -116,7 +116,7 @@ export default function POIList() {
     <div>
       <nav className="container">
         <Languages />
-        <AreaSelection areas={areas} setStage={setStage} />
+        <AreaSelection selected={stage} areas={areas} setStage={setStage} />
       </nav>
       <div className="container">
         <Steps

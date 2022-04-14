@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 interface Props {
   areas: number[];
+  selected: number;
   setStage: (stage: number) => void;
 }
 export default function AreaSelection(props: Props) {
