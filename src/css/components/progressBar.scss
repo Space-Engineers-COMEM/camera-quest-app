@@ -2,27 +2,23 @@
   text-align: center;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
-}
-
-.progressBar > progress {
-  width: 100%;
-  color: var(--green);
-  border-radius: 100px;
-  border: none;
-  box-shadow: var(--shadow-internal);
-  background-color: var(--white);
-}
-
-progress::-moz-progress-bar,
-progress::-webkit-progress-value {
-  background: var(--green);
-  border-radius: 100px;
-  box-shadow: var(--shadow-btn-inner);
-}
-
-
-.progressBar > p {
-  margin-top: 15px;
-  font-size: var(--fs-p-detail);
-  font-weight: 400;
+  > progress {
+    width: 100%;
+    color: var(--green);
+    border-radius: 100px;
+    border: none;
+    box-shadow: var(--shadow-internal);
+    background-color: var(--white);
+    &::-moz-progress-bar,
+    &::-webkit-progress-value {
+      background: var(--green);
+      border-radius: 100px;
+      box-shadow: var(--shadow-btn-inner);
+    }
+  }
+  > p {
+    margin-top: 15px;
+    font-size: var(--fs-p-detail);
+    font-weight: 400;
+  }
 }

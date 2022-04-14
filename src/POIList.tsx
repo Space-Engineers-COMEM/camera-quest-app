@@ -129,13 +129,18 @@ export default function POIList() {
 
         <ProgressBar total={POIToShow?.length} progress={getFilteredCapturedPOIs()} />
         {POIToShow?.map((poi) => (
-          <article key={poi.id}>
-            <img src={poi.image_url} alt={poi.title} />
-            <PoiCheck checked={isCapturedPOI(poi.id)} />
-            <h2>{poi.title}</h2>
-            <Link className="learn-more" to={`/poi/${poi.id}`}>
-              {t('learnMore')}
+          <article
+            className="poiListItem"
+            key={poi.id}
+            style={{ backgroundImage: `url(${poi.image_url})` }}
+          >
+            <Link className="btn btn--fa-square" to={`/poi/${poi.id}`}>
+              <i className="fa-solid fa-chevron-right" />
             </Link>
+            <div className="poiListItem__title">
+              <h2 className="list">{poi.title}</h2>
+              <PoiCheck checked={isCapturedPOI(poi.id)} />
+            </div>
           </article>
         ))}
         <Button class="btn camera-btn" onClick={toSnap}>

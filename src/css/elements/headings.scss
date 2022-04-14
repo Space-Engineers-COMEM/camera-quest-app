@@ -31,6 +31,13 @@ h1 {
 h2 {
   font-size: var(--fs-h2-detail);
   font-weight: 300;
+  &.list {
+    font-size: var(--fs-h2-list);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--white);
+    margin: 0;
+  }
 }
 
 h3 {
