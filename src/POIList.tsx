@@ -8,6 +8,7 @@ import AreaSelection from './navigation/AreaSelection';
 import Button from './navigation/Button';
 import ProgressBar from './content/ProgressBar';
 import PoiCheck from './content/PoiCheck';
+import Languages from './layout/Languages';
 
 export default function POIList() {
   const { t } = useTranslation('', { keyPrefix: 'POIList' });
@@ -113,38 +114,41 @@ export default function POIList() {
 
   return (
     <div>
-      <Steps
-        enabled={stepsEnabled}
-        steps={steps}
-        initialStep={initialStep}
-        onExit={() => onComplete}
-        onComplete={() => onComplete}
-      />
-      <h1>POI List</h1>
-      {/* For dev purpose */}
-      <button type="button" onClick={() => addCapturedPOI(1)}>
-        Add random POI
-      </button>
-      <button type="button" onClick={() => clearLS()}>
-        Clear LocalStorage
-      </button>
+      <nav className="container">
+        <Languages />
+        <AreaSelection areas={areas} setStage={setStage} />
+      </nav>
+      <div className="container">
+        <Steps
+          enabled={stepsEnabled}
+          steps={steps}
+          initialStep={initialStep}
+          onExit={() => onComplete}
+          onComplete={() => onComplete}
+        />
+        {/* For dev purpose */}
+        <button type="button" onClick={() => addCapturedPOI(1)}>
+          Add random POI
+        </button>
+        <button type="button" onClick={() => clearLS()}>
+          Clear LocalStorage
+        </button>
 
-      <ProgressBar total={POIToShow?.length} progress={getFilteredCapturedPOIs()} />
-      <AreaSelection areas={areas} setStage={setStage} />
-      {POIToShow?.map((poi) => (
-        <article key={poi.id}>
-          <hr />
-          <img src={poi.image_url} alt={poi.title} />
-          <PoiCheck checked={isCapturedPOI(poi.id)} />
-          <h2>{poi.title}</h2>
-          <Link className="learn-more" to={`/poi/${poi.id}`}>
-            {t('learnMore')}
-          </Link>
-        </article>
-      ))}
-      <Button class="camera-btn" onClick={toSnap}>
-        {t('backToCamera')}
-      </Button>
+        <ProgressBar total={POIToShow?.length} progress={getFilteredCapturedPOIs()} />
+        {POIToShow?.map((poi) => (
+          <article key={poi.id}>
+            <img src={poi.image_url} alt={poi.title} />
+            <PoiCheck checked={isCapturedPOI(poi.id)} />
+            <h2>{poi.title}</h2>
+            <Link className="learn-more" to={`/poi/${poi.id}`}>
+              {t('learnMore')}
+            </Link>
+          </article>
+        ))}
+        <Button class="btn camera-btn" onClick={toSnap}>
+          {t('backToCamera')}
+        </Button>
+      </div>
     </div>
   );
 }

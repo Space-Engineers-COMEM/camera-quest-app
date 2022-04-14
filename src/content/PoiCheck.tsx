@@ -7,12 +7,12 @@ interface Props {
 export default function PoiCheck(props: Props) {
   const check = props.checked ? (
     <div className="checkbox">
-      <input type="checkbox" checked /* checked= {POIToShow.visible ? 'checked' : ''} */ />
+      <input type="checkbox" checked readOnly /* checked= {POIToShow.visible ? 'checked' : ''} */ />
       <span className="checkmark" />
     </div>
   ) : (
     <div className="checkbox">
-      <input type="checkbox" /* checked= {POIToShow.visible ? 'checked' : ''} */ />
+      <input type="checkbox" readOnly /* checked= {POIToShow.visible ? 'checked' : ''} */ />
       <span className="checkmark" />
     </div>
   );

@@ -14,13 +14,12 @@
   font-family: "NEXT Book thin";
   src: url('../fonts/NEXTBook-Thin.otf');
 }
- h1,
+
+h1,
 h2,
 h3,
 h4,
 p,
 div {
-
   font-family: "NEXT Book" ;
-
 }

@@ -2,7 +2,6 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Snap from './Snap';
 import Error404 from './Error404';
-import Languages from './layout/Languages';
 import POI from './POI';
 import Welcome from './Welcome';
 import POIList from './POIList';
@@ -28,7 +27,6 @@ export default class App extends React.Component<Props, States> {
   render() {
     return (
       <div className="App">
-        <Languages />
         <Routes>
           <Route path="/welcome" element={<Welcome />} />
           <Route path="/nomatch" element={<Error404 />} />
