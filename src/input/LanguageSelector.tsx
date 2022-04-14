@@ -26,7 +26,7 @@ export default function LanguageSelector(props: Props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <select value={i18n.language} onChange={handleChange}>
+      <select className="langSelector" value={i18n.language} onChange={handleChange}>
         {Object.keys(lngs).map((lng) => (
           <option
             key={lng}

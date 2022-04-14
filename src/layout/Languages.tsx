@@ -16,16 +16,19 @@ export default function Languages() {
     setVisible(false);
   };
 
-  if (!visible)
-    return (
-      <Button class="lang-btn" onClick={onOpeningLanguages}>
-        {t('Languages.button')}
-      </Button>
-    );
   return (
-    <div className="languages">
-      <p>{t('Languages.instruction')}:</p>
-      <LanguageSelector onSubmit={onSubmitingLanguages} />
+    <div>
+      <div className="langButtonContainer">
+        <Button class="langButton" onClick={onOpeningLanguages}>
+          {/* {t('Languages.button')} */} <i className="fa-solid fa-globe" /> FRA
+        </Button>
+      </div>
+      {visible && (
+        <div className="langSelectorContainer">
+          {/* <p>{t('Languages.instruction')}:</p> */}
+          <LanguageSelector onSubmit={onSubmitingLanguages} />
+        </div>
+      )}
     </div>
   );
 }

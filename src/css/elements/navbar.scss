@@ -2,4 +2,102 @@ nav {
   background-color: white;
   height: 60px;
   display: flex;
+  align-items: center;
+  margin: var(--default-padding) 0;
+}
+
+
+// LANGUAGES
+// Language Button
+.langButtonContainer {
+  width: 25%;
+  margin-right: 30px;
+}
+
+.langButton {
+  width: 80px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-around;
+
+  background-color: var(--white);
+  box-shadow: var(--shadow-internal);
+  border: none;
+  border-radius: var(--default-border-radius);
+
+  font-size: var(--fs-btn);
+  font-weight: 700;
+  color: var(--gray)
+}
+
+.langButton i {
+  font-size: 16px;
+}
+
+// Language Selector
+.langSelectorContainer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 45%;
+  height: 100%;
+
+  border-top-right-radius: var(--default-border-radius);
+  border-bottom-right-radius: var(--default-border-radius);
+  background: var(--white);
+  box-shadow: var(--shadow-popup);
+}
+
+.langSelector {
+  overflow: auto;
+}
+
+.langSelectorContainer input {
+  position: absolute;
+  top: var(--default-padding);
+  right: var(--default-padding);
+  border-radius: 100%;
+  color: var(--white);
+  border: none;
+  height: 30px;
+  width: 30px;
+  line-height: 31px;
+  font-size: var(--fs-btn);
+  font-weight: 700;
+  box-shadow: var(--shadow-internal);
+}
+
+// AREA SELECTOR
+.areaContainer {
+  overflow: scroll;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.areaContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.area {
+  background-color: var(--white);
+  border: none;
+  min-width: 50px;
+  padding: 0 var(--default-padding);
+  height: 50px;
+  color: var(--gray);
+  font-size: var(--fs-p-detail);
+
+  &--active {
+    @extend .area;
+    color: var(--yellow);
+    font-weight: 700;
+  }
 }
