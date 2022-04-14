@@ -2,12 +2,12 @@
  * INDEX
  ********************************/
 // We use BEM and ITCSS inspired methodlogies to name our class and structure our folders. Have a look at the [README.md](/README.md) for information about.
-@import '/scss/custom.scss';
-@import './settings/reset.css';
-@import './settings/variable.css';
+@import './settings/libraries.scss';
+@import './settings/reset.scss';
+@import './settings/variable.scss';
 @import './components/poi.scss';
 
-@import './elements/headings.css';
+@import './elements/headings.scss';
 @import './elements/navbar.scss';
 
 @import './components/checkbox.scss';
