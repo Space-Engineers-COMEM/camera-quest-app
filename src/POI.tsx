@@ -137,7 +137,7 @@ export default function POI() {
           <div className="col poi_detail_right">
             {/* To translate */}
             <h3 className="poi_detail_title">Lieu</h3>
-            <p className="poi_detail ">{poi.origin}Italie</p>
+            <p className="poi_detail ">{poi.origin}</p>
           </div>
         </div>
         <div className="row">
