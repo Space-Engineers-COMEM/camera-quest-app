@@ -144,7 +144,7 @@ export default function POIList() {
           </article>
         ))}
         <Button class="btn camera-btn" onClick={toSnap}>
-          {t('backToCamera')}
+          <i className="fa-solid fa-camera" />
         </Button>
         {/* For dev purpose */}
         <button className="btn" type="button" onClick={() => addCapturedPOI(1)}>
