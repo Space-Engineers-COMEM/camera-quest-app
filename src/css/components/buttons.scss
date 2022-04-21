@@ -15,3 +15,22 @@
 .btn--100 {
   width: 100%;
 }
+
+.camera-btn {
+  padding: 25px 25px 25px 25px;
+  i {
+    //center i inside parent height and width
+    position: absolute;
+    font-size: 1.5em;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  height: 1/6vw;
+  width: 1/6vw;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  cursor: pointer;
+}

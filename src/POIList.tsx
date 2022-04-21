@@ -146,7 +146,7 @@ export default function POIList() {
           </article>
         ))}
         <Button class="btn camera-btn" onClick={toSnap}>
-          {t('backToCamera')}
+          <i className="fa-solid fa-camera" />
         </Button>
       </div>
     </div>
