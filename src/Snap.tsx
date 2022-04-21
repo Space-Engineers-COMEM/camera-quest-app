@@ -12,6 +12,11 @@ export default function Snap() {
   const [feedbackError, setFeedbackError] = useState('');
   const [poiPreview, setPoiPreview] = useState();
   const [errorCounter, setErrorCounter] = useState(0);
+  // const viewportWidth = document.documentElement.clientWidth;
+  // const viewportHeight = document.documentElement.clientHeight;
+
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
 
   // Function created by Namitha Gowda : https://stackoverflow.com/users/8665961/namitha-gowda
   const b64toBlob = (b64Data: string, contentType = '', sliceSize = 512) => {
@@ -91,24 +96,30 @@ export default function Snap() {
     setType('');
   };
 
+  const setCameraSize = () => {
+    const container = document.querySelector('.react-html5-camera-photo');
+    container?.setAttribute('style', `width: ${viewportWidth}px; height: ${viewportHeight}px;`);
+  };
+
   return (
-    <div>
+    <div id="cameraContainer">
       <Camera
+        onCameraStart={setCameraSize}
         onTakePhoto={(dataUri) => {
           handleTakePhoto(dataUri);
         }}
         idealFacingMode={FACING_MODES.ENVIRONMENT}
-        idealResolution={{ width: 640, height: 480 }}
+        isFullscreen
         imageType={IMAGE_TYPES.JPG}
         imageCompression={0.97}
         isMaxResolution={false}
         isImageMirror={false}
         isSilentMode
         isDisplayStartCameraError
-        sizeFactor={1}
       />
-      <Link to="/" className="btn btn-float-bottom-right">
-        Show POI List
+
+      <Link to="/" className="btnCameraList">
+        <i className="fa-solid fa-list-ul" />
       </Link>
       <Feedback
         type={type}

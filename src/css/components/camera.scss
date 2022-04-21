@@ -1,0 +1,9 @@
+#cameraContainer {
+  touch-action: none;
+}
+
+.react-html5-camera-photo-fullscreen>video,
+.react-html5-camera-photo-fullscreen>img {
+  height: 100% !important;
+  object-fit: cover !important;
+}
