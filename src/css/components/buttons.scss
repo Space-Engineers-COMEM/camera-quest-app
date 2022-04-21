@@ -1,6 +1,6 @@
 .btn {
   background-color: var(--yellow);
-  box-shadow: var(--btn-inner-shadow);
+  box-shadow: var(--shadow-btn-inner);
   border-radius: 10px;
   padding: 15px;
   color: var(--white);
@@ -10,6 +10,10 @@
   text-decoration: none;
   font-family: 'NEXT Book';
   font-weight: bold;
+}
+
+.btn:hover {
+  cursor: pointer;
 }
 
 .btn--100 {
@@ -33,4 +37,13 @@
   bottom: 40px;
   right: 40px;
   cursor: pointer;
+}
+.btn--fa-square {
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  filter: drop-shadow(3.42901e-16px 1px 10px rgba(0, 0, 0, 0.05));
 }

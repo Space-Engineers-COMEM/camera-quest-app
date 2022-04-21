@@ -9,7 +9,7 @@ interface Props {
 export default function ProgressBar(props: Props) {
   const { t } = useTranslation('', { keyPrefix: 'POIList' });
   return (
-    <div className="progress">
+    <div className="progressBar">
       <progress className="progress-bar" value={props.progress} max={props.total || 0} />
       <p className="progress-description">
         {props.progress} {t('outOf')} {props.total || 0} {t('captured')}

@@ -18,26 +18,24 @@ export default function LanguageSelector(props: Props) {
     props.onSubmit(evt);
   };
 
-  const handleChange = (evt: any) => {
-    evt.preventDefault();
-    i18n.changeLanguage(evt.target.value);
-    handleSubmit(evt);
-  };
-
   return (
     <form onSubmit={handleSubmit}>
-      <select value={i18n.language} onChange={handleChange}>
+      <div className="langSelector">
         {Object.keys(lngs).map((lng) => (
-          <option
-            key={lng}
-            style={{ fontWeight: i18n.resolvedLanguage === lng ? 'bold' : 'normal' }}
-            onSelect={() => i18n.changeLanguage(lng)}
-            value={lng}
-          >
-            {lngs[lng as keyof typeof lngs].nativeName}
-          </option>
+          <fieldset>
+            <input
+              key={lng}
+              id={lng}
+              type="radio"
+              name="lang"
+              value={lng}
+              onChange={() => i18n.changeLanguage(lng)}
+              checked={i18n.resolvedLanguage === lng}
+            />
+            <label htmlFor={lng}>{lngs[lng as keyof typeof lngs].nativeName}</label>
+          </fieldset>
         ))}
-      </select>
+      </div>
       <input type="submit" value="X" />
     </form>
   );
