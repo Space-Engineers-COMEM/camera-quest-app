@@ -104,40 +104,47 @@ export default function AudioPlayer(props: AudioPlayerProps) {
   }, [audioSpeed]);
 
   return (
-    <div>
-      <h1>Audio Player</h1>
-      <audio
-        onLoadedMetadata={initPlayer}
-        onTimeUpdate={updateTimeValue}
-        ref={audioFileRef}
-        src={props.src}
-        preload="metadata"
-      >
-        <track kind="captions" />
-      </audio>
-      <button type="button" onClick={changePlayState}>
-        <i className={`fa-solid fa-${!isPlaying ? 'play' : 'pause'}`} />
-      </button>
-      <button type="button" onClick={changeAudioSpeed}>
-        x{audioSpeed}
-      </button>
-      <button type="button" onClick={() => jumpInAudio(-10)}>
-        -10s
-      </button>
-      <button type="button" onClick={() => jumpInAudio(10)}>
-        +10s
-      </button>
-      <br />
-      <span ref={currentTimeRef}>0:00</span>
-      <input
-        type="range"
-        ref={seekSliderRef}
-        max="100"
-        defaultValue="0"
-        onInput={setCurrentTime}
-        onChange={setAudioTime}
-      />
-      <span ref={totalTimeRef}>0:00</span>
+    <div className="container-fluid audioPlayer">
+      <div className="row">
+        <audio
+          onLoadedMetadata={initPlayer}
+          onTimeUpdate={updateTimeValue}
+          ref={audioFileRef}
+          src={props.src}
+          preload="metadata"
+        >
+          <track kind="captions" />
+        </audio>
+        <button type="button" onClick={changePlayState}>
+          <i className={`fa-solid fa-${!isPlaying ? 'play' : 'pause'}`} />
+        </button>
+        <button type="button" onClick={changeAudioSpeed}>
+          x{audioSpeed}
+        </button>
+        <button type="button" onClick={() => jumpInAudio(-10)}>
+          -10s
+        </button>
+        <button type="button" onClick={() => jumpInAudio(10)}>
+          +10s
+        </button>
+      </div>
+      <div className="row">
+        <span className="col-2" ref={currentTimeRef}>
+          0:00
+        </span>
+        <input
+          className="col-8"
+          type="range"
+          ref={seekSliderRef}
+          max="100"
+          defaultValue="0"
+          onInput={setCurrentTime}
+          onChange={setAudioTime}
+        />
+        <span className="col-2" ref={totalTimeRef}>
+          0:00
+        </span>
+      </div>
     </div>
   );
 }
