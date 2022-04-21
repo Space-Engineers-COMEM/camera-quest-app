@@ -19,9 +19,9 @@
   },
   "Snap": {
     "loading": "Développement en cours...",
-    "notFound": "Object non reconnu",
-    "notFoundDesc1": "Placez-vous bien en face de l'objet",
-    "notFoundDesc2": "Faites attention aux éventuels reflets",
+    "notFound": "Objet pas reconnu",
+    "notFoundDesc1": "Placez-vous bien en face",
+    "notFoundDesc2": "Faites attention aux reflets",
     "notFoundDesc3": "Il semble qu’il y ait un problème.",
     "notFoundButton": "Passer en mode liste",
     "retry": "Réessayer",
