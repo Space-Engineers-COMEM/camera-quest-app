@@ -88,19 +88,21 @@ export default function POI() {
       />
       <div className="container-sm m-0 p-0">
         <div className="row">
-          <div className="col-md-12">
-            <h1 className="poi_title">{poi.title} </h1>
+          <div className="col poi_contener_title">
+            <h1 className="poi_title">{poi.title}</h1>
             <PoiCheck checked={isCapturedPOI(poi.id)} />
           </div>
         </div>
         <div className="row">
-          <div className="col-md-12">
+          <div className="col">
             <h2 className="poi_author">{poi.author}</h2>
           </div>
         </div>
-        <div className="row">
-          <div className="col-md-auto">
-            <h3 className="poi_detail">
+        <div className="row poi_contener_detail">
+          <div className="col poi_detail_left">
+            {/* To translate */}
+            <h3 className="poi_detail_title">Date</h3>
+            <p className="poi_detail ">
               {poi.periode}
               {canBeShared ? (
                 <span>
@@ -111,13 +113,31 @@ export default function POI() {
               ) : (
                 ''
               )}
-            </h3>
+            </p>
           </div>
-          <div className="col-md-auto">
-            <p className="poi_detail"> | </p>
+          <div className="col-1 poi_trait">
+            <svg
+              width="3"
+              height="40"
+              viewBox="0 0 3 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="1.5"
+                y1="1.5"
+                x2="1.5"
+                y2="38.5"
+                stroke="#4A4A4A"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
           </div>
-          <div className="col-md-auto">
-            <h3 className="poi_detail">{poi.origin}</h3>
+          <div className="col poi_detail_right">
+            {/* To translate */}
+            <h3 className="poi_detail_title">Lieu</h3>
+            <p className="poi_detail ">{poi.origin}Italie</p>
           </div>
         </div>
         <div className="row">
