@@ -7,11 +7,12 @@
 :root {
   --background-color: #ffffff;
   --white: #ffffff;
-  --black:#141414;
+  --black: #141414;
   --darkGray: #4A4A4A;
   --gray: #808080;
   --lightGray: #CBCBCB;
   --veryLightGray: #F2F2F2;
+  --transparentGray: rgba(203, 203, 203, 0.5);
   --yellow: #FAB617;
   --lightYellow: #FEE9B9;
   --green: #82C46C;
@@ -27,8 +28,8 @@
   --fs-p-resume: 20px;
   --fs-p-transcription: 23px;
   --fs-p-detail: 16px;
-  --fs-link : 20px;
-  --fs-btn : 19px;
+  --fs-link: 20px;
+  --fs-btn: 19px;
 
   /* Common settings */
   --default-padding: 15px;
@@ -43,4 +44,3 @@
   /* Utils */
   --reader-track-percentage: 40%;
 }
-

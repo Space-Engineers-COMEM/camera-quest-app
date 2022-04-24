@@ -31,30 +31,46 @@ export default function Feedback(props: Props) {
       </div>
     );
   } else if (type === 'success' && poi) {
-    feedbackContent = <PoiPreview poi={poi} />;
+    feedbackContent = <PoiPreview poi={poi} onCloseFeedback={onCloseFeedback} />;
   } else if (type === 'unpredictable') {
     if (props.errorCounter >= 3) {
       feedbackContent = (
-        <div className="feedback-loading">
-          <img src="/img/snap-error.gif" alt={t('notFound')} />
-          <h2>{t('notFound')}</h2>
-          <p>{t('notFoundDesc3')}</p>
-
-          <Link to="/">
-            <span>{t('notFoundButton')}</span>
+        <div className="feedback-error">
+          <div>
+            {type ? (
+              <Button class="cameraCloseButton" onClick={onCloseFeedback}>
+                <span>X</span>
+              </Button>
+            ) : null}
+            <img src="/img/snap-error.gif" alt={t('notFound')} />
+            <h2>{t('notFound')}</h2>
+            <p>{t('notFoundDesc3')}</p>
+          </div>
+          <Link className="btn" to="/">
+            <span>
+              <i className="fa-solid fa-rectangle-list" /> {t('notFoundButton')}
+            </span>
           </Link>
         </div>
       );
     } else {
       feedbackContent = (
-        <div className="feedback-loading">
-          <img src="/img/snap-error.gif" alt={t('notFound')} />
-          <h2>{t('notFound')}</h2>
-          <ul>
-            <li>{t('notFoundDesc1')}</li>
-            <li>{t('notFoundDesc2')}</li>
-          </ul>
-          <Button class="test" onClick={onCloseFeedback}>
+        // Devrait être bon
+        <div className="feedback-error">
+          <div>
+            {type ? (
+              <Button class="cameraCloseButton" onClick={onCloseFeedback}>
+                <span>X</span>
+              </Button>
+            ) : null}
+            <img src="/img/snap-error.gif" alt={t('notFound')} />
+            <h2>{t('notFound')}</h2>
+            <ul>
+              <li>{t('notFoundDesc1')}</li>
+              <li>{t('notFoundDesc2')}</li>
+            </ul>
+          </div>
+          <Button class="btn" onClick={onCloseFeedback}>
             <span>{t('retry')}</span>
           </Button>
         </div>
@@ -63,14 +79,5 @@ export default function Feedback(props: Props) {
   }
   // else : display none.
 
-  return (
-    <div className="camera-feedback">
-      {type ? (
-        <Button class="close-btn" onClick={onCloseFeedback}>
-          <span>X</span>
-        </Button>
-      ) : null}
-      {feedbackContent}
-    </div>
-  );
+  return <div className="camera-feedback">{feedbackContent}</div>;
 }

@@ -47,3 +47,43 @@
   border-radius: 5px;
   filter: drop-shadow(3.42901e-16px 1px 10px rgba(0, 0, 0, 0.05));
 }
+
+.btnCameraList {
+  @extend .btn;
+  background-color: var(--transparentGray);
+  border-radius: 100%;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  max-width: 50px;
+  max-height: 50px;
+  box-shadow: none;
+}
+
+.btnCameraList i {
+  color: white;
+  font-size: 20px;
+}
+
+#container-circles {
+  bottom: 30px !important;
+}
+
+#outer-circle {
+  background-color: rgba(0, 0, 0, 0) !important;
+  height: 65px !important;
+  width: 65px !important;
+  position: relative !important;
+  border: 3px solid var(--yellow);
+}
+
+#inner-circle {
+  background-color: var(--yellow) !important;
+  height: 49px !important;
+  width: 49px !important;
+  margin: -56% 0 0 -41% !important;
+}
+
+#inner-circle.is-clicked {
+  margin: -56% 0 0 -41% !important;
+}
