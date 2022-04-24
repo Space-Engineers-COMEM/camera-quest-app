@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import RetranscriptionPanel from '../content/RetranscriptionPanel';
 
 interface AudioPlayerProps {
   src: string;
@@ -7,6 +8,7 @@ interface AudioPlayerProps {
 export default function AudioPlayer(props: AudioPlayerProps) {
   const [isPlaying, setPlayState] = useState(false);
   const [audioSpeed, setAudioSpeedValue] = useState(1);
+  const [showRetranscription, setRetranscriptionVisibility] = useState(false);
 
   const audioFileRef = useRef<HTMLAudioElement>(null);
   const seekSliderRef = useRef<HTMLInputElement>(null);
@@ -101,57 +103,86 @@ export default function AudioPlayer(props: AudioPlayerProps) {
     }
   }, [audioSpeed]);
 
+  const closeRetranscription = (): void => {
+    setRetranscriptionVisibility(false);
+  };
+
   return (
-    <div className="container-fluid audioPlayer">
-      <div className="container">
-        <div className="row">
-          <div className="row audioPlayer__timeLine">
-            <input
-              type="range"
-              ref={seekSliderRef}
-              max="100"
-              defaultValue="0"
-              onChange={setAudioTime}
-            />
+    <div className="audioPlayer">
+      <RetranscriptionPanel
+        retranscription="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis tenetur quas, numquam nisi odio, accusamus, beatae est fugit incidunt dolorem nobis! Voluptatem explicabo, ratione maxime tempora fugit ut vitae placeat!
+      Dolor recusandae saepe, placeat vitae rem incidunt aperiam rerum modi maiores. Necessitatibus saepe quo distinctio, esse accusantium doloribus omnis mollitia at quia qui dicta debitis delectus. Deserunt voluptatum modi est.
+      Autem impedit provident velit fuga omnis, exercitationem reprehenderit ad.
+      Mollitia a hic autem reiciendis neque doloremque quam laudantium totam. Quasi totam voluptatibus id temporibus. Non consequuntur impedit qui eius eaque.
+      Quis quod laborum harum nihil recusandae molestiae consectetur sint unde inventore. Perferendis, eum autem quam doloremque aliquam error dolores iusto soluta voluptatum laborum modi consequatur nisi facilis tempore. Explicabo, omnis.
+      Labore quasi deserunt eaque repudiandae facilis distinctio, quisquam at neque ad eligendi repellat, corporis totam obcaecati officiis iusto voluptas quod. Voluptate, veniam ea. Quasi exercitationem atque numquam quas expedita impedit?
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.Corporis tenetur quas, numquam nisi odio, accusamus, beatae est fugit incidunt dolorem nobis! Voluptatem explicabo, ratione maxime tempora fugit ut vitae placeat!
+      Dolor recusandae saepe, placeat vitae rem incidunt aperiam rerum modi maiores. Necessitatibus saepe quo distinctio, esse accusantium doloribus omnis mollitia at quia qui dicta debitis delectus. Deserunt voluptatum modi est.
+      Autem impedit provident velit fuga omnis, exercitationem reprehenderit ad. Mollitia a hic autem reiciendis neque doloremque quam laudantium totam. Quasi totam voluptatibus id temporibus. Non consequuntur impedit qui eius eaque.
+      Quis quod laborum harum nihil recusandae molestiae consectetur sint unde inventore. Perferendis, eum autem quam doloremque aliquam error dolores iusto soluta voluptatum laborum modi consequatur nisi facilis tempore. Explicabo, omnis.
+      Labore quasi deserunt eaque repudiandae facilis distinctio, quisquam at neque ad eligendi repellat, corporis totam obcaecati officiis iusto voluptas quod. Voluptate, veniam ea. Quasi exercitationem atque numquam quas expedita impedit?"
+        show={showRetranscription}
+        setVisibility={closeRetranscription}
+      />
+      <div className="container-fluid audioPlayerReader">
+        <div className="container">
+          <div className="row">
+            <div className="row audioPlayerReader__timeLine">
+              <input
+                type="range"
+                ref={seekSliderRef}
+                max="100"
+                defaultValue="0"
+                onChange={setAudioTime}
+              />
+            </div>
           </div>
-        </div>
-        <div className="row">
-          <audio
-            onLoadedMetadata={initPlayer}
-            onTimeUpdate={updateTimeValue}
-            ref={audioFileRef}
-            src={props.src}
-            preload="metadata"
-          >
-            <track kind="captions" />
-          </audio>
-          <button className="col-2 audioPlayer__btn speed" type="button" onClick={changeAudioSpeed}>
-            {audioSpeed}x
-          </button>
-          <button
-            className="col-2 audioPlayer__btn jumpAudio"
-            type="button"
-            onClick={() => jumpInAudio(-10)}
-          >
-            <img src="/img/10sAvant.png" alt="10 seconds backward" />
-          </button>
-          <button className="col-4 audioPlayer__btn play" type="button" onClick={changePlayState}>
-            <img src={`/img/${!isPlaying ? 'Play' : 'Pause'}.png`} alt="Start and Pause button" />
-          </button>
-          <button
-            className="col-2 audioPlayer__btn jumpAudio"
-            type="button"
-            onClick={() => jumpInAudio(10)}
-          >
-            <img src="/img/10sApres.png" alt="10 seconds forward" />
-          </button>
-          <button
-            className="col-2 audioPlayer__btn transcription"
-            type="button"
-            onClick={() => jumpInAudio(10)}
-          >
-            <img src="/img/Retranscription.png" alt="10 seconds forward" />
-          </button>
+          <div className="row">
+            <audio
+              onLoadedMetadata={initPlayer}
+              onTimeUpdate={updateTimeValue}
+              ref={audioFileRef}
+              src={props.src}
+              preload="metadata"
+            >
+              <track kind="captions" />
+            </audio>
+            <button
+              className="col-2 audioPlayerReader__btn speed"
+              type="button"
+              onClick={changeAudioSpeed}
+            >
+              {audioSpeed}x
+            </button>
+            <button
+              className="col-2 audioPlayerReader__btn jumpAudio"
+              type="button"
+              onClick={() => jumpInAudio(-10)}
+            >
+              <img src="/img/10sAvant.png" alt="10 seconds backward" />
+            </button>
+            <button
+              className="col-4 audioPlayerReader__btn play"
+              type="button"
+              onClick={changePlayState}
+            >
+              <img src={`/img/${!isPlaying ? 'Play' : 'Pause'}.png`} alt="Start and Pause button" />
+            </button>
+            <button
+              className="col-2 audioPlayerReader__btn jumpAudio"
+              type="button"
+              onClick={() => jumpInAudio(10)}
+            >
+              <img src="/img/10sApres.png" alt="10 seconds forward" />
+            </button>
+            <button
+              className="col-2 audioPlayerReader__btn transcription"
+              type="button"
+              onClick={() => setRetranscriptionVisibility(!showRetranscription)}
+            >
+              <img src="/img/Retranscription.png" alt="10 seconds forward" />
+            </button>
+          </div>
         </div>
       </div>
     </div>

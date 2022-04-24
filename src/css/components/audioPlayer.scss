@@ -1,11 +1,12 @@
-.audioPlayer {
+.audioPlayerReader {
+  z-index: 99;
   position: fixed;
   bottom: 0px;
   background-color: var(--yellow);
   padding-top: 17px;
 }
 
-.audioPlayer__timeLine {
+.audioPlayerReader__timeLine {
   margin-bottom: 10px;
   margin-left: auto;
   margin-right: auto;
@@ -85,7 +86,7 @@
   }
 }
 
-.audioPlayer__btn {
+.audioPlayerReader__btn {
   padding: 0;
   border: none;
   background: none;
