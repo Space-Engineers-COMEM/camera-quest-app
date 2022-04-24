@@ -1,54 +1,81 @@
-.poi_img{
-display: block;
-margin-left: auto;
-margin-right: auto;
-width: 100%;
-height: 65vw;
-max-height: 300px;
-max-width: 820px;
-object-fit: cover;
-left: 0px;
-top: 0px;
+.poi_img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 65vw;
+  max-height: 300px;
+  max-width: 820px;
+  object-fit: cover;
+  left: 0px;
+  top: 0px;
+}
+.poi_contener_title {
+  padding-top: 10px;
 }
 
-.poi_title{
-display: inline;
-font-family: "NEXT Book bold";
-color: var(--black);
-/* M_Detail_H1 */
-
-
-
-font-style: normal;
-font-size: 30px;
-line-height: 36px;
-
+.poi_title {
+  display: inline;
+  padding-top: 10px;
+  margin-right: 10px;
+  color: var(--black);
+  font-style: normal;
+  font-size: 2rem;
+  line-height: 36px;
+}
+.poi_contener_detail {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
 }
 
-
-.poi_author{
-  font-family: "NEXT Book thin";
+.poi_author {
   color: var(--darkGray);
-  font-size: 20px;
+  margin-top: 5px;
+  font-size: 1.4rem;
   line-height: 25px;
 }
 
-.poi_title_detail{
-
-
+.poi_detail_title {
+  margin-top: 0px;
+  margin-bottom: 5px;
+  align-items: center;
+  text-align: center;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 18px;
+  color: var(--darkGray);
 }
 
-.poi_detail{
-  display: inline;
-
-  font-family: "NEXT Book bold";
-color: var(--yellow);
-
+.poi_detail {
+  margin: 0px;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 24px;
+  align-items: center;
+  text-align: center;
+  color: var(--yellow);
+}
+.poi_detail_right {
+  padding-right: 30px;
+  padding-left: 0px;
+}
+.poi_detail_left {
+  padding-right: 0px;
+  padding-left: 30px;
 }
 
-.poi_description{
-  font-size: 16px;
-  line-height: 19px;
+.poi_trait {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.poi_description {
+  font-size: 1.1rem;
+  line-height: 22px;
   letter-spacing: -0.02em;
   font-feature-settings: 'liga' off;
 }
