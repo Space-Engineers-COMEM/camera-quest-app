@@ -9,9 +9,7 @@ export default function AudioPlayer(props: AudioPlayerProps) {
   const [audioSpeed, setAudioSpeedValue] = useState(1);
 
   const audioFileRef = useRef<HTMLAudioElement>(null);
-  const totalTimeRef = useRef<HTMLSpanElement>(null);
   const seekSliderRef = useRef<HTMLInputElement>(null);
-  const currentTimeRef = useRef<HTMLSpanElement>(null);
 
   const changePlayState = (): void => {
     if (audioFileRef.current) {
@@ -31,28 +29,29 @@ export default function AudioPlayer(props: AudioPlayerProps) {
     return `${minutes}:${returnedSeconds}`;
   };
 
-  const setCurrentTime = (): void => {
-    if (currentTimeRef.current && seekSliderRef.current) {
-      currentTimeRef.current.textContent = calculateTime(+seekSliderRef.current.value);
-    }
-  };
-
-  const displayDuration = (): void => {
-    if (totalTimeRef.current) {
-      totalTimeRef.current.innerText = calculateTime(audioFileRef.current?.duration);
-    }
-  };
-
   const setSliderMax = () => {
     if (seekSliderRef.current && audioFileRef.current) {
       seekSliderRef.current.max = `${Math.floor(audioFileRef.current.duration)}`;
     }
   };
 
+  const updateTrackStyle = (): void => {
+    if (seekSliderRef.current) {
+      const sliderPercentage =
+        ((+seekSliderRef.current.value - +seekSliderRef.current.min) /
+          (+seekSliderRef.current.max - +seekSliderRef.current.min)) *
+        100;
+      document.documentElement.style.setProperty(
+        '--reader-track-percentage',
+        `${sliderPercentage}%`
+      );
+    }
+  };
+
   const showCurrentTimeValue = (): void => {
-    if (audioFileRef.current && seekSliderRef.current && currentTimeRef.current) {
+    if (audioFileRef.current && seekSliderRef.current) {
+      updateTrackStyle();
       seekSliderRef.current.value = `${Math.floor(audioFileRef.current.currentTime)}`;
-      currentTimeRef.current.textContent = calculateTime(+seekSliderRef.current.value);
     }
   };
 
@@ -61,7 +60,6 @@ export default function AudioPlayer(props: AudioPlayerProps) {
       audioFileRef.current.currentTime = 0;
       showCurrentTimeValue();
     }
-    displayDuration();
     setSliderMax();
   };
 
@@ -105,45 +103,56 @@ export default function AudioPlayer(props: AudioPlayerProps) {
 
   return (
     <div className="container-fluid audioPlayer">
-      <div className="row">
-        <audio
-          onLoadedMetadata={initPlayer}
-          onTimeUpdate={updateTimeValue}
-          ref={audioFileRef}
-          src={props.src}
-          preload="metadata"
-        >
-          <track kind="captions" />
-        </audio>
-        <button type="button" onClick={changePlayState}>
-          <i className={`fa-solid fa-${!isPlaying ? 'play' : 'pause'}`} />
-        </button>
-        <button type="button" onClick={changeAudioSpeed}>
-          x{audioSpeed}
-        </button>
-        <button type="button" onClick={() => jumpInAudio(-10)}>
-          -10s
-        </button>
-        <button type="button" onClick={() => jumpInAudio(10)}>
-          +10s
-        </button>
-      </div>
-      <div className="row">
-        <span className="col-2" ref={currentTimeRef}>
-          0:00
-        </span>
-        <input
-          className="col-8"
-          type="range"
-          ref={seekSliderRef}
-          max="100"
-          defaultValue="0"
-          onInput={setCurrentTime}
-          onChange={setAudioTime}
-        />
-        <span className="col-2" ref={totalTimeRef}>
-          0:00
-        </span>
+      <div className="container">
+        <div className="row">
+          <div className="row audioPlayer__timeLine">
+            <input
+              type="range"
+              ref={seekSliderRef}
+              max="100"
+              defaultValue="0"
+              onChange={setAudioTime}
+            />
+          </div>
+        </div>
+        <div className="row">
+          <audio
+            onLoadedMetadata={initPlayer}
+            onTimeUpdate={updateTimeValue}
+            ref={audioFileRef}
+            src={props.src}
+            preload="metadata"
+          >
+            <track kind="captions" />
+          </audio>
+          <button className="col-2 audioPlayer__btn speed" type="button" onClick={changeAudioSpeed}>
+            {audioSpeed}x
+          </button>
+          <button
+            className="col-2 audioPlayer__btn jumpAudio"
+            type="button"
+            onClick={() => jumpInAudio(-10)}
+          >
+            <img src="/img/10sAvant.png" alt="10 seconds backward" />
+          </button>
+          <button className="col-4 audioPlayer__btn play" type="button" onClick={changePlayState}>
+            <img src={`/img/${!isPlaying ? 'Play' : 'Pause'}.png`} alt="Start and Pause button" />
+          </button>
+          <button
+            className="col-2 audioPlayer__btn jumpAudio"
+            type="button"
+            onClick={() => jumpInAudio(10)}
+          >
+            <img src="/img/10sApres.png" alt="10 seconds forward" />
+          </button>
+          <button
+            className="col-2 audioPlayer__btn transcription"
+            type="button"
+            onClick={() => jumpInAudio(10)}
+          >
+            <img src="/img/Retranscription.png" alt="10 seconds forward" />
+          </button>
+        </div>
       </div>
     </div>
   );
