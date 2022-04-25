@@ -8,7 +8,7 @@ import AudioPlayer from './input/AudioPlayer';
 import PoiCheck from './content/PoiCheck';
 
 export default function POI() {
-  const { t } = useTranslation('', { keyPrefix: 'Snap' });
+  const { t } = useTranslation('', { keyPrefix: 'Poi' });
   const navigate = useNavigate();
 
   const [poi, setPoi] = useState<PoiType>();
@@ -98,8 +98,7 @@ export default function POI() {
         </div>
         <div className="row poi_contener_detail">
           <div className="col poi_detail_left">
-            {/* To translate */}
-            <h3 className="poi_detail_title">Date</h3>
+            <h3 className="poi_detail_title">{t('date')}</h3>
             <p className="poi_detail ">
               {poi.content.poi.periode}
               {/* {canBeShared ? (
@@ -133,8 +132,7 @@ export default function POI() {
             </svg>
           </div>
           <div className="col poi_detail_right">
-            {/* To translate */}
-            <h3 className="poi_detail_title">Lieu</h3>
+            <h3 className="poi_detail_title">{t('place')}</h3>
             <p className="poi_detail ">{poi.content.poi.location}</p>
           </div>
         </div>

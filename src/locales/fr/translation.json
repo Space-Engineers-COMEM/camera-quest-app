@@ -62,5 +62,9 @@
       "title": "Prendre une photo",
       "desc": "Maintenant que vous savez tout du mode \"Liste\", venez découvrir le mode \"Photo\" ! Pour ça, rien de plus simple, cliquez sur le bouton ci-dessous. Et prenez une photo !"
     }
+  },
+  "Poi": {
+    "date": "Date",
+    "place": "Lieu"
   }
 }

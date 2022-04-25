@@ -62,5 +62,9 @@
       "title": "Take a picture",
       "desc": "Now that you know everything about the \"List\" mode, come and discover the \"Camera\" mode! For that, nothing could be easier, click on the button below. And take a picture !"
     }
+  },
+  "Poi": {
+    "date": "Date",
+    "place": "Place"
   }
 }
