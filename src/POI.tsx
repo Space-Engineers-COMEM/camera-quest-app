@@ -107,7 +107,7 @@ export default function POI() {
             <h3 className="poi_detail_title">Date</h3>
             <p className="poi_detail ">
               {poi.periode}
-              {canBeShared ? (
+              {/* {canBeShared ? (
                 <span>
                   <button type="button" onClick={handleShareClick}>
                     <i className="fa-solid fa-share-from-square" />
@@ -115,7 +115,7 @@ export default function POI() {
                 </span>
               ) : (
                 ''
-              )}
+              )} */}
             </p>
           </div>
           <div className="col-1 poi_trait">

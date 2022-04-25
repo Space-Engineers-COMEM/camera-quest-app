@@ -10,8 +10,9 @@
   left: 0px;
   top: 0px;
 }
+
 .poi_contener_title {
-  padding-top: 10px;
+  padding-top: var(--default-padding);
 }
 
 .poi_title {
@@ -23,6 +24,7 @@
   font-size: 2rem;
   line-height: 36px;
 }
+
 .poi_contener_detail {
   display: flex;
   flex-direction: row;
@@ -58,10 +60,12 @@
   text-align: center;
   color: var(--yellow);
 }
+
 .poi_detail_right {
   padding-right: 30px;
   padding-left: 0px;
 }
+
 .poi_detail_left {
   padding-right: 0px;
   padding-left: 30px;
@@ -77,5 +81,5 @@
   font-size: 1.1rem;
   line-height: 22px;
   letter-spacing: -0.02em;
-  font-feature-settings: 'liga' off;
+  font-feature-settings: 'liga'off;
 }
