@@ -3,6 +3,7 @@ import RetranscriptionPanel from '../content/RetranscriptionPanel';
 
 interface AudioPlayerProps {
   src: string;
+  retranscription: string;
 }
 
 export default function AudioPlayer(props: AudioPlayerProps) {
@@ -110,17 +111,7 @@ export default function AudioPlayer(props: AudioPlayerProps) {
   return (
     <div className="audioPlayer">
       <RetranscriptionPanel
-        retranscription="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis tenetur quas, numquam nisi odio, accusamus, beatae est fugit incidunt dolorem nobis! Voluptatem explicabo, ratione maxime tempora fugit ut vitae placeat!
-      Dolor recusandae saepe, placeat vitae rem incidunt aperiam rerum modi maiores. Necessitatibus saepe quo distinctio, esse accusantium doloribus omnis mollitia at quia qui dicta debitis delectus. Deserunt voluptatum modi est.
-      Autem impedit provident velit fuga omnis, exercitationem reprehenderit ad.
-      Mollitia a hic autem reiciendis neque doloremque quam laudantium totam. Quasi totam voluptatibus id temporibus. Non consequuntur impedit qui eius eaque.
-      Quis quod laborum harum nihil recusandae molestiae consectetur sint unde inventore. Perferendis, eum autem quam doloremque aliquam error dolores iusto soluta voluptatum laborum modi consequatur nisi facilis tempore. Explicabo, omnis.
-      Labore quasi deserunt eaque repudiandae facilis distinctio, quisquam at neque ad eligendi repellat, corporis totam obcaecati officiis iusto voluptas quod. Voluptate, veniam ea. Quasi exercitationem atque numquam quas expedita impedit?
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.Corporis tenetur quas, numquam nisi odio, accusamus, beatae est fugit incidunt dolorem nobis! Voluptatem explicabo, ratione maxime tempora fugit ut vitae placeat!
-      Dolor recusandae saepe, placeat vitae rem incidunt aperiam rerum modi maiores. Necessitatibus saepe quo distinctio, esse accusantium doloribus omnis mollitia at quia qui dicta debitis delectus. Deserunt voluptatum modi est.
-      Autem impedit provident velit fuga omnis, exercitationem reprehenderit ad. Mollitia a hic autem reiciendis neque doloremque quam laudantium totam. Quasi totam voluptatibus id temporibus. Non consequuntur impedit qui eius eaque.
-      Quis quod laborum harum nihil recusandae molestiae consectetur sint unde inventore. Perferendis, eum autem quam doloremque aliquam error dolores iusto soluta voluptatum laborum modi consequatur nisi facilis tempore. Explicabo, omnis.
-      Labore quasi deserunt eaque repudiandae facilis distinctio, quisquam at neque ad eligendi repellat, corporis totam obcaecati officiis iusto voluptas quod. Voluptate, veniam ea. Quasi exercitationem atque numquam quas expedita impedit?"
+        retranscription={props.retranscription}
         show={showRetranscription}
         setVisibility={closeRetranscription}
       />

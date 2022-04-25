@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
-import PoiType from './types/PoiType';
+import PoiType from './types/FullPoiType';
 import ShareType from './types/ShareType';
 import AudioPlayer from './input/AudioPlayer';
 import PoiCheck from './content/PoiCheck';
+import ISOtoId from './utils/ISOtoId';
 
 export default function POI() {
   const { t } = useTranslation('', { keyPrefix: 'Snap' });
@@ -18,7 +19,7 @@ export default function POI() {
   const getPOIFromAPI = (id: number): void => {
     axios({
       method: 'get',
-      url: `${apiUrl}/${id}`,
+      url: `${apiUrl}/${id}/1`,
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -35,7 +36,7 @@ export default function POI() {
   };
 
   const shareData: ShareType = {
-    title: `Camera Museum - ${poi?.title}`,
+    title: `Camera Museum - ${poi?.content.poi.title}`,
     text: 'Redécouvrez la photo !',
     url: window.location.href,
   };
@@ -80,22 +81,17 @@ export default function POI() {
   }
   return (
     <div>
-      <img
-        className="poi_img"
-        // src={poi.image_url}
-        src="/4131_MEGALETOSCOPE.jpg"
-        alt={poi.title}
-      />
+      <img className="poi_img" src={poi.content.poi.image_url} alt={poi.content.poi.title} />
       <div className="container-sm m-0 p-0">
         <div className="row">
           <div className="col poi_contener_title">
-            <h1 className="poi_title">{poi.title}</h1>
-            <PoiCheck checked={isCapturedPOI(poi.id)} />
+            <h1 className="poi_title">{poi.content.poi.title}</h1>
+            <PoiCheck checked={isCapturedPOI(poi.content.poi.id)} />
           </div>
         </div>
         <div className="row">
           <div className="col">
-            <h2 className="poi_author">{poi.author}</h2>
+            <h2 className="poi_author">{poi.content.poi.manufacturer}</h2>
           </div>
         </div>
         <div className="row poi_contener_detail">
@@ -103,7 +99,7 @@ export default function POI() {
             {/* To translate */}
             <h3 className="poi_detail_title">Date</h3>
             <p className="poi_detail ">
-              {poi.periode}
+              {poi.content.poi.periode}
               {canBeShared ? (
                 <span>
                   <button type="button" onClick={handleShareClick}>
@@ -137,16 +133,21 @@ export default function POI() {
           <div className="col poi_detail_right">
             {/* To translate */}
             <h3 className="poi_detail_title">Lieu</h3>
-            <p className="poi_detail ">{poi.origin}</p>
+            <p className="poi_detail ">{poi.content.poi.location}</p>
           </div>
         </div>
         <div className="row">
           <div className="col-md-12">
-            <p className="poi_description">{poi.description}</p>
+            <p className="poi_description">
+              {poi.content.translations[1] ? poi.content.translations[1].value : ''}
+            </p>
           </div>
         </div>
       </div>
-      <AudioPlayer src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" />
+      <AudioPlayer
+        src={poi.content.resources[0].url}
+        retranscription={poi.content.translations[0].value}
+      />
     </div>
   );
 }
