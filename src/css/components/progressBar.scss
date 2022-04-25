@@ -2,17 +2,36 @@
   text-align: center;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+
   > progress {
+    /* Mozilla Specifics */
     width: 100%;
     color: var(--green);
     border-radius: 100px;
     border: none;
     box-shadow: var(--shadow-internal);
     background-color: var(--white);
-    &::-moz-progress-bar,
-    &::-webkit-progress-value {
-      background: var(--green);
+    -webkit-appearance: none;
+    &::-moz-progress-bar {
+      background-color: var(--green);
       border-radius: 100px;
+      box-shadow: var(--shadow-btn-inner);
+    }
+
+    /* Webkit Specifics */
+    &::-webkit-progress-bar,
+    &::-webkit-progress-value {
+      border-radius: 100px;
+      border: none;
+      box-shadow: var(--shadow-internal);
+    }
+    &::-webkit-progress-bar
+    {
+      background-color: var(--white);
+    }
+    &::-webkit-progress-value
+    {
+      background-color: var(--green);
       box-shadow: var(--shadow-btn-inner);
     }
   }
