@@ -124,7 +124,10 @@ export default function Snap() {
         imageCompression={0.97}
         isMaxResolution={false}
         isImageMirror={false}
-        idealResolution={{ width: 720, height: 1280 }}
+        idealResolution={{
+          width: document.documentElement.clientWidth || 720,
+          height: document.documentElement.clientHeight || 1260,
+        }}
         isSilentMode
         isDisplayStartCameraError
       />
