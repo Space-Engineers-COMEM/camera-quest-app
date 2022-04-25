@@ -22,9 +22,8 @@ export default function LanguageSelector(props: Props) {
     <form onSubmit={handleSubmit}>
       <div className="langSelector">
         {Object.keys(lngs).map((lng) => (
-          <fieldset>
+          <fieldset key={lng}>
             <input
-              key={lng}
               id={lng}
               type="radio"
               name="lang"

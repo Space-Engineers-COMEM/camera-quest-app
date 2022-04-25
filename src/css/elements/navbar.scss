@@ -57,6 +57,11 @@ nav {
   border-bottom-right-radius: var(--default-border-radius);
   background: var(--white);
   box-shadow: var(--shadow-popup);
+  transition: all .2s ease-in-out;
+  &.hidden{
+    left:-500px;
+    transition: all .3s ease-in-out;
+  }
 }
 
 .langSelector {
