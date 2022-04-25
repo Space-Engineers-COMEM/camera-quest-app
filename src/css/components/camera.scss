@@ -140,6 +140,10 @@
   font-weight: 700;
   box-shadow: var(--shadow-internal);
   background-color: var(--lightGray);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
 }
 
 .cameraPreview {

@@ -110,6 +110,10 @@
   align-items: center;
   justify-content: center;
   background-color: var(--lightGray);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
 }
 
 .fa-xmark {

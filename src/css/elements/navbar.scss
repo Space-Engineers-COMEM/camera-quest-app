@@ -96,7 +96,11 @@ nav {
 }
 
 .langSelectorContainer button[type=submit] {
+  background-color: var(--lightGray);
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   top: var(--default-padding);
   right: var(--default-padding);
   border-radius: 100%;
@@ -108,6 +112,10 @@ nav {
   font-size: var(--fs-btn);
   font-weight: 700;
   box-shadow: var(--shadow-internal);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
 }
 
 // AREA SELECTOR
