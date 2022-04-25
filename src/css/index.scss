@@ -9,6 +9,7 @@
 @import './elements/headings.scss';
 @import './elements/navbar.scss';
 
+@import './components/welcome.scss';
 @import './components/poi.scss';
 @import './components/poiListItem.scss';
 @import './components/camera.scss';
@@ -18,3 +19,4 @@
 @import './components/progressBar.scss';
 @import './components/audioPlayer.scss';
 @import './components/retranscriptionPanel.scss';
+@import './components/error404.scss';

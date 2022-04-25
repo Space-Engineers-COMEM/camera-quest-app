@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import parse from 'html-react-parser';
 
 interface Props {
   retranscription: string;
@@ -21,7 +22,7 @@ export default function ProgressBar(props: Props) {
       </div>
       <div className="retrans__content">
         <h1 className="retrans__title">Retranscription Audio</h1>
-        <p className="retrans__text">{props.retranscription}</p>
+        <p className="retrans__text">{parse(props.retranscription)}</p>
       </div>
     </div>
   );

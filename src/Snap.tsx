@@ -13,8 +13,8 @@ export default function Snap() {
   const [poiPreview, setPoiPreview] = useState();
   const [errorCounter, setErrorCounter] = useState(0);
 
-  const viewportWidth = window.innerWidth;
-  const viewportHeight = window.innerHeight;
+  const viewportWidth = document.documentElement.clientWidth;
+  const viewportHeight = document.documentElement.clientHeight;
 
   // Function created by Namitha Gowda : https://stackoverflow.com/users/8665961/namitha-gowda
   const b64toBlob = (b64Data: string, contentType = '', sliceSize = 512) => {
@@ -53,7 +53,7 @@ export default function Snap() {
   // API communication
   const handleTakePhoto = async (dataUri: string) => {
     setIsLoading(true);
-    const predictionUrl = 'https://api.cameramuseum.app/pois/prediction/debug';
+    const predictionUrl = 'https://api.cameramuseum.app/pois/prediction';
 
     const data = new FormData();
     data.append('file', b64toBlob(dataUri.slice(23)));
@@ -122,6 +122,10 @@ export default function Snap() {
         imageCompression={0.97}
         isMaxResolution={false}
         isImageMirror={false}
+        idealResolution={{
+          width: document.documentElement.clientWidth || 720,
+          height: document.documentElement.clientHeight || 1260,
+        }}
         isSilentMode
         isDisplayStartCameraError
       />
