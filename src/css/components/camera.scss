@@ -10,11 +10,41 @@
 
 .camera-feedback {
   position: absolute;
-  bottom: 0;
   width: 100%;
   z-index: 20;
   border-top-right-radius: var(--default-border-radius);
   border-top-left-radius: var(--default-border-radius);
+
+  transition: all .2s ease-in-out;
+
+  &.hidden {
+    bottom: -500px;
+    transition: all .2s ease-in-out;
+  }
+
+  &.loading {
+    bottom: 0px;
+    transition: all .5s ease-in-out;
+  }
+
+  &.active {
+    animation-duration: .5s;
+    animation-name: slidein;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+    bottom: -500px;
+  }
+
+  @keyframes slidein {
+    from {
+      bottom: -500px;
+    }
+
+    to {
+      bottom: 0px;
+    }
+  }
 
   img {
     width: 144px;
@@ -40,6 +70,7 @@
 }
 
 .feedback-loading {
+  position: relative;
   display: flex;
   justify-content: center;
   width: 100%;

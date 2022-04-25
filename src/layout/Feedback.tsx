@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import Button from '../navigation/Button';
@@ -15,7 +15,6 @@ interface Props {
 
 export default function Feedback(props: Props) {
   const { t } = useTranslation('', { keyPrefix: 'Snap' });
-
   const onCloseFeedback = (): void => {
     props.onCloseFeedback();
   };
@@ -55,7 +54,6 @@ export default function Feedback(props: Props) {
       );
     } else {
       feedbackContent = (
-        // Devrait être bon
         <div className="feedback-error">
           <div>
             {type ? (
@@ -77,7 +75,13 @@ export default function Feedback(props: Props) {
       );
     }
   }
-  // else : display none.
-
-  return <div className="camera-feedback">{feedbackContent}</div>;
+  return (
+    <div
+      className={`camera-feedback ${isLoading ? 'loading' : ''} ${
+        type === 'success' || type === 'unpredictable' ? 'active' : ''
+      } ${!isLoading && type === '' ? 'hidden' : ''}`}
+    >
+      {feedbackContent}
+    </div>
+  );
 }

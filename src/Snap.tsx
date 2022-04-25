@@ -12,8 +12,6 @@ export default function Snap() {
   const [feedbackError, setFeedbackError] = useState('');
   const [poiPreview, setPoiPreview] = useState();
   const [errorCounter, setErrorCounter] = useState(0);
-  // const viewportWidth = document.documentElement.clientWidth;
-  // const viewportHeight = document.documentElement.clientHeight;
 
   const viewportWidth = window.innerWidth;
   const viewportHeight = window.innerHeight;
@@ -55,7 +53,7 @@ export default function Snap() {
   // API communication
   const handleTakePhoto = async (dataUri: string) => {
     setIsLoading(true);
-    const predictionUrl = 'https://api.cameramuseum.app/pois/';
+    const predictionUrl = 'https://api.cameramuseum.app/pois/prediction/debug';
 
     const data = new FormData();
     data.append('file', b64toBlob(dataUri.slice(23)));
