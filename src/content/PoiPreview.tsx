@@ -31,7 +31,7 @@ export default function PoiPreview(props: Props) {
       <div className="cameraPreview">
         <div>
           <Button class="cameraCloseButton" onClick={onCloseFeedback}>
-            <span>X</span>
+            <i className="fa-solid fa-xmark" />
           </Button>
           <img src={poi.imagePath} alt={poi.title} />
           <div>

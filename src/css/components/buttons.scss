@@ -22,14 +22,17 @@
 
 .camera-btn {
   padding: 25px 25px 25px 25px;
-  i {
+
+  img {
     //center i inside parent height and width
     position: absolute;
     font-size: 1.5em;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 55%;
   }
+
   height: 1/6vw;
   width: 1/6vw;
   border-radius: 50%;
@@ -38,6 +41,7 @@
   right: 40px;
   cursor: pointer;
 }
+
 .btn--fa-square {
   height: 30px;
   width: 30px;
@@ -67,6 +71,7 @@
 
 #container-circles {
   bottom: 30px !important;
+  display: none;
 }
 
 #outer-circle {
@@ -86,4 +91,27 @@
 
 #inner-circle.is-clicked {
   margin: -56% 0 0 -41% !important;
+}
+
+.btnClose {
+  position: absolute;
+  top: var(--default-padding);
+  right: var(--default-padding);
+  text-decoration: none;
+  border-radius: 100%;
+  color: var(--white);
+  border: none;
+  height: 30px;
+  width: 30px;
+  font-size: var(--fs-btn);
+  font-weight: 700;
+  box-shadow: var(--shadow-internal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--lightGray);
+}
+
+.fa-xmark {
+  font-size: 1.2rem
 }
