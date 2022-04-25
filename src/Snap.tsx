@@ -119,15 +119,12 @@ export default function Snap() {
         idealFacingMode={FACING_MODES.ENVIRONMENT}
         isFullscreen
         imageType={IMAGE_TYPES.JPG}
-        imageCompression={0.97}
-        isMaxResolution={false}
+        imageCompression={1}
+        isMaxResolution
         isImageMirror={false}
-        idealResolution={{
-          width: document.documentElement.clientWidth || 720,
-          height: document.documentElement.clientHeight || 1260,
-        }}
         isSilentMode
         isDisplayStartCameraError
+        sizeFactor={0.5}
       />
 
       <Link to="/" className="btnCameraList">
