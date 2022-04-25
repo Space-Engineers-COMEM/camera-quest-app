@@ -86,7 +86,7 @@ export default function POI() {
   }
   return (
     <div>
-      <Link className="btnClose" to="/">
+      <Link className="btnClose" to="/poi">
         <i className="fa-solid fa-xmark" />
       </Link>
       <img className="poi_img" src={poi.content.poi.image_url} alt={poi.content.poi.title} />

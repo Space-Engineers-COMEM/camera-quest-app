@@ -28,12 +28,11 @@ export default class App extends React.Component<Props, States> {
     return (
       <div className="App">
         <Routes>
-          <Route path="/welcome" element={<Welcome />} />
+          <Route path="/" element={<Welcome />} />
           <Route path="/nomatch" element={<Error404 />} />
           <Route path="/snap" element={<Snap />} />
-          <Route path="/" element={<POIList />} />
+          <Route path="/poi" element={<POIList />} />
           <Route path="/poi/:id" element={<POI />} />
-          {/* <Route path="/language" element={<Language />} /> */}
           {/* <Route path="/congrat" element={<Congrat />} /> */}
           <Route path="/*" element={<Error404 />} />
         </Routes>
