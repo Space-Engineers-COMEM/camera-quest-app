@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import PoiType from './types/FullPoiType';
 import ShareType from './types/ShareType';
 import AudioPlayer from './input/AudioPlayer';
 import PoiCheck from './content/PoiCheck';
-import ISOtoId from './utils/ISOtoId';
-import Button from './navigation/Button';
 
 export default function POI() {
   const { t } = useTranslation('', { keyPrefix: 'Snap' });
@@ -58,10 +56,6 @@ export default function POI() {
 
   const id: string = useParams().id || '0';
 
-  const onCloseFeedback = (): void => {
-    console.log('coucou');
-  };
-
   useEffect(() => {
     getPOIFromAPI(+id);
   }, []);
@@ -86,9 +80,9 @@ export default function POI() {
   }
   return (
     <div>
-      <Link className="btnClose" to="/poi">
+      <button type="button" className="btnClose" onClick={() => navigate(-1)}>
         <i className="fa-solid fa-xmark" />
-      </Link>
+      </button>
       <img className="poi_img" src={poi.content.poi.image_url} alt={poi.content.poi.title} />
       <div className="container-sm m-0 p-0">
         <div className="row">
