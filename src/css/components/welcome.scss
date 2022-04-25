@@ -1,0 +1,25 @@
+.welcome-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  > img {
+    max-width: 250px;
+    margin: auto;
+    display: block;
+  }
+
+  > p {
+    font-weight: 300;
+  }
+
+  .closeButton {
+    display: none;
+  }
+
+  .langSelector {
+    margin: 30px 0;
+  }
+}

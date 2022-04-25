@@ -36,12 +36,12 @@ export default function POIList() {
     return stringPOIs ? JSON.parse(stringPOIs) : [];
   };
 
-  const stepsEnabled = localStorage.getItem('tutorial-done') !== 'true';
   const initialStep: number = 0;
 
   const areas = [1, 2, 3, 4, 5, 6]; // Hardcoded for prototype
   const [stage, setStage] = useState(1);
   const [dynPOIs, setDynPOIs] = useState<PoiType[]>();
+  const [stepsEnabled, setStepsEnabled] = useState(false);
   const [POIToShow, setPOIToShow] = useState(dynPOIs);
   const [capturedPois, setCapturedPois] = useState<number[]>(getCapturedPOIs());
 
@@ -59,7 +59,10 @@ export default function POIList() {
 
   const onComplete = (): void | false => {
     // 'if' so it doesn't trigger on POIs load.
-    if (dynPOIs) localStorage.setItem('tutorial-done', 'true');
+    if (dynPOIs) {
+      setStepsEnabled(false);
+      localStorage.setItem('tutorial-done', 'true');
+    }
   };
 
   const toSnap = () => {
@@ -98,9 +101,11 @@ export default function POIList() {
   }, []);
 
   useEffect(() => {
-    // getCapturedPOIs();
     // Triggers when dynPOIs is loaded
-    if (dynPOIs) setPOIToShow(dynPOIs.filter((poi) => poi.area === 1));
+    if (dynPOIs) {
+      setPOIToShow(dynPOIs.filter((poi) => poi.area === 1));
+      setStepsEnabled(localStorage.getItem('tutorial-done') !== 'true');
+    }
   }, [dynPOIs]);
 
   useEffect(() => {

@@ -13,12 +13,12 @@ export default function Welcome() {
   };
 
   return (
-    <div>
-      <img src="#" alt={t('altImg')} />
+    <div className="welcome-page container">
+      <img src="./img/welcome.gif" alt={t('title')} />
       <h1>{t('title')}</h1>
       <p>{t('description')}</p>
       <LanguageSelector onSubmit={onSubmitingLanguages} />
-      <button type="button" onClick={() => navigate('/')}>
+      <button type="button" className="btn btn--100" onClick={() => navigate('/')}>
         {t('start')}
       </button>
     </div>
