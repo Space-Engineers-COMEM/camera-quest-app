@@ -55,7 +55,7 @@ export default function Snap() {
   // API communication
   const handleTakePhoto = async (dataUri: string) => {
     setIsLoading(true);
-    const predictionUrl = 'https://api.cameramuseum.app/pois/prediction/';
+    const predictionUrl = 'https://api.cameramuseum.app/pois/';
 
     const data = new FormData();
     data.append('file', b64toBlob(dataUri.slice(23)));
