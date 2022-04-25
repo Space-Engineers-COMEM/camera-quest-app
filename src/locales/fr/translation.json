@@ -5,7 +5,7 @@
     "link": "Retour à la page d'accueil"
   },
   "Languages": {
-    "instruction": "Choissisez votre langue: ",
+    "instruction": "Choisissez votre langue: ",
     "button": "Langues",
     "fr": "Français",
     "de": "Deutsch",
@@ -19,7 +19,7 @@
   "Snap": {
     "loading": "Développement en cours...",
     "notFound": "Objet pas reconnu",
-    "notFoundDesc1": "Placez-vous bien en face",
+    "notFoundDesc1": "Placez-vous en face de l'objet",
     "notFoundDesc2": "Faites attention aux reflets",
     "notFoundDesc3": "Il semble qu’il y ait un problème.",
     "notFoundButton": "Passer en mode liste",

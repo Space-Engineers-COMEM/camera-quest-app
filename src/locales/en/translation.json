@@ -5,6 +5,7 @@
     "link": "Back to the index page"
   },
   "Languages": {
+    "instruction": "Select your lanugage: ",
     "button": "Languages",
     "fr": "Français",
     "de": "Deutsch",
@@ -13,21 +14,53 @@
   "Welcome": {
     "title": "Welcome !",
     "description": "Hello, and welcome to the Camera Museum of Vevey. Meet your visiting companion. Let's discover how it works.",
-    "start": "Start",
-    "altImg": "Camera Museum"
+    "start": "Start"
   },
   "Snap": {
     "loading": "Development in progress...",
     "notFound": "Unknown object",
-    "notFoundDesc": "Stand in front of the object and watch out for any reflections.",
+    "notFoundDesc1": "Stand in front of the object",
+    "notFoundDesc2": "Pay attention to reflections",
+    "notFoundDesc3": "There seems to be a problem.",
+    "notFoundButton": "Switch to list mode",
+    "retry": "Try again",
     "open": "Open",
     "altImg": "Camera Museum",
     "button": "Language"
   },
   "POIList": {
+    "done": "Done",
     "learnMore": "Learn more...",
     "backToCamera": "Back to the camera",
     "outOf": "out of",
-    "captured": "captured"
+    "captured": "captured",
+    "area1": "Yellow Floor",
+    "area2": "Blue Floor",
+    "area3": "Red Floor",
+    "area4": "Grey Floor",
+    "area5": "Temporary Exhibit",
+    "area6": "Projection History"
+  },
+  "Tutorial": {
+    "step1": {
+      "title": "The floors",
+      "desc": "Both in the museum and in the application, the exhibitions are organised by floor. When you change floors, simply click on them in the navigation."
+    },
+    "step2": {
+      "title": "Show content",
+      "desc": "By clicking on an object, you can go and see the content related to it, including a short podcast about the object!"
+    },
+    "step3": {
+      "title": "The \"seen\" indicator",
+      "desc": "Here you will see a small \"seen\" indicator as you visit. This shows you which objects you have already consulted, either with the camera or via the list."
+    },
+    "step4": {
+      "title": "Catch'em all!",
+      "desc": "There, a counter allows you to have an overview of the number of elements \"seen\". Try to get them all to receive a surprise at the end of your visit !"
+    },
+    "step5": {
+      "title": "Take a picture",
+      "desc": "Now that you know everything about the \"List\" mode, come and discover the \"Camera\" mode! For that, nothing could be easier, click on the button below. And take a picture !"
+    }
   }
 }
