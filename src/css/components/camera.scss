@@ -50,6 +50,7 @@
   border-top-right-radius: var(--default-border-radius);
   border-top-left-radius: var(--default-border-radius);
   padding: var(--default-padding);
+  padding-bottom: 0;
 }
 
 .feedback-error {
@@ -107,6 +108,7 @@
   font-size: var(--fs-btn);
   font-weight: 700;
   box-shadow: var(--shadow-internal);
+  background-color: var(--lightGray);
 }
 
 .cameraPreview {
@@ -135,7 +137,7 @@
 
     >div {
       display: flex;
-      align-items: center;
+      align-items: baseline;
 
       div.checkbox {
         display: inline;
