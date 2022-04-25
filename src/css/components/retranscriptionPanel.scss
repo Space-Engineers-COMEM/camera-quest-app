@@ -34,7 +34,7 @@
 }
 
 .retrans__header__closeButton {
-  position:absolute;
+  position: absolute;
   margin-right: 2rem;
   right: 0px;
   padding: 0;
@@ -46,4 +46,12 @@
 .retrans__title,
 .retrans__text {
   color: var(--white);
+}
+
+.retrans__text {
+  font-size: 1.4rem;
+}
+
+.retrans__title {
+  font-size: 1.8rem;
 }

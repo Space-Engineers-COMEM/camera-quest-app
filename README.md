@@ -53,7 +53,7 @@ _Note: Settings and Elements are loaded by default from the `index.css`, it's av
 
 When you commit, write it so it describes what the commit do. It should begin with a verb. To make this easy, always think as the followint of the sentence "This commit…".
 
-> Examples: `Add POST User`, `Fix issue #123`, `Update README.md`, …
+> Examples: `Add POST User`, `Fix issue #123`, `Update README.md`, …
 
 **Branches**
 
@@ -102,6 +102,12 @@ In all case, make sure to close the issue when you fix it.
 
 ## License
 
-[MIT license](LICENSE).
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
+
+This work is licensed under a
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](LICENSE).
+
+[cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
+[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
 
 Copyright (c) 2022-present, Space Engineers COMEM
