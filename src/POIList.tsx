@@ -58,7 +58,8 @@ export default function POIList() {
     typeof capturedPois.find((el) => el === id) !== 'undefined';
 
   const onComplete = (): void | false => {
-    localStorage.setItem('tutorial-done', 'true');
+    // 'if' so it doesn't trigger on POIs load.
+    if (dynPOIs) localStorage.setItem('tutorial-done', 'true');
   };
 
   const toSnap = () => {
@@ -108,6 +109,7 @@ export default function POIList() {
 
   const clearLS = () => {
     localStorage.setItem('captured-pois', JSON.stringify([]));
+    localStorage.setItem('tutorial-done', 'false');
   };
 
   return (
@@ -121,8 +123,7 @@ export default function POIList() {
           enabled={stepsEnabled}
           steps={steps}
           initialStep={initialStep}
-          onExit={() => onComplete}
-          onComplete={() => onComplete}
+          onExit={() => onComplete()}
           options={{
             showBullets: false,
             prevLabel: '<i class="fa-solid fa-angle-left"></i>',
