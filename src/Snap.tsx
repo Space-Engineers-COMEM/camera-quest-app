@@ -12,11 +12,9 @@ export default function Snap() {
   const [feedbackError, setFeedbackError] = useState('');
   const [poiPreview, setPoiPreview] = useState();
   const [errorCounter, setErrorCounter] = useState(0);
-  // const viewportWidth = document.documentElement.clientWidth;
-  // const viewportHeight = document.documentElement.clientHeight;
 
-  const viewportWidth = window.innerWidth;
-  const viewportHeight = window.innerHeight;
+  const viewportWidth = document.documentElement.clientWidth;
+  const viewportHeight = document.documentElement.clientHeight;
 
   // Function created by Namitha Gowda : https://stackoverflow.com/users/8665961/namitha-gowda
   const b64toBlob = (b64Data: string, contentType = '', sliceSize = 512) => {
