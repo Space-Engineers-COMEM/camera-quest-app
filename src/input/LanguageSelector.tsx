@@ -36,7 +36,9 @@ export default function LanguageSelector(props: Props) {
           </fieldset>
         ))}
       </div>
-      <input type="submit" value="X" />
+      <button type="submit" className="closeButton">
+        <i className="fa-solid fa-xmark" />
+      </button>
     </form>
   );
 }

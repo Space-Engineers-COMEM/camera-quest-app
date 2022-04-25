@@ -6,6 +6,7 @@ import PoiType from './types/PoiType';
 import ShareType from './types/ShareType';
 import AudioPlayer from './input/AudioPlayer';
 import PoiCheck from './content/PoiCheck';
+import Button from './navigation/Button';
 
 export default function POI() {
   const { t } = useTranslation('', { keyPrefix: 'Snap' });
@@ -56,6 +57,10 @@ export default function POI() {
 
   const id: string = useParams().id || '0';
 
+  const onCloseFeedback = (): void => {
+    console.log('coucou');
+  };
+
   useEffect(() => {
     getPOIFromAPI(+id);
   }, []);
@@ -80,12 +85,10 @@ export default function POI() {
   }
   return (
     <div>
-      <img
-        className="poi_img"
-        // src={poi.image_url}
-        src="/4131_MEGALETOSCOPE.jpg"
-        alt={poi.title}
-      />
+      <Link className="btnClose" to="/">
+        <i className="fa-solid fa-xmark" />
+      </Link>
+      <img className="poi_img" src={poi.image_url} alt={poi.title} />
       <div className="container-sm m-0 p-0">
         <div className="row">
           <div className="col poi_contener_title">
