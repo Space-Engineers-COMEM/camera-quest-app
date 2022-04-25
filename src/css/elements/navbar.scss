@@ -29,6 +29,7 @@ nav {
   font-size: var(--fs-btn);
   font-weight: 700;
   color: var(--gray);
+
   &__text {
     text-transform: uppercase;
     font-weight: inherit;
@@ -57,17 +58,25 @@ nav {
   border-bottom-right-radius: var(--default-border-radius);
   background: var(--white);
   box-shadow: var(--shadow-popup);
+  transition: all .2s ease-in-out;
+  &.hidden{
+    left:-500px;
+    transition: all .3s ease-in-out;
+  }
 }
 
 .langSelector {
   overflow: auto;
+
   fieldset {
     border: none;
     text-align: center;
+
     input {
       position: absolute;
       left: -999rem;
     }
+
     label {
       font-size: var(--fs-btn);
       font-weight: 700;
@@ -75,7 +84,8 @@ nav {
       color: var(--lightGray);
       padding: 5px 10px;
     }
-    input:checked + label {
+
+    input:checked+label {
       color: var(--gray);
       background-color: var(--white);
       box-shadow: var(--shadow-internal);
@@ -85,7 +95,7 @@ nav {
   }
 }
 
-.langSelectorContainer input[type=submit] {
+.langSelectorContainer button[type=submit] {
   position: absolute;
   top: var(--default-padding);
   right: var(--default-padding);

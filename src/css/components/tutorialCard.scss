@@ -1,0 +1,76 @@
+/* Intro.js Library resets */
+
+.introjs-tooltipReferenceLayer * {
+  font-family: "NEXT Book";
+}
+
+/* Tutorial Box Component Style */
+
+.tutorialBox {
+  padding: var(--default-padding);
+  border-radius: var(--default-border-radius);
+  box-shadow: var(--shadow-popup);
+
+  .introjs-skipbutton {
+    display: none;
+  }
+
+  .introjs-tooltipbuttons {
+    border: none;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+    padding-top: var(--default-padding);
+
+    .introjs-button {
+      border: none;
+      border-radius: var(--default-border-radius);
+      height: 40px;
+      width: 40px;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
+
+       > i {
+        font-family: 'Font Awesome 6 Free'!important;
+      }
+
+      &.introjs-prevbutton {
+        box-shadow: var(--shadow-internal);
+        background: none;
+        color: var(--lightGray);
+      }
+
+      &.introjs-nextbutton {
+        box-shadow: var(--shadow-btn-inner);
+        background-color: var(--yellow);
+        color: var(--white);
+        margin-left: var(--default-padding);
+        text-shadow: none;
+
+        &.introjs-donebutton {
+          width: auto;
+          font-family: "NEXT Book";
+          font-weight: 700;
+          text-transform: uppercase;
+          font-size: var(--fs-btn);
+          padding: 0 var(--default-padding);
+        }
+      }
+    }
+  }
+
+  .introjs-tooltiptext {
+    padding: 0;
+
+    h2 {
+      color: var(--black);
+    }
+    p {
+      font-weight: 300;
+      margin-bottom: 0;
+    }
+  }
+}

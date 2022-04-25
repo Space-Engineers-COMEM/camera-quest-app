@@ -22,9 +22,8 @@ export default function LanguageSelector(props: Props) {
     <form onSubmit={handleSubmit}>
       <div className="langSelector">
         {Object.keys(lngs).map((lng) => (
-          <fieldset>
+          <fieldset key={lng}>
             <input
-              key={lng}
               id={lng}
               type="radio"
               name="lang"
@@ -36,7 +35,9 @@ export default function LanguageSelector(props: Props) {
           </fieldset>
         ))}
       </div>
-      <input type="submit" value="X" />
+      <button type="submit" className="closeButton">
+        <i className="fa-solid fa-xmark" />
+      </button>
     </form>
   );
 }

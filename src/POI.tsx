@@ -7,6 +7,7 @@ import ShareType from './types/ShareType';
 import AudioPlayer from './input/AudioPlayer';
 import PoiCheck from './content/PoiCheck';
 import ISOtoId from './utils/ISOtoId';
+import Button from './navigation/Button';
 
 export default function POI() {
   const { t } = useTranslation('', { keyPrefix: 'Snap' });
@@ -57,6 +58,10 @@ export default function POI() {
 
   const id: string = useParams().id || '0';
 
+  const onCloseFeedback = (): void => {
+    console.log('coucou');
+  };
+
   useEffect(() => {
     getPOIFromAPI(+id);
   }, []);
@@ -81,6 +86,9 @@ export default function POI() {
   }
   return (
     <div>
+      <Link className="btnClose" to="/">
+        <i className="fa-solid fa-xmark" />
+      </Link>
       <img className="poi_img" src={poi.content.poi.image_url} alt={poi.content.poi.title} />
       <div className="container-sm m-0 p-0">
         <div className="row">
@@ -100,7 +108,7 @@ export default function POI() {
             <h3 className="poi_detail_title">Date</h3>
             <p className="poi_detail ">
               {poi.content.poi.periode}
-              {canBeShared ? (
+              {/* {canBeShared ? (
                 <span>
                   <button type="button" onClick={handleShareClick}>
                     <i className="fa-solid fa-share-from-square" />
@@ -108,7 +116,7 @@ export default function POI() {
                 </span>
               ) : (
                 ''
-              )}
+              )} */}
             </p>
           </div>
           <div className="col-1 poi_trait">

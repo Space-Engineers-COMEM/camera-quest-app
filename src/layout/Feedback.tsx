@@ -39,7 +39,7 @@ export default function Feedback(props: Props) {
           <div>
             {type ? (
               <Button class="cameraCloseButton" onClick={onCloseFeedback}>
-                <span>X</span>
+                <i className="fa-solid fa-xmark" />
               </Button>
             ) : null}
             <img src="/img/snap-error.gif" alt={t('notFound')} />
@@ -60,7 +60,7 @@ export default function Feedback(props: Props) {
           <div>
             {type ? (
               <Button class="cameraCloseButton" onClick={onCloseFeedback}>
-                <span>X</span>
+                <i className="fa-solid fa-xmark" />
               </Button>
             ) : null}
             <img src="/img/snap-error.gif" alt={t('notFound')} />

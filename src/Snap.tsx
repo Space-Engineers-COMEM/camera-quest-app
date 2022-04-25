@@ -101,10 +101,20 @@ export default function Snap() {
     container?.setAttribute('style', `width: ${viewportWidth}px; height: ${viewportHeight}px;`);
   };
 
+  const displayButton = () => {
+    const button = document.querySelector('#container-circles');
+    button?.setAttribute('style', 'display: block;');
+  };
+
+  const handleCameraStart = () => {
+    setCameraSize();
+    displayButton();
+  };
+
   return (
     <div id="cameraContainer">
       <Camera
-        onCameraStart={setCameraSize}
+        onCameraStart={handleCameraStart}
         onTakePhoto={(dataUri) => {
           handleTakePhoto(dataUri);
         }}

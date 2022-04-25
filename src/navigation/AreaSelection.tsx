@@ -13,6 +13,7 @@ export default function AreaSelection(props: Props) {
     <div className="areaContainer">
       {props.areas.map((area) => (
         <button
+          key={area}
           className={`area${area === props.selected ? '--active' : ''}`}
           type="button"
           onClick={() => props.setStage(area)}

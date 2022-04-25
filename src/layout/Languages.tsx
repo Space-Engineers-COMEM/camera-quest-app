@@ -4,7 +4,7 @@ import Button from '../navigation/Button';
 import LanguageSelector from '../input/LanguageSelector';
 
 export default function Languages() {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   const [visible, setVisible] = useState(false);
 
@@ -13,6 +13,7 @@ export default function Languages() {
   };
 
   const onSubmitingLanguages = (evt: any): void => {
+    evt.preventDefault();
     setVisible(false);
   };
 
@@ -24,12 +25,10 @@ export default function Languages() {
           <span className="langButton__text">{i18n.resolvedLanguage}</span>
         </Button>
       </div>
-      {visible && (
-        <div className="langSelectorContainer">
-          {/* <p>{t('Languages.instruction')}:</p> */}
-          <LanguageSelector onSubmit={onSubmitingLanguages} />
-        </div>
-      )}
+      <div className={`langSelectorContainer ${visible ? '' : 'hidden'}`}>
+        {/* <p>{t('Languages.instruction')}:</p> */}
+        <LanguageSelector onSubmit={onSubmitingLanguages} />
+      </div>
     </div>
   );
 }
