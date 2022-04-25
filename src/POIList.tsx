@@ -15,8 +15,7 @@ export default function POIList() {
   const tTuto = useTranslation('', { keyPrefix: 'Tutorial' }).t;
   const navigate = useNavigate();
 
-  // Dev Static content
-  const tutoBoxes = ['.area-selection', '.learn-more', '.check', '.progress', '.camera-btn'];
+  const tutoBoxes = ['.areaContainer', '.poiListItem', '.checkmark', '.progressBar', '.camera-btn'];
   const steps: Step[] = [];
 
   for (let i = 0; i < tutoBoxes.length; i += 1) {
@@ -24,14 +23,13 @@ export default function POIList() {
       element: tutoBoxes[i],
       intro: (
         <div>
-          <h2>{tTuto(`step${i + 1}.title`)}</h2>
+          <h2 className="list">{tTuto(`step${i + 1}.title`)}</h2>
           <p>{tTuto(`step${i + 1}.desc`)}</p>
         </div>
       ),
       tooltipClass: 'tutorialBox',
     });
   }
-  // End of Dev Static Content
 
   const getCapturedPOIs = (): number[] => {
     const stringPOIs = localStorage.getItem('captured-pois');
@@ -125,23 +123,27 @@ export default function POIList() {
           initialStep={initialStep}
           onExit={() => onComplete}
           onComplete={() => onComplete}
+          options={{
+            showBullets: false,
+            prevLabel: '<i class="fa-solid fa-angle-left"></i>',
+            nextLabel: '<i class="fa-solid fa-angle-right"></i>',
+            doneLabel: t('done'),
+          }}
         />
 
         <ProgressBar total={POIToShow?.length} progress={getFilteredCapturedPOIs()} />
         {POIToShow?.map((poi) => (
-          <article
-            className="poiListItem"
-            key={poi.id}
-            style={{ backgroundImage: `url(${poi.image_url})` }}
-          >
-            <Link className="btn btn--fa-square" to={`/poi/${poi.id}`}>
-              <i className="fa-solid fa-chevron-right" />
-            </Link>
-            <div className="poiListItem__title">
-              <h2 className="list">{poi.title}</h2>
-              <PoiCheck checked={isCapturedPOI(poi.id)} />
-            </div>
-          </article>
+          <Link to={`/poi/${poi.id}`} key={poi.id}>
+            <article className="poiListItem" style={{ backgroundImage: `url(${poi.image_url})` }}>
+              <span className="btn btn--fa-square">
+                <i className="fa-solid fa-chevron-right" />
+              </span>
+              <div className="poiListItem__title">
+                <h2 className="list">{poi.title}</h2>
+                <PoiCheck checked={isCapturedPOI(poi.id)} />
+              </div>
+            </article>
+          </Link>
         ))}
         <Button class="btn camera-btn" onClick={toSnap}>
           <img src="/img/camera.png" alt="Go to Snap frame" />
