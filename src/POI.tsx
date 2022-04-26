@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import PoiType from './types/FullPoiType';
-import ShareType from './types/ShareType';
 import AudioPlayer from './input/AudioPlayer';
 import PoiCheck from './content/PoiCheck';
 
@@ -34,18 +33,6 @@ export default function POI() {
       });
   };
 
-  const shareData: ShareType = {
-    title: `Camera Museum - ${poi?.content.poi.title}`,
-    text: 'Redécouvrez la photo !',
-    url: window.location.href,
-  };
-
-  const [canBeShared, setCanBeSharedStatus] = useState(false);
-
-  const handleShareClick = () => {
-    navigator.share(shareData).catch(() => alert('unable to share this content :('));
-  };
-
   const getCapturedPOIs = (): number[] => {
     const stringPOIs = localStorage.getItem('captured-pois');
     return stringPOIs ? JSON.parse(stringPOIs) : [];
@@ -60,20 +47,9 @@ export default function POI() {
     getPOIFromAPI(+id);
   }, []);
 
-  useEffect(() => {
-    try {
-      if (navigator.canShare(shareData)) {
-        setCanBeSharedStatus(true);
-      }
-    } catch (error) {
-      setCanBeSharedStatus(false);
-    }
-  }, [poi]);
-
   if (!poi) {
     return (
-      <div className="feedback-loading">
-        <img src="/img/snap-loading.gif" alt="" />
+      <div className="feedback-loading loading-poi">
         <h2>{t('loading')}</h2>
       </div>
     );
@@ -99,18 +75,7 @@ export default function POI() {
         <div className="row poi_contener_detail">
           <div className="col poi_detail_left">
             <h3 className="poi_detail_title">{t('date')}</h3>
-            <p className="poi_detail ">
-              {poi.content.poi.periode}
-              {/* {canBeShared ? (
-                <span>
-                  <button type="button" onClick={handleShareClick}>
-                    <i className="fa-solid fa-share-from-square" />
-                  </button>
-                </span>
-              ) : (
-                ''
-              )} */}
-            </p>
+            <p className="poi_detail ">{poi.content.poi.periode}</p>
           </div>
           <div className="col-1 poi_trait">
             <svg
