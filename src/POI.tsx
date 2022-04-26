@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
+import parse from 'html-react-parser';
 import PoiType from './types/FullPoiType';
 import AudioPlayer from './input/AudioPlayer';
 import PoiCheck from './content/PoiCheck';
@@ -104,7 +105,7 @@ export default function POI() {
         <div className="row">
           <div className="col-md-12">
             <p className="poi_description">
-              {poi.content.translations[1] ? poi.content.translations[1].value : ''}
+              {poi.content.translations[1] ? parse(poi.content.translations[1].value) : ''}
             </p>
           </div>
         </div>
