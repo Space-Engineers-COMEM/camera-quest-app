@@ -65,6 +65,7 @@
   },
   "Poi": {
     "date": "Date",
-    "place": "Lieu"
+    "place": "Lieu",
+    "loading": "Chargement..."
   }
 }
