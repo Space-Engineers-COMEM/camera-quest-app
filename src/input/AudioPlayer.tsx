@@ -155,7 +155,7 @@ export default function AudioPlayer(props: AudioPlayerProps) {
             <button
               className="col-4 audioPlayerReader__btn play"
               type="button"
-              onClick={changePlayState}
+              onTouchStart={changePlayState}
             >
               <img src={`/img/${!isPlaying ? 'Play' : 'Pause'}.png`} alt="Start and Pause button" />
             </button>
