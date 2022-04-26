@@ -152,15 +152,15 @@ export default function POIList() {
           </Link>
         ))}
         <Button class="btn camera-btn" onClick={toSnap}>
-          <img src="/img/camera.png" alt="Go to Snap frame" />
+          <img src="/img/Camera.png" alt="Go to Snap frame" />
         </Button>
         {/* For dev purpose */}
-        <button className="btn" type="button" onClick={() => addCapturedPOI(1)}>
+        {/* <button className="btn" type="button" onClick={() => addCapturedPOI(1)}>
           Add random POI
         </button>
         <button className="btn" type="button" onClick={() => clearLS()}>
           Clear LocalStorage
-        </button>
+        </button> */}
       </div>
     </div>
   );
