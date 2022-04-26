@@ -11,7 +11,7 @@ export default function LanguageSelector(props: Props) {
     en: { nativeName: 'English' },
   };
 
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   // Handeled by parent
   const handleSubmit = (evt: any) => {

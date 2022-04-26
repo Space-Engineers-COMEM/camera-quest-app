@@ -113,10 +113,11 @@ export default function POIList() {
     if (dynPOIs) setPOIToShow(dynPOIs.filter((poi) => poi.area === stage));
   }, [stage]);
 
+  /* For dev purpose
   const clearLS = () => {
     localStorage.setItem('captured-pois', JSON.stringify([]));
     localStorage.setItem('tutorial-done', 'false');
-  };
+  }; */
 
   return (
     <div>

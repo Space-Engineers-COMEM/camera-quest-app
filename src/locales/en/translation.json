@@ -66,6 +66,7 @@
   "Poi": {
     "date": "Date",
     "place": "Place",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "retranscription": "Audio Description"
   }
 }

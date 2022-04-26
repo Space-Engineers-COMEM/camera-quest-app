@@ -25,13 +25,6 @@ export default function AudioPlayer(props: AudioPlayerProps) {
     setPlayState(!isPlaying);
   };
 
-  const calculateTime = (secs: number = 0): string => {
-    const minutes: number = Math.floor(+secs / 60);
-    const seconds: number = Math.floor(+secs % 60);
-    const returnedSeconds: string = seconds < 10 ? `0${seconds}` : `${seconds}`;
-    return `${minutes}:${returnedSeconds}`;
-  };
-
   const setSliderMax = () => {
     if (seekSliderRef.current && audioFileRef.current) {
       seekSliderRef.current.max = `${Math.floor(audioFileRef.current.duration)}`;
