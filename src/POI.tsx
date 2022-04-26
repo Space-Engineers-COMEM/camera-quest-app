@@ -2,16 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
-import parse from 'html-react-parser';
-import i18n from 'i18next';
 import PoiType from './types/FullPoiType';
 import AudioPlayer from './input/AudioPlayer';
 import PoiCheck from './content/PoiCheck';
-import ISOtoId from './utils/ISOtoId';
 
 export default function POI() {
   const { t } = useTranslation('', { keyPrefix: 'Poi' });
   const navigate = useNavigate();
+
   const [poi, setPoi] = useState<PoiType>();
 
   const apiUrl = 'https://api.cameramuseum.app/pois';
@@ -19,7 +17,7 @@ export default function POI() {
   const getPOIFromAPI = (id: number): void => {
     axios({
       method: 'get',
-      url: `${apiUrl}/${id}/${ISOtoId(i18n.language.split('-')[0])}`,
+      url: `${apiUrl}/${id}/1`,
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -29,7 +27,6 @@ export default function POI() {
       .then((response) => response.data)
       .then((data) => {
         setPoi(data);
-        localStorage.setItem('active-area', data.area.toString() || '1');
       })
       .catch((error) => {
         navigate('/nomatch');
@@ -106,7 +103,9 @@ export default function POI() {
         </div>
         <div className="row">
           <div className="col-md-12">
-            <p className="poi_description">{parse(poi.content.translations[1].value)}</p>
+            <p className="poi_description">
+              {poi.content.translations[1] ? poi.content.translations[1].value : ''}
+            </p>
           </div>
         </div>
       </div>
