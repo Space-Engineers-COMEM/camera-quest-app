@@ -28,6 +28,7 @@ export default function POI() {
       .then((response) => response.data)
       .then((data) => {
         setPoi(data);
+        localStorage.setItem('active-area', data.area.toString() || '1');
       })
       .catch((error) => {
         navigate('/nomatch');
