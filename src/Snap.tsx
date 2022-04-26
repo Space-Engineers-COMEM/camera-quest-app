@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Camera, { FACING_MODES, IMAGE_TYPES } from 'react-html5-camera-photo';
 import axios from 'axios';
 import FormData from 'form-data';
+import { resourceLimits } from 'worker_threads';
 import Feedback from './layout/Feedback';
 import 'react-html5-camera-photo/build/css/index.css';
 
@@ -60,6 +61,7 @@ export default function Snap() {
     axios({
       method: 'post',
       url: predictionUrl,
+      timeout: 8000, // Wait for 8 s
       data,
       headers: {
         'Accept': 'application/json',
@@ -85,7 +87,11 @@ export default function Snap() {
         }
       })
       .catch((error) => {
-        console.log('FETCH ERROR: ', error, feedbackError);
+        console.log(error);
+        setType('unpredictable');
+        setIsLoading(false);
+        setErrorCounter(5);
+        setFeedbackError(error);
       });
   };
 
