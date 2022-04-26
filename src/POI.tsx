@@ -106,9 +106,7 @@ export default function POI() {
         </div>
         <div className="row">
           <div className="col-md-12">
-            <p className="poi_description">
-              {poi.content.translations[1] ? parse(poi.content.translations[1].value) : ''}
-            </p>
+            <p className="poi_description">{parse(poi.content.translations[1].value)}</p>
           </div>
         </div>
       </div>
