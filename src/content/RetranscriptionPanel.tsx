@@ -9,6 +9,8 @@ interface Props {
 }
 
 export default function ProgressBar(props: Props) {
+  const { t } = useTranslation('', { keyPrefix: 'Poi' });
+
   return (
     <div className={`retrans retrans--${props.show ? 'show' : 'hide'}`}>
       <div className="retrans__header">
@@ -21,7 +23,7 @@ export default function ProgressBar(props: Props) {
         </button>
       </div>
       <div className="retrans__content">
-        <h1 className="retrans__title">Retranscription Audio</h1>
+        <h1 className="retrans__title">{t('retranscription')}</h1>
         <p className="retrans__text">{parse(props.retranscription)}</p>
       </div>
     </div>

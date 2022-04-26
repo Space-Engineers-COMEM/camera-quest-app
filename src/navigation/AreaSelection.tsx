@@ -16,7 +16,10 @@ export default function AreaSelection(props: Props) {
           key={area}
           className={`area${area === props.selected ? '--active' : ''}`}
           type="button"
-          onClick={() => props.setStage(area)}
+          onClick={() => {
+            props.setStage(area);
+            localStorage.setItem('active-area', area.toString());
+          }}
         >
           {t(`area${area}`).split(' ')[0]}
           <br />

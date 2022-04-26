@@ -39,7 +39,8 @@ export default function POIList() {
   const initialStep: number = 0;
 
   const areas = [1, 2, 3, 4, 5, 6]; // Hardcoded for prototype
-  const [stage, setStage] = useState(1);
+  const activeArea = localStorage.getItem('active-area');
+  const [stage, setStage] = useState(Number(activeArea) || 1);
   const [dynPOIs, setDynPOIs] = useState<PoiType[]>();
   const [stepsEnabled, setStepsEnabled] = useState(false);
   const [POIToShow, setPOIToShow] = useState(dynPOIs);
@@ -112,10 +113,11 @@ export default function POIList() {
     if (dynPOIs) setPOIToShow(dynPOIs.filter((poi) => poi.area === stage));
   }, [stage]);
 
+  /* For dev purpose
   const clearLS = () => {
     localStorage.setItem('captured-pois', JSON.stringify([]));
     localStorage.setItem('tutorial-done', 'false');
-  };
+  }; */
 
   return (
     <div>
@@ -154,13 +156,6 @@ export default function POIList() {
         <Button class="btn camera-btn" onClick={toSnap}>
           <img src="/img/Camera.png" alt="Go to Snap frame" />
         </Button>
-        {/* For dev purpose */}
-        {/* <button className="btn" type="button" onClick={() => addCapturedPOI(1)}>
-          Add random POI
-        </button>
-        <button className="btn" type="button" onClick={() => clearLS()}>
-          Clear LocalStorage
-        </button> */}
       </div>
     </div>
   );
