@@ -21,6 +21,7 @@
 .retrans__content {
   max-height: 80vh;
   overflow: scroll;
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -49,9 +50,14 @@
 }
 
 .retrans__text {
-  font-size: 1.4rem;
+  font-size: var(--fs-p-transcription);
+  padding-bottom: 90px;
 }
 
 .retrans__title {
-  font-size: 1.8rem;
+  font-size: var(--fs-h1-detail);
+}
+
+.hidden {
+  display: none;
 }

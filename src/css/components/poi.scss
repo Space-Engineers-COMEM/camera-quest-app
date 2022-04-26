@@ -13,6 +13,7 @@
 
 .poi_contener_title {
   padding-top: var(--default-padding);
+  position: relative;
 }
 
 .poi_title {
@@ -78,9 +79,9 @@
 }
 
 .poi_description {
-  font-size: 1.1rem;
+  font-size: var(--fs-p-detail);
   line-height: 22px;
   letter-spacing: -0.02em;
-  font-feature-settings: 'liga' 0;
+  font-feature-settings: 'liga'0;
   padding-bottom: 150px;
 }

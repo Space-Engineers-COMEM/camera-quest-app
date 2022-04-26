@@ -167,7 +167,9 @@ export default function AudioPlayer(props: AudioPlayerProps) {
               <img src="/img/10sApres.png" alt="10 seconds forward" />
             </button>
             <button
-              className="col-2 audioPlayerReader__btn transcription"
+              className={`col-2 audioPlayerReader__btn transcription ${
+                props.retranscription === '' || props.retranscription === ' ' ? 'hidden' : ''
+              }`}
               type="button"
               onClick={() => setRetranscriptionVisibility(!showRetranscription)}
             >
