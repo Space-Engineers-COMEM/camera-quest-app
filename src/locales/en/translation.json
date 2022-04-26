@@ -65,6 +65,7 @@
   },
   "Poi": {
     "date": "Date",
-    "place": "Place"
+    "place": "Place",
+    "loading": "Loading..."
   }
 }

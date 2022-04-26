@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Button from '../navigation/Button';
 import LanguageSelector from '../input/LanguageSelector';
@@ -17,6 +17,12 @@ export default function Languages() {
     setVisible(false);
   };
 
+  useEffect(() => {
+    document.getElementById('langBackground')?.addEventListener('click', () => {
+      setVisible(false);
+    });
+  }, []);
+
   return (
     <div>
       <div className="langButtonContainer">
@@ -29,6 +35,7 @@ export default function Languages() {
         {/* <p>{t('Languages.instruction')}:</p> */}
         <LanguageSelector onSubmit={onSubmitingLanguages} />
       </div>
+      <div id="langBackground" />
     </div>
   );
 }
