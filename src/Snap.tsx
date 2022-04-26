@@ -86,7 +86,7 @@ export default function Snap() {
         }
       })
       .catch((error) => {
-        console.log('FETCH ERROR: ', error);
+        console.log('FETCH ERROR: ', error, feedbackError);
       });
   };
 
