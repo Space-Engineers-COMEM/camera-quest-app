@@ -32,7 +32,6 @@ export default function POI() {
         setPoi(data);
       })
       .catch((error) => {
-        console.log(error);
         navigate('/nomatch');
       });
   };

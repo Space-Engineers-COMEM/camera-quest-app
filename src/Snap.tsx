@@ -87,7 +87,6 @@ export default function Snap() {
         }
       })
       .catch((error) => {
-        console.log(error);
         setType('unpredictable');
         setIsLoading(false);
         setErrorCounter(5);
