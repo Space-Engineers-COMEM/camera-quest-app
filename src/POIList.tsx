@@ -104,7 +104,7 @@ export default function POIList() {
   useEffect(() => {
     // Triggers when dynPOIs is loaded
     if (dynPOIs) {
-      setPOIToShow(dynPOIs.filter((poi) => poi.area === Number(activeArea)));
+      setPOIToShow(dynPOIs.filter((poi) => poi.area === stage));
       setStepsEnabled(localStorage.getItem('tutorial-done') !== 'true');
     }
   }, [dynPOIs]);
