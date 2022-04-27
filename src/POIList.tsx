@@ -40,6 +40,7 @@ export default function POIList() {
 
   const areas = [1, 2, 3, 4, 5, 6]; // Hardcoded for prototype
   const activeArea = localStorage.getItem('active-area');
+  console.log(activeArea);
   const [stage, setStage] = useState(Number(activeArea) || 1);
   const [dynPOIs, setDynPOIs] = useState<PoiType[]>();
   const [stepsEnabled, setStepsEnabled] = useState(false);
@@ -104,7 +105,7 @@ export default function POIList() {
   useEffect(() => {
     // Triggers when dynPOIs is loaded
     if (dynPOIs) {
-      setPOIToShow(dynPOIs.filter((poi) => poi.area === 1));
+      setPOIToShow(dynPOIs.filter((poi) => poi.area === Number(activeArea)));
       setStepsEnabled(localStorage.getItem('tutorial-done') !== 'true');
     }
   }, [dynPOIs]);

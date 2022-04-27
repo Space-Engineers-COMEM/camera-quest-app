@@ -29,10 +29,10 @@ export default function POI() {
       // Recieving the POI, or error
       .then((response) => response.data)
       .then((data) => {
-        // localStorage.setItem('active-area', data.area.toString() || '1');
         setPoi(data);
       })
       .catch((error) => {
+        console.log(error);
         navigate('/nomatch');
       });
   };
@@ -50,6 +50,10 @@ export default function POI() {
   useEffect(() => {
     getPOIFromAPI(+id);
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('active-area', poi?.content.poi.area.toString() || '1');
+  }, [poi]);
 
   if (!poi) {
     return (
