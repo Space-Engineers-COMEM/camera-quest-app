@@ -1,7 +1,7 @@
 {
   "Error404": {
     "title": "404 Page introuvable",
-    "sorryMessage": "Désolé, aucune ressources est accessible à cette adresse",
+    "sorryMessage": "Désolé, aucune ressource n'est accessible à cette adresse.",
     "link": "Retour à la page d'accueil"
   },
   "Languages": {
